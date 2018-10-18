@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+	   
+    <select id="productBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.product_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             PRODUCT_NAME,
+             PAY,
+             DELE_MNY,
+             FREE_DELE,
+             MAKE_COMPANY,
+             CELLER,
+             SHOP_INFO,
+             AREA,
+             C_NUMBER,
+             HOMEPAGE,
+             CERTI,
+             BIGO,
+             CONTENTS,
+             TITLE,
+             SMARTEDITOR,
+             SAVE_FILES,
+             REQ_DATE			 
+             FROM ProductBoard
+             WHERE
+              PRODUCT_NAME like '%${PRODUCT_NAME}%'
+             ORDER BY REQ_DATE DESC
+			 ]]>
+    <include refid="common.product_pagingPost"/>
+    </select>
+    
+    <select id="productBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.product_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             PRODUCT_NAME,
+             PAY,
+             DELE_MNY,
+             FREE_DELE,
+             MAKE_COMPANY,
+             CELLER,
+             SHOP_INFO,
+             AREA,
+             C_NUMBER,
+             HOMEPAGE,
+             CERTI,
+             BIGO,
+             CONTENTS,
+             TITLE,
+             SMARTEDITOR,
+             SAVE_FILES,
+             REQ_DATE			 
+             FROM ProductBoard
+             ORDER BY REQ_DATE DESC
+			 ]]>
+    <include refid="common.product_pagingPost"/>
+    </select>
+
+</mapper>

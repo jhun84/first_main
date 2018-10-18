@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="common">
+
+<select id="selectFileInfo" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            STORED_FILE_NAME,
+            ORIGINAL_FILE_NAME
+        FROM
+            TB_FILE
+        WHERE
+            IDX = #{IDX}
+    ]]>
+</select>
+
+<sql id="pagingPre">
+SELECT T4.*
+FROM(
+  SELECT T3.TOTAL_COUNT,T2.*
+  FROM (
+    SELECT @RNUM := @RNUM + 1 AS ROWNUM,T1.*
+    FROM
+    (
+    
+</sql>
+
+<sql id="pagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM TB_BOARD WHERE DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+<sql id="product_pagingPre">
+SELECT T4.*
+FROM(
+  SELECT T3.TOTAL_COUNT,T2.*
+  FROM (
+    SELECT @RNUM := @RNUM + 1 AS ROWNUM,T1.*
+    FROM
+    (
+    
+</sql>
+
+<sql id="product_pagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM ProductBoard)T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+ 
+</mapper>
