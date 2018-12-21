@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
 </head>
 <body>
-<h2>게시판 목록</h2>
+<%@ include file="/WEB-INF/include/include-menu.jsp" %>
 <table style="border:1px solid #ccc" class="board_list">
 	<colgroup>
 		<col width="10%"/>

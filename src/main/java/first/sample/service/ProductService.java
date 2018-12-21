@@ -12,5 +12,10 @@ public interface ProductService {
 	
 	Map<String, Object> productBoardList(Map<String, Object> map) throws Exception;
 	Map<String, Object> productBoardSearch(Map<String, Object> map) throws Exception;
+	void insertProduct(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void updateProduct(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void deleteProduct(Map<String, Object> map) throws Exception;
+	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
+	Map<String, Object> selectProductDetail(Map<String, Object> map) throws Exception;
 	
 }

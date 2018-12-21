@@ -18,13 +18,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import first.common.util.FileUtils;
 import first.sample.dao.ProductDAO;
+import first.sample.dao.SampleDAO;
 
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
 	Logger log = Logger.getLogger(this.getClass());
+	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
+	private String SAVE_URL = "/upload/";
 	
 	@Resource(name="productDAO")
 	private ProductDAO productDAO;
+	
+	@Resource(name="sampleDAO")
+	private SampleDAO sampleDAO;
+	
+	@Resource(name="fileUtils")
+    private FileUtils fileUtils;
 	
 	@Override
 	public Map<String, Object> productBoardList(Map<String, Object> map) throws Exception {
@@ -33,6 +42,63 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Map<String, Object> productBoardSearch(Map<String, Object> map) throws Exception {
 	    return productDAO.productBoardSearch(map);
+	}
+	@Override
+    public void insertProduct(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		productDAO.insertProduct(map);
+         
+        List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
+        for(int i=0, size=list.size(); i<size; i++){
+            sampleDAO.insertFile(list.get(i));
+        }
+    }
+	@Override
+	public Map<String, Object> selectProductDetail(Map<String, Object> map) throws Exception {
+	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	    Map<String, Object> tempMap = productDAO.selectProductDetail(map);
+	    resultMap.put("map", tempMap);
+	     
+	    List<Map<String,Object>> list = sampleDAO.selectFileList(map);
+	    resultMap.put("list", list);
+	     
+	    return resultMap;
+	}
+
+	@Override
+	public void updateProduct(Map<String, Object> map, HttpServletRequest request) throws Exception{
+		productDAO.updateProduct(map);
+	}
+	
+	@Override
+	public void deleteProduct(Map<String, Object> map) throws Exception {
+		productDAO.deleteProduct(map);
+	}
+	
+	@SuppressWarnings("resource")
+	public void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception {
+
+		OutputStream out = null;
+		PrintWriter printWriter = null;	
+		String fileName = file.getOriginalFilename();
+		byte[] bytes = file.getBytes();
+		String uploadPath = FILE_URL + fileName;
+
+		out = new FileOutputStream(new File(uploadPath));
+		out.write(bytes);
+
+		String callback = "1";
+		printWriter = response.getWriter();
+
+		String fileUrl = SAVE_URL + fileName; //url 경로
+		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
+	               + callback
+	               + ",'"
+	               + fileUrl
+	               + "','이미지를 업로드 하였습니다.'"
+	               + ")</script>");
+		printWriter.flush();
+	    
 	}
 	
 	

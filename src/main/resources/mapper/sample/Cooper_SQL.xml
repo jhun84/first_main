@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cooper">
+	   
+    <select id="cooperBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.cooper_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             cooperative_name,
+             biz_detail,
+             s_agree,
+             ch_money,
+             su_date,
+             area,
+             upjong,
+             c_type,
+             zip_num,
+             cooperative_addr,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM CooperBoard
+             WHERE
+              cooperative_name like '%${cooperative_name}%'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.cooper_pagingPost"/>
+    </select>
+    
+    <select id="cooperBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.cooper_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             cooperative_name,
+             biz_detail,
+             s_agree,
+             ch_money,
+             su_date,
+             area,
+             upjong,
+             c_type,
+             zip_num,
+             cooperative_addr,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM CooperBoard
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.cooper_pagingPost"/>
+    </select>
+    <insert id="insertCooper" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    
+        INSERT INTO CooperBoard
+        (
+            cooperative_name,
+            biz_detail,
+            s_agree,
+            ch_money,
+            su_date,
+            area,
+            upjong,
+            c_type,
+            zip_num,
+            cooperative_addr,
+            ceo_name,
+            p_number,
+            c_number,
+            e_mail,
+            homepage,
+            req_date,
+            CONTENTS
+        )
+        VALUES
+            ("${cooperative_name}",
+             "${biz_detail}",
+             "${s_agree}",
+             "${ch_money}",
+             "${su_date}",
+             "${area}",
+             "${upjong}",
+             "${c_type}",
+             "${zipNo}",
+             "${roadFullAddr}",
+             "${ceo_name}",
+             "${p_number}",
+             "${c_number}",
+             "${e_mail}",
+             "${homepage}",
+             NOW(),
+             "${contents}")       
+      </insert>
+      <select id="selectCooperDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             SEQ_NO,
+             cooperative_name,
+             biz_detail,
+             s_agree,
+             ch_money,
+             su_date,
+             area,
+             upjong,
+             c_type,
+             zip_num,
+             cooperative_addr,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM CooperBoard
+        WHERE
+            SEQ_NO = #{SEQ_NO}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <update id="updateCooper" parameterType="hashmap">
+    
+        UPDATE CooperBoard
+        SET
+            cooperative_name = "${cooperative_name}",
+            biz_detail = "${biz_detail}",
+            s_agree = "${s_agree}",
+            ch_money = "${ch_money}",
+            su_date = "${su_date}",
+            area = "${area}",
+            upjong = "${upjong}",
+            c_type = "${c_type}",
+            zip_num = "${zipNo}",
+            cooperative_addr = "${roadFullAddr}",
+            ceo_name = "${ceo_name}",
+            p_number = "${p_number}",
+            c_number = "${c_number}",
+            e_mail = "${e_mail}",
+            homepage = "${homepage}",
+            req_date = NOW(),
+            CONTENTS = "${contents}"
+        WHERE
+            SEQ_NO = "${SEQ_NO}"   
+    
+     </update>
+     <update id="deleteCooper" parameterType="hashmap">
+         <![CDATA[
+             UPDATE CooperBoard
+             SET
+                 DEL_GB = 'Y'
+             WHERE
+                 SEQ_NO = #{SEQ_NO}
+         ]]>
+     </update>
+
+</mapper>

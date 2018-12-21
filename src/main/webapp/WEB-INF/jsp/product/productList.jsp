@@ -5,9 +5,11 @@
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
 </head>
 <body>
+<%@ include file="/WEB-INF/include/include-menu.jsp" %>
 <table style="border:1px solid #ccc" class="board_list">
 	<colgroup>
 		<col width="10%"/>
+		<col width="15%"/>
 		<col width="*"/>
 		<col width="15%"/>
 		<col width="20%"/>
@@ -15,6 +17,7 @@
 	<thead>
 		<tr>
 			<th scope="col">글번호</th>
+			<th scope="col">기업유형</th>
 			<th scope="col">제품명</th>
 			<th scope="col">제조업체</th>
 			<th scope="col">작성일</th>
@@ -26,9 +29,10 @@
 				<c:forEach items="${list }" var="row">
 					<tr>
 						<td>${row.SEQ_NO }</td>
+						<td>${row.CERTI }</td>
 						<td class="title">
 						<a href="#this" name="title">${row.PRODUCT_NAME }</a>
-                        <input type="hidden" id="IDX" value="${row.SEQ_NO }">
+                        <input type="hidden" id="SEQ_NO" value="${row.SEQ_NO }">
                         </td>
 						<td>${row.MAKE_COMPANY }</td>
 						<td>${row.REQ_DATE }</td>
@@ -68,37 +72,37 @@
         $(document).ready(function(){
             $("#write").on("click", function(e){ //글쓰기 버튼
                 e.preventDefault();
-                fn_openBoardWrite();
+                fn_openProductWrite();
             });
             
             $("#search").on("click", function(e){ //검색하기 버튼
                 e.preventDefault();
-                fn_openBoardSearch();
+                fn_openProductSearch();
             });
              
             $("a[name='title']").on("click", function(e){ //제목
                 e.preventDefault();
-                fn_openBoardDetail($(this));
+                fn_openProductDetail($(this));
             });
         });
          
          
-        function fn_openBoardWrite(){
+        function fn_openProductWrite(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/openProductWrite.do' />");
             comSubmit.submit();
         }
         
-        function fn_openBoardSearch(){
+        function fn_openProductSearch(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/openProductSearch.do' />");
             comSubmit.submit();
         }
          
-        function fn_openBoardDetail(obj){
+        function fn_openProductDetail(obj){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/openProductDetail.do' />");
-            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
+            comSubmit.addParam("SEQ_NO", obj.parent().find("#SEQ_NO").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){

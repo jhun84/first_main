@@ -30,6 +30,7 @@ public class CustomMapArgumentResolver implements HandlerMethodArgumentResolver{
 		while(enumeration.hasMoreElements()){
 			key = (String) enumeration.nextElement();
 			values = request.getParameterValues(key);
+			System.out.println(key+"="+values);
 			if(values != null){
 				commandMap.put(key, (values.length > 1) ? values:values[0] );
 			}

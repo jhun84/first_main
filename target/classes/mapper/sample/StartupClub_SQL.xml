@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="startupClub">
+	   
+    <select id="startupClubBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.startupClub_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             club_name,
+             area,
+             club_type,
+             re_name,
+             hp_number,
+             e_mail,
+             club_item,
+             bigo,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM StartupClubBoard
+             WHERE
+              club_name like '%${club_name}%'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.startupClub_pagingPost"/>
+    </select>
+    
+    <select id="startupClubBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.startupClub_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         SEQ_NO,
+             club_name,
+             area,
+             club_type,
+             re_name,
+             hp_number,
+             e_mail,
+             club_item,
+             bigo,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM StartupClubBoard
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.startupClub_pagingPost"/>
+    </select>
+    <insert id="insertStartupClub" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    
+        INSERT INTO StartupClubBoard
+        (
+             club_name,
+             area,
+             club_type,
+             re_name,
+             hp_number,
+             e_mail,
+             club_item,
+             bigo,
+             homepage,
+             req_date,
+             CONTENTS
+        )
+        VALUES
+            ("${club_name}",
+             "${area}",
+             "${club_type}",
+             "${re_name}",
+             "${hp_number}",
+             "${e_mail}",
+             "${club_item}",
+             "${bigo}",
+             "${homepage}",
+             NOW(),
+             "${contents}")      
+      </insert>
+      <select id="selectStartupClubDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             SEQ_NO,
+             club_name,
+             area,
+             club_type,
+             re_name,
+             hp_number,
+             e_mail,
+             club_item,
+             bigo,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM StartupClubBoard
+        WHERE
+            SEQ_NO = #{SEQ_NO}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <update id="updateStartupClub" parameterType="hashmap">
+    
+        UPDATE StartupClubBoard
+        SET
+            club_name = "${club_name},"
+            area = "${area},"
+            club_type = "${club_type},"
+            re_name = "${re_name},"
+            hp_number = "${hp_number},"
+            e_mail = "${e_mail},"
+            club_item = "${club_item},"
+            bigo = "${bigo},"
+            homepage = "${homepage},"
+            req_date = NOW(), 
+            CONTENTS = "${contents}"
+        WHERE
+            SEQ_NO = "${SEQ_NO}"  
+    
+     </update>
+     <update id="deleteStartupClub" parameterType="hashmap">
+         <![CDATA[
+             UPDATE StartupClubBoard
+             SET
+                 DEL_GB = 'Y'
+             WHERE
+                 SEQ_NO = #{SEQ_NO}
+         ]]>
+     </update>
+
+</mapper>

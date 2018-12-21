@@ -38,9 +38,8 @@ public class ProductController {
 	    return mv;
 	}
 	@RequestMapping(value="/sample/openProductSearch.do", method=RequestMethod.GET)
-	public ModelAndView openBoardSearch(CommandMap commandMap) throws Exception{
+	public ModelAndView openProductSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productList");
-	    System.out.println("Call product_search");
 	     
 	    Map<String,Object> resultMap = productService.productBoardSearch(commandMap.getMap());
 	     
@@ -54,6 +53,64 @@ public class ProductController {
 	    ModelAndView mv = new ModelAndView("/product/productWrite");
 	     
 	    return mv;
+	}
+	@RequestMapping(value="/sample/insertProduct.do")
+	public ModelAndView insertProduct(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductList.do");
+	     
+	    productService.insertProduct(commandMap.getMap(), request);
+	     
+	    return mv;
+	}
+	@RequestMapping(value="/sample/openProductDetail.do")
+	public ModelAndView openProductDetail(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/product/productDetail");
+	     
+	    Map<String,Object> map = productService.selectProductDetail(commandMap.getMap());
+	    mv.addObject("map", map.get("map"));
+	    mv.addObject("list", map.get("list"));
+	     
+	    return mv;
+	}
+	@RequestMapping(value="/sample/openProductUpdate.do")
+	public ModelAndView openProductUpdate(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/product/productUpdate");
+	     
+	    Map<String,Object> map = productService.selectProductDetail(commandMap.getMap());
+	    mv.addObject("map", map.get("map"));
+	    mv.addObject("list", map.get("list"));
+	     
+	    return mv;
+	}
+	 
+	@RequestMapping(value="/sample/updateProduct.do")
+	public ModelAndView updateProduct(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductDetail.do");
+	     
+	    productService.updateProduct(commandMap.getMap(), request);
+	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
+	    return mv;
+	}
+	@RequestMapping(value="/sample/deleteProduct.do")
+	public ModelAndView deleteProduct(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductList.do");
+	     
+	    productService.deleteProduct(commandMap.getMap());
+	     
+	    return mv;
+	}
+	@RequestMapping(value="/product/ckeditorImageUpload.do", method=RequestMethod.POST)
+	public void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile upload) throws     Exception {
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset-utf-8");
+
+		try {
+			productService.ckeditorImageUpload(request, response, upload);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

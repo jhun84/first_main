@@ -21,9 +21,6 @@
              CERTI,
              BIGO,
              CONTENTS,
-             TITLE,
-             SMARTEDITOR,
-             SAVE_FILES,
              REQ_DATE			 
              FROM ProductBoard
              WHERE
@@ -51,14 +48,110 @@
              CERTI,
              BIGO,
              CONTENTS,
-             TITLE,
-             SMARTEDITOR,
-             SAVE_FILES,
              REQ_DATE			 
              FROM ProductBoard
+             WHERE
+             DEL_GB = 'N'
              ORDER BY REQ_DATE DESC
 			 ]]>
     <include refid="common.product_pagingPost"/>
     </select>
+    <insert id="insertProduct" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    
+        INSERT INTO ProductBoard
+        (
+            PRODUCT_NAME,
+            PAY,
+            DELE_MNY,
+            FREE_DELE,
+            MAKE_COMPANY,
+            CELLER,
+            SHOP_INFO,
+            AREA,
+            C_NUMBER,
+            HOMEPAGE,
+            CERTI,
+            BIGO,
+            CONTENTS,
+            REQ_DATE
+        )
+        VALUES
+            ("${PRODUCT_NAME}",
+            "${PAY}",
+            "${DELE_MNY}",
+            "${FREE_DELE}",
+            "${MAKE_COMPANY}",
+            "${CELLER}",
+            "${SHOP_INFO}",
+            "${AREA}",
+            "${C_NUMBER}",
+            "${HOMEPAGE}",
+            <foreach collection="CERTI" item="CERTI" separator="," open='"' close='"'>
+            ${CERTI}
+            </foreach>,               
+            "${BIGO}",
+            #{contents},
+            NOW())
+        
+        
+       
+      </insert>
+      <select id="selectProductDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            SEQ_NO,
+            PRODUCT_NAME,
+            PAY,
+            DELE_MNY,
+            FREE_DELE,
+            MAKE_COMPANY,
+            CELLER,
+            SHOP_INFO,
+            AREA,
+            C_NUMBER,
+            HOMEPAGE,
+            CERTI,
+            BIGO,
+            CONTENTS,
+            REQ_DATE
+        FROM
+            ProductBoard
+        WHERE
+            SEQ_NO = #{SEQ_NO}       
+    ]]>
+      </select>
+      <update id="updateProduct" parameterType="hashmap">
+    
+        UPDATE ProductBoard
+        SET
+            PRODUCT_NAME = "${PRODUCT_NAME}",
+            PAY = "${PAY}",
+            DELE_MNY = "${DELE_MNY}",
+            FREE_DELE = "${FREE_DELE}",
+            MAKE_COMPANY = "${MAKE_COMPANY}",
+            CELLER = "${CELLER}",
+            SHOP_INFO = "${SHOP_INFO}",
+            AREA = "${AREA}",
+            C_NUMBER = "${C_NUMBER}",
+            HOMEPAGE = "${HOMEPAGE}",
+            CERTI = 
+            <foreach collection="CERTI" item="CERTI" separator="," open='"' close='"'>
+            ${CERTI}
+            </foreach>,
+            BIGO = "${BIGO}",
+            CONTENTS = #{contents}
+        WHERE
+            SEQ_NO = "${SEQ_NO}"   
+    
+     </update>
+     <update id="deleteProduct" parameterType="hashmap">
+         <![CDATA[
+             UPDATE ProductBoard
+             SET
+                 DEL_GB = 'Y'
+             WHERE
+                 SEQ_NO = #{SEQ_NO}
+         ]]>
+     </update>
 
 </mapper>

@@ -22,7 +22,7 @@
      
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/**/*.do"/>
             <bean id="loggerInterceptor" class="first.common.logger.LoggerInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
@@ -40,4 +40,5 @@
         p:viewClass="org.springframework.web.servlet.view.JstlView"
         p:prefix="/WEB-INF/jsp/" p:suffix=".jsp">
     </bean>
+    
 </beans>
