@@ -117,7 +117,26 @@
             <tr>
                 <td colspan="4">${map.CONTENTS }</td>
             </tr>
-           
+            <c:choose>
+			<c:when test="${fn:length(list) > 0}">
+            <tr>
+                <th scope="row">관련정보</th>
+                <td colspan="3">
+                    <c:forEach var="row" items="${list }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">
+                        - 제목: ${row.SUBJECT}
+                        - 첨부파일: <a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
+                        (${row.FILE_SIZE }kb)
+                    </c:forEach>
+                </td>
+            </tr>
+            </c:when>
+            <c:otherwise>
+				<tr>
+					<td colspan="4">관련정보가 없습니다.</td>
+				</tr>
+			</c:otherwise>
+			</c:choose>
         </tbody>
     </table>
      
@@ -145,23 +164,23 @@
          
         function fn_openProductList(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductList.do' />");
+            comSubmit.setUrl("<c:url value='/product/openProductList.do' />");
             comSubmit.submit();
         }
          
         function fn_openProductUpdate(){
-        	var seq_no = "${map.SEQ_NO}";
+        	var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductUpdate.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.setUrl("<c:url value='/product/openProductUpdate.do' />");
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         
         function fn_downloadFile(obj){
-            var seq_no = obj.parent().find("#SEQ_NO").val();
+            var idx = obj.parent().find("#IDX").val();
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         

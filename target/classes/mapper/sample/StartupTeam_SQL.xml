@@ -7,7 +7,7 @@
     <include refid="common.startupTeam_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              c_year,
              team_name,
              area,
@@ -27,16 +27,17 @@
              FROM StartupTeamBoard
              WHERE
               company_name like '%${company_name}%'
+              AND DEL_GB = 'N'
              ORDER BY req_date DESC
 			 ]]>
-    <include refid="common.startupTeam_pagingPost"/>
+    <include refid="common.startupTeam_SearchpagingPost"/>
     </select>
     
     <select id="startupTeamBoardList" parameterType="hashmap" resultType="hashmap">
     <include refid="common.startupTeam_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              c_year,
              team_name,
              area,
@@ -61,7 +62,7 @@
 			 ]]>
     <include refid="common.startupTeam_pagingPost"/>
     </select>
-    <insert id="insertStartupTeam" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    <insert id="insertStartupTeam" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO StartupTeamBoard
         (
@@ -103,7 +104,7 @@
       <select id="selectStartupTeamDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
-             SEQ_NO,
+             IDX,
              c_year,
              team_name,
              area,
@@ -123,7 +124,7 @@
              CONTENTS			 
              FROM StartupTeamBoard
         WHERE
-            SEQ_NO = #{SEQ_NO}
+            IDX = #{IDX}
         AND
             DEL_GB = 'N'       
     ]]>
@@ -132,23 +133,23 @@
     
         UPDATE StartupTeamBoard
         SET
-            c_year = "${c_year},"
-            team_name = "${team_name},"
-            area = "${area},"
-            jisok_sts = "${jisok_sts},"
-            company_name = "${company_name},"
-            company_sa_number = "${company_sa_number},"
-            company_item = "${company_item},"
-            jijung_sts = "${jijung_sts},"
-            jijung_jijache = "${jijung_jijache},"
-            jijung_ym = "${jijung_ym},"
-            ceo_name = "${ceo_name},"
-            hp_number = "${hp_number},"
-            e_mail = "${e_mail},"
-            reg_date = NOW(),
+            c_year = "${c_year}",
+            team_name = "${team_name}",
+            area = "${area}",
+            jisok_sts = "${jisok_sts}",
+            company_name = "${company_name}",
+            company_sa_number = "${company_sa_number}",
+            company_item = "${company_item}",
+            jijung_sts = "${jijung_sts}",
+            jijung_jijache = "${jijung_jijache}",
+            jijung_ym = "${jijung_ym}",
+            ceo_name = "${ceo_name}",
+            hp_number = "${hp_number}",
+            e_mail = "${e_mail}",
+            req_date = NOW(),
             CONTENTS = "${contents}"
         WHERE
-            SEQ_NO = "${SEQ_NO}"   
+            IDX = "${IDX}"   
     
      </update>
      <update id="deleteStartupTeam" parameterType="hashmap">
@@ -157,7 +158,7 @@
              SET
                  DEL_GB = 'Y'
              WHERE
-                 SEQ_NO = #{SEQ_NO}
+                 IDX = #{IDX}
          ]]>
      </update>
 

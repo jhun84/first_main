@@ -27,7 +27,7 @@ public class CooperController {
 	@Resource(name="cooperService")
 	private CooperService cooperService;
 	
-	@RequestMapping(value="/sample/openCooperList.do")
+	@RequestMapping(value="/cooper/openCooperList.do")
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/cooper/cooperList");
 	     
@@ -38,7 +38,7 @@ public class CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openCooperSearch.do", method=RequestMethod.GET)
+	@RequestMapping(value="/cooper/openCooperSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView openCooperSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/cooper/cooperList");
 	     
@@ -49,27 +49,27 @@ public class CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openCooperWrite.do")
+	@RequestMapping(value="/cooper/openCooperWrite.do")
 	public ModelAndView openCooperWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/cooper/cooperWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/jusoPopup.do")
+	@RequestMapping(value="/cooper/jusoPopup.do")
 	public ModelAndView openjusoPopup() throws Exception{
 	    ModelAndView mv = new ModelAndView("/include/jusoPopup");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertCooper.do")
+	@RequestMapping(value="/cooper/insertCooper.do")
 	public ModelAndView insertCooper(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openCooperList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/cooper/openCooperList.do");
 	     
 	    cooperService.insertCooper(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openCooperDetail.do")
+	@RequestMapping(value="/cooper/openCooperDetail.do")
 	public ModelAndView openCooperDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/cooper/cooperDetail");
 	     
@@ -79,7 +79,7 @@ public class CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openCooperUpdate.do")
+	@RequestMapping(value="/cooper/openCooperUpdate.do")
 	public ModelAndView openCooperUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/cooper/cooperUpdate");
 	     
@@ -90,17 +90,17 @@ public class CooperController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateCooper.do")
+	@RequestMapping(value="/cooper/updateCooper.do")
 	public ModelAndView updateCooper(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openCooperDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/cooper/openCooperDetail.do");
 	     
 	    cooperService.updateCooper(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteCooper.do")
+	@RequestMapping(value="/cooper/deleteCooper.do")
 	public ModelAndView deleteCooper(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openCooperList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/cooper/openCooperList.do");
 	     
 	    cooperService.deleteCooper(commandMap.getMap());
 	     

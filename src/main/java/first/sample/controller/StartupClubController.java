@@ -26,7 +26,7 @@ public class StartupClubController {
 	@Resource(name="startupClubService")
 	private StartupClubService startupClubService;
 	
-	@RequestMapping(value="/sample/open_StartupClubList.do")
+	@RequestMapping(value="/club/open_StartupClubList.do")
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_club/startup_clubList");
 	     
@@ -37,7 +37,7 @@ public class StartupClubController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/open_startup_clubSearch.do", method=RequestMethod.GET)
+	@RequestMapping(value="/club/open_startup_clubSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView openStartupClubSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_club/startup_clubList");
 	     
@@ -48,21 +48,21 @@ public class StartupClubController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/open_startup_clubWrite.do")
+	@RequestMapping(value="/club/open_startup_clubWrite.do")
 	public ModelAndView openStartupClubWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_club/startup_clubWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertStartupClub.do")
+	@RequestMapping(value="/club/insertStartupClub.do")
 	public ModelAndView insertStartupClub(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/open_StartupClubList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/club/open_StartupClubList.do");
 	     
 	    startupClubService.insertStartupClub(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openStartupClubDetail.do")
+	@RequestMapping(value="/club/openStartupClubDetail.do")
 	public ModelAndView openStartupClubDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_club/startup_clubDetail");
 	     
@@ -72,7 +72,7 @@ public class StartupClubController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openStartupClubUpdate.do")
+	@RequestMapping(value="/club/openStartupClubUpdate.do")
 	public ModelAndView openStartupClubUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_club/startup_clubUpdate");
 	     
@@ -83,17 +83,17 @@ public class StartupClubController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateStartupClub.do")
+	@RequestMapping(value="/club/updateStartupClub.do")
 	public ModelAndView updateStartupClub(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openStartupClubDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/club/openStartupClubDetail.do");
 	     
 	    startupClubService.updateStartupClub(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteStartupClub.do")
+	@RequestMapping(value="/club/deleteStartupClub.do")
 	public ModelAndView deleteStartupClub(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/open_StartupClubList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/club/open_StartupClubList.do");
 	     
 	    startupClubService.deleteStartupClub(commandMap.getMap());
 	     

@@ -31,7 +31,7 @@ $(function(){
                 <col width="10%"/>
                 <col width="20%"/>
             </colgroup>
-            <caption>social_cooperative write page</caption>
+            <caption>startup_club write page</caption>
             <tbody>
                 <tr>
                     <th>구분</th>
@@ -66,24 +66,25 @@ $(function(){
                      <option value="CA18">속초</option>
 	                </select>
                     </td>
-                    <th>동아리명</th>
-                    <td><input type="text" id="club_name" name="club_name" value=""></td>
+                    
                 </tr>
                 <tr>
+                    <th>동아리명</th>
+                    <td><input type="text" id="club_name" name="club_name" value=""></td>
                     <th>아이템</th>
-                    <td colspan="5"><input type="text" id="club_item" name="club_item" value=""></td>
+                    <td><input type="text" id="club_item" name="club_item" value=""></td>
                 </tr>
                 <tr>
                     <th>대표자</th>
                     <td><input type="text" id="re_name" name="re_name" value=""></td>
                     <th>휴대전화</th>
                     <td><input type="text" id="hp_number" name="hp_number" value=""></td>
-                    <th>이메일</th>
-                    <td><input type="text" id="e_mail" name="e_mail" value=""></td>
                 </tr>
                 <tr>
+                    <th>이메일</th>
+                    <td><input type="text" id="e_mail" name="e_mail" value=""></td>
                     <th>홈페이지</th>
-                    <td colspan="5"><input type="text" id="homepage" name="homepage" value="${map.homepage}"></td>
+                    <td><input type="text" id="homepage" name="homepage" value="${map.homepage}"></td>
                 </tr>
                 <tr>
                     <td colspan="6" class="view_text">
@@ -101,7 +102,7 @@ $(function(){
            
 	       CKEDITOR.replace( 'contents', {
            
-	       filebrowserUploadUrl: '${pageContext.request.contextPath}/product/ckeditorImageUpload.do'	
+	       filebrowserUploadUrl: '${pageContext.request.contextPath}/startup_club/ckeditorImageUpload.do'	
            
 	       });
 
@@ -143,13 +144,13 @@ $(function(){
 		
 		function fn_open_startup_clubList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/open_StartupClubList.do' />");
+			comSubmit.setUrl("<c:url value='/club/open_StartupClubList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insert_StartupClub(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertStartupClub.do' />");
+			comSubmit.setUrl("<c:url value='/club/insertStartupClub.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){

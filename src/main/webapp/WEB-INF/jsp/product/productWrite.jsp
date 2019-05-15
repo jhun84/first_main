@@ -13,7 +13,6 @@
                 <col width="15%">
                 <col width="*"/>
             </colgroup>
-            <caption>product write page</caption>
             <tbody>
                 <tr>
                     <th>상품명</th>
@@ -106,8 +105,16 @@
 	       });
 
         </script>
-        
+        <div id="fileDiv">
+        <h1>관련정보</h1>
+                <p>
+                    1.제목:&nbsp;&nbsp;<input type="text" id="subject" name="subject_0">&nbsp;&nbsp;
+                    2.파일:&nbsp;&nbsp;<input type="file" id="file" name="file_0">
+                    <a href="#this" class="btn" id="delete" name="delete">삭제</a>
+                </p>
+        </div>
         <br/><br/>
+        <a href="#this" class="btn" id="addFile">파일 추가</a> 
         <a href="#this" class="btn" id="write" >작성하기</a>
         <a href="#this" class="btn" id="list" >목록으로</a>
     </form>
@@ -115,6 +122,7 @@
     <%@ include file="/WEB-INF/include/include-body.jsp" %>
     <script type="text/javascript">
         var gfv_count = 1;
+        var subject_count = 1;
         
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
@@ -148,17 +156,21 @@
 		
 		function fn_openProductList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openProductList.do' />");
+			comSubmit.setUrl("<c:url value='/product/openProductList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertProduct(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertProduct.do' />");
+			comSubmit.setUrl("<c:url value='/product/insertProduct.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){
-            var str = "<p><input type='file' name='file_"+(gfv_count++)+"'><a href='#this' class='btn' name='delete'>삭제</a></p>";
+            var str = "";
+            str += "<p>";
+            str += "1.제목:&nbsp;&nbsp;<input type='text' name='subject_"+(subject_count++)+"'>&nbsp;&nbsp;";
+            str += "2.파일::&nbsp;&nbsp;<input type='file' name='file_"+(gfv_count++)+"'><a href='#this' class='btn' name='delete'>삭제</a>";
+            str += "</p>";
             $("#fileDiv").append(str);
             $("a[name='delete']").on("click", function(e){ //삭제 버튼
                 e.preventDefault();

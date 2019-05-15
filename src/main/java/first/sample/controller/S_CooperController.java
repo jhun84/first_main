@@ -28,7 +28,7 @@ public class S_CooperController {
 	@Resource(name="s_cooperService")
 	private S_CooperService s_cooperService;
 	
-	@RequestMapping(value="/sample/openS_CooperList.do")
+	@RequestMapping(value="/s_cooper/openS_CooperList.do")
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/social_cooper/s_cooperList");
 	     
@@ -39,7 +39,7 @@ public class S_CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openS_CooperSearch.do", method=RequestMethod.GET)
+	@RequestMapping(value="/s_cooper/openS_CooperSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView openS_CooperSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/social_cooper/s_cooperList");
 	     
@@ -50,21 +50,21 @@ public class S_CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openS_CooperWrite.do")
+	@RequestMapping(value="/s_cooper/openS_CooperWrite.do")
 	public ModelAndView openS_CooperWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/social_cooper/s_cooperWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertS_Cooper.do")
+	@RequestMapping(value="/s_cooper/insertS_Cooper.do")
 	public ModelAndView insertS_Cooper(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openS_CooperList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/s_cooper/openS_CooperList.do");
 	     
 	    s_cooperService.insertS_Cooper(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openS_CooperDetail.do")
+	@RequestMapping(value="/s_cooper/openS_CooperDetail.do")
 	public ModelAndView openS_CooperDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/social_cooper/s_cooperDetail");
 	     
@@ -74,7 +74,7 @@ public class S_CooperController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openS_CooperUpdate.do")
+	@RequestMapping(value="/s_cooper/openS_CooperUpdate.do")
 	public ModelAndView openS_CooperUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/social_cooper/s_cooperUpdate");
 	     
@@ -85,17 +85,17 @@ public class S_CooperController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateS_Cooper.do")
+	@RequestMapping(value="/s_cooper/updateS_Cooper.do")
 	public ModelAndView updateS_Cooper(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openS_CooperDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/s_cooper/openS_CooperDetail.do");
 	     
 	    s_cooperService.updateS_Cooper(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteS_Cooper.do")
+	@RequestMapping(value="/s_cooper/deleteS_Cooper.do")
 	public ModelAndView deleteS_Cooper(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openS_CooperList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/s_cooper/openS_CooperList.do");
 	     
 	    s_cooperService.deleteS_Cooper(commandMap.getMap());
 	     

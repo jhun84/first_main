@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form id="frm" name="frm" enctype="multipart/form-data">
-	<input type="hidden" id="SEQ_NO" name="SEQ_NO" value="${map.SEQ_NO }">
+	<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
 		<table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
             <colgroup>
                 <col width="15%">
@@ -176,20 +176,20 @@
 		
 		function fn_openCooperList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openCooperList.do' />");
+			comSubmit.setUrl("<c:url value='/cooper/openCooperList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_updateCooper(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/updateCooper.do' />");
+			comSubmit.setUrl("<c:url value='/cooper/updateCooper.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_deleteCooper(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/deleteCooper.do' />");
-			comSubmit.addParam("SEQ_NO", $("#SEQ_NO").val());
+			comSubmit.setUrl("<c:url value='/cooper/deleteCooper.do' />");
+			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			
 		}

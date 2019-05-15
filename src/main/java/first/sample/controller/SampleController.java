@@ -19,6 +19,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import first.common.common.CommandMap;
 import first.sample.service.SampleService;
 
+
 @Controller
 public class SampleController {
 	Logger log = Logger.getLogger(this.getClass());
@@ -97,10 +98,7 @@ public class SampleController {
 		response.setContentType("text/html;charset-utf-8");
 
 		try {
-			System.out.println("Call ck image upload");
 			sampleService.ckeditorImageUpload(request, response, upload);
-			System.out.println("Called ck image upload");
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

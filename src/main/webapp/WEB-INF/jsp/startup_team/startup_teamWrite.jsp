@@ -134,7 +134,7 @@ $(function(){
            
 	       CKEDITOR.replace( 'contents', {
            
-	       filebrowserUploadUrl: '${pageContext.request.contextPath}/product/ckeditorImageUpload.do'	
+	       filebrowserUploadUrl: '${pageContext.request.contextPath}/startup_team/ckeditorImageUpload.do'	
            
 	       });
 
@@ -176,13 +176,13 @@ $(function(){
 		
 		function fn_open_startup_teamList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/open_StartupTeamList.do' />");
+			comSubmit.setUrl("<c:url value='/team/open_StartupTeamList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insert_StartupTeam(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertStartupTeam.do' />");
+			comSubmit.setUrl("<c:url value='/team/insertStartupTeam.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){

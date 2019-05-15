@@ -210,13 +210,13 @@ $(function(){
 		
 		function fn_openCooperList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openCooperList.do' />");
+			comSubmit.setUrl("<c:url value='/cooper/openCooperList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertCooper(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertCooper.do' />");
+			comSubmit.setUrl("<c:url value='/cooper/insertCooper.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){

@@ -168,7 +168,7 @@ $(function(){
            
 	       CKEDITOR.replace( 'contents', {
            
-	       filebrowserUploadUrl: '${pageContext.request.contextPath}/product/ckeditorImageUpload.do'	
+	       filebrowserUploadUrl: '${pageContext.request.contextPath}/s_cooper/ckeditorImageUpload.do'	
            
 	       });
 
@@ -210,13 +210,13 @@ $(function(){
 		
 		function fn_openS_CooperList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openS_CooperList.do' />");
+			comSubmit.setUrl("<c:url value='/s_cooper/openS_CooperList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertS_Cooper(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertS_Cooper.do' />");
+			comSubmit.setUrl("<c:url value='/s_cooper/insertS_Cooper.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){

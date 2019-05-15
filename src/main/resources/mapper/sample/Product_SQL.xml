@@ -7,7 +7,7 @@
     <include refid="common.product_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              PRODUCT_NAME,
              PAY,
              DELE_MNY,
@@ -25,16 +25,17 @@
              FROM ProductBoard
              WHERE
               PRODUCT_NAME like '%${PRODUCT_NAME}%'
+              AND DEL_GB = 'N'
              ORDER BY REQ_DATE DESC
 			 ]]>
-    <include refid="common.product_pagingPost"/>
+    <include refid="common.product_SearchpagingPost"/>
     </select>
     
     <select id="productBoardList" parameterType="hashmap" resultType="hashmap">
     <include refid="common.product_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              PRODUCT_NAME,
              PAY,
              DELE_MNY,
@@ -56,7 +57,7 @@
 			 ]]>
     <include refid="common.product_pagingPost"/>
     </select>
-    <insert id="insertProduct" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    <insert id="insertProduct" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO ProductBoard
         (
@@ -96,10 +97,50 @@
         
        
       </insert>
+      <insert id="insertFile" parameterType="hashmap">
+    <![CDATA[
+        INSERT INTO PRODUCT_FILE
+        (
+            IDX,
+            BOARD_IDX,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            FILE_SIZE,
+            CREA_DTM,
+            CREA_ID,
+            SUBJECT
+        )
+        VALUES
+        (
+            #{IDX},
+            #{BOARD_IDX},
+            #{ORIGINAL_FILE_NAME},
+            #{STORED_FILE_NAME},
+            #{FILE_SIZE},
+            NOW(),
+            'Admin',
+            #{SUBJECT}
+        )
+    ]]>
+</insert>
+   <select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            IDX,
+            ORIGINAL_FILE_NAME,
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
+            SUBJECT
+        FROM
+            PRODUCT_FILE
+        WHERE
+            BOARD_IDX = #{IDX}
+            AND DEL_GB = 'N'
+    ]]>
+    </select>
       <select id="selectProductDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
-            SEQ_NO,
+            IDX,
             PRODUCT_NAME,
             PAY,
             DELE_MNY,
@@ -117,7 +158,7 @@
         FROM
             ProductBoard
         WHERE
-            SEQ_NO = #{SEQ_NO}       
+            IDX = #{IDX}       
     ]]>
       </select>
       <update id="updateProduct" parameterType="hashmap">
@@ -141,7 +182,7 @@
             BIGO = "${BIGO}",
             CONTENTS = #{contents}
         WHERE
-            SEQ_NO = "${SEQ_NO}"   
+            IDX = '${IDX}'   
     
      </update>
      <update id="deleteProduct" parameterType="hashmap">
@@ -150,7 +191,7 @@
              SET
                  DEL_GB = 'Y'
              WHERE
-                 SEQ_NO = #{SEQ_NO}
+                 IDX = #{IDX}
          ]]>
      </update>
 

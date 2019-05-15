@@ -243,23 +243,23 @@
          
         function fn_openS_CooperList(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openS_CooperList.do' />");
+            comSubmit.setUrl("<c:url value='/s_cooper/openS_CooperList.do' />");
             comSubmit.submit();
         }
          
         function fn_openS_CooperUpdate(){
-        	var seq_no = "${map.SEQ_NO}";
+        	var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openS_CooperUpdate.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.setUrl("<c:url value='/s_cooper/openS_CooperUpdate.do' />");
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         
         function fn_downloadFile(obj){
-            var seq_no = obj.parent().find("#SEQ_NO").val();
+            var idx = obj.parent().find("#IDX").val();
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         

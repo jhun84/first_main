@@ -77,16 +77,16 @@
                 <tr>
                     <th>인증/지정</th>
                     <td>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="인증사회적기업">인증사회적기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="예비사회적기업">예비사회적기업<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="자활기업">자활기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="마을기업">마을기업<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="예비마을기업">예비마을기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="농어촌공동체회사">농어촌공동체회사<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="사회적협동조합">사회적협동조합
-                    <input type="checkbox" id="CERTI" name="CERTI" value="협동조합">협동조합
-                    <input type="checkbox" id="CERTI" name="CERTI" value="창업팀(진흥원)">창업팀(진흥원)
-                    <input type="checkbox" id="CERTI" name="CERTI" value="해당없음">해당없음
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT01">인증사회적기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT02">예비사회적기업<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT03">자활기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT04">마을기업<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT05">예비마을기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT06">농어촌공동체회사<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT07">사회적협동조합
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT08">협동조합
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT09">창업팀(진흥원)
+                    <input type="checkbox" id="CERTI" name="CERTI" value="CT10">해당없음
                     <input type="hidden" id="CERTI" name="CERTI" value=" ">
                     </td>
                     <th>비고</th>
@@ -155,13 +155,13 @@
 		
 		function fn_openServiceList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openServiceList.do' />");
+			comSubmit.setUrl("<c:url value='/service/openServiceList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertService(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/insertService.do' />");
+			comSubmit.setUrl("<c:url value='/service/insertService.do' />");
 			comSubmit.submit();
 		}
 		function fn_addFile(){

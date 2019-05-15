@@ -27,7 +27,7 @@ public class ServiceController {
 	@Resource(name="serviceService")
 	private ServiceService serviceService;
 	
-	@RequestMapping(value="/sample/openServiceList.do")
+	@RequestMapping(value="/service/openServiceList.do")
 	public ModelAndView openServiceList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/service/serviceList");
 	     
@@ -38,7 +38,7 @@ public class ServiceController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openServiceearch.do", method=RequestMethod.GET)
+	@RequestMapping(value="/service/openServiceSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView openServiceSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/service/serviceList");
 	     
@@ -49,21 +49,21 @@ public class ServiceController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openServiceWrite.do")
+	@RequestMapping(value="/service/openServiceWrite.do")
 	public ModelAndView openServiceWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/service/serviceWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertService.do")
+	@RequestMapping(value="/service/insertService.do")
 	public ModelAndView insertService(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openServiceList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/service/openServiceList.do");
 	     
 	    serviceService.insertService(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openServiceDetail.do")
+	@RequestMapping(value="/service/openServiceDetail.do")
 	public ModelAndView openServiceDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/service/serviceDetail");
 	     
@@ -73,7 +73,7 @@ public class ServiceController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openServiceUpdate.do")
+	@RequestMapping(value="/service/openServiceUpdate.do")
 	public ModelAndView openServiceUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/service/serviceUpdate");
 	     
@@ -84,17 +84,17 @@ public class ServiceController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateService.do")
+	@RequestMapping(value="/service/updateService.do")
 	public ModelAndView updateService(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openServiceDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/service/openServiceDetail.do");
 	     
 	    serviceService.updateService(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteService.do")
+	@RequestMapping(value="/service/deleteService.do")
 	public ModelAndView deleteService(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openServiceList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/service/openServiceList.do");
 	     
 	    serviceService.deleteService(commandMap.getMap());
 	     

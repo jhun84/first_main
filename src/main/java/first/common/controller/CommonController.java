@@ -28,7 +28,7 @@ public class CommonController {
         String originalFileName = (String)map.get("ORIGINAL_FILE_NAME");
          
         //byte fileByte[] = FileUtils.readFileToByteArray(new File("/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/"+storedFileName));
-        byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/hunchori/Documents/Upload/"+storedFileName));
+        byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/hoonyhun/Documents/Upload/"+storedFileName));
          
         response.setContentType("application/octet-stream");
         response.setContentLength(fileByte.length);

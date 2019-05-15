@@ -28,11 +28,11 @@
 			<c:when test="${fn:length(list) > 0}">
 				<c:forEach items="${list }" var="row">
 					<tr>
-						<td>${row.SEQ_NO }</td>
+						<td>${row.IDX }</td>
 						<td>${row.CERTI }</td>
 						<td class="title">
 						<a href="#this" name="title">${row.SERVICE_NAME }</a>
-                        <input type="hidden" id="SEQ_NO" value="${row.SEQ_NO }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">
                         </td>
 						<td>${row.MAKE_COMPANY }</td>
 						<td>${row.REQ_DATE }</td>
@@ -50,10 +50,8 @@
 </table>
 <div align="center" style="padding-top:20px;">
 <form id="frm" name="frm" enctype="multipart/form-data">
-<!-- <select id="sch_type" name="sch_type"> 
-<option value="PRODUCT_NAME" selected="selected">제품명</option> 
-</select> --> 
-<input type="text" id="PRODUCT_NAME" name="PRODUCT_NAME" /> 
+<span>서비스명:</span>
+<input type="text" id="SERVICE_NAME" name="SERVICE_NAME" /> 
 <a href="#this" class="btn" id="search" >검색</a>
 </form>
 </div>
@@ -89,25 +87,26 @@
          
         function fn_openServiceWrite(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceWrite.do' />");
+            comSubmit.setUrl("<c:url value='/service/openServiceWrite.do' />");
             comSubmit.submit();
         }
         
         function fn_openServiceSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceSearch.do' />");
+            comSubmit.setUrl("<c:url value='/service/openServiceSearch.do' />");
+            comSubmit.addParam("SERVICE_NAME", $('#SERVICE_NAME').val());
             comSubmit.submit();
         }
          
         function fn_openServiceDetail(obj){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceDetail.do' />");
-            comSubmit.addParam("SEQ_NO", obj.parent().find("#SEQ_NO").val());
+            comSubmit.setUrl("<c:url value='/service/openServiceDetail.do' />");
+            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceList.do' />");
+            comSubmit.setUrl("<c:url value='/service/openServiceList.do' />");
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
         }

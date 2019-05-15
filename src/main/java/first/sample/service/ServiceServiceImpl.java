@@ -22,7 +22,7 @@ import first.sample.dao.*;
 @Service("serviceService")
 public class ServiceServiceImpl implements ServiceService{
 	Logger log = Logger.getLogger(this.getClass());
-	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
+	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
 	private String SAVE_URL = "/upload/";
 	
 	@Resource(name="serviceDAO")

@@ -34,7 +34,7 @@
 			<c:when test="${fn:length(list) > 0}">
 				<c:forEach items="${list }" var="row">
 					<tr>
-						<td>${row.SEQ_NO }</td>
+						<td>${row.IDX }</td>
 						<td>${row.c_year }</td>
 						<td>${row.jijung_ym }</td>
 						<td>${row.team_name }</td>
@@ -103,7 +103,7 @@
 						<td>${row.company_type }</td>
 						<td class="title">
 						<a href="#this" name="title">${row.company_name }</a>
-                        <input type="hidden" id="SEQ_NO" value="${row.SEQ_NO }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">
                         </td>
 					</tr>
 				</c:forEach>
@@ -119,9 +119,6 @@
 </table>
 <div align="center" style="padding-top:20px;">
 <form id="frm" name="frm" enctype="multipart/form-data">
-<!-- <select id="sch_type" name="sch_type"> 
-<option value="PRODUCT_NAME" selected="selected">제품명</option> 
-</select> --> 
 <input type="text" id="company_name" name="company_name" /> 
 <a href="#this" class="btn" id="search" >검색</a>
 </form>
@@ -158,25 +155,26 @@
          
         function fn_startup_teamWrite(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/open_startup_teamWrite.do' />");
+            comSubmit.setUrl("<c:url value='/team/open_startup_teamWrite.do' />");
             comSubmit.submit();
         }
         
         function fn_startup_teamSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/open_startup_teamSearch.do' />");
+            comSubmit.setUrl("<c:url value='/team/open_startup_teamSearch.do' />");
+            comSubmit.addParam("company_name", $('#company_name').val());
             comSubmit.submit();
         }
          
         function fn_startup_teamDetail(obj){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openStartupTeamDetail.do' />");
-            comSubmit.addParam("SEQ_NO", obj.parent().find("#SEQ_NO").val());
+            comSubmit.setUrl("<c:url value='/team/openStartupTeamDetail.do' />");
+            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/open_startup_teamList.do' />");
+            comSubmit.setUrl("<c:url value='/team/open_startup_teamList.do' />");
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
         }

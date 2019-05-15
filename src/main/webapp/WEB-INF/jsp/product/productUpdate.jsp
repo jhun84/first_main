@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form id="frm" name="frm" enctype="multipart/form-data">
-	<input type="hidden" id="SEQ_NO" name="SEQ_NO" value="${map.SEQ_NO }">
+	<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
 		<table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
             <colgroup>
                 <col width="15%">
@@ -70,37 +70,7 @@
                 <tr>
                     <th>인증/지정</th>
                     <td>
-                    이전 값 :
-                      <c:if test="${fn:contains(map.CERTI,'인증사회적기업')}">
-                        <input type="checkbox" value="인증사회적기업" checked onclick="return false;">인증사회적기업
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'예비사회적기업')}">
-                        <input type="checkbox" value="예비사회적기업" checked onclick="return false;">예비사회적기업
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'자활기업')}">
-                        <input type="checkbox" value="자활기업" checked onclick="return false;">자활기업
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'마을기업')}">
-                        <input type="checkbox" value="마을기업" checked onclick="return false;">마을기업
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'예비마을기업')}">
-                        <input type="checkbox" value="예비마을기업" checked onclick="return false;">예비마을기업
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'농어촌공동체회사')}">
-                        <input type="checkbox" value="농어촌공동체회사" checked onclick="return false;">농어촌공동체회사
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'사회적협동조합')}">
-                        <input type="checkbox" value="사회적협동조합" checked onclick="return false;">사회적협동조합
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'협동조합')}">
-                        <input type="checkbox" value="협동조합" checked onclick="return false;">협동조합
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'창업팀')}">
-                        <input type="checkbox" value="창업팀" checked onclick="return false;">창업팀
-                      </c:if>
-                      <c:if test="${fn:contains(map.CERTI,'해당없음')}">
-                        <input type="checkbox" value="해당없음" checked onclick="return false;">해당없음
-                      </c:if>
+                    이전 값 : ${map.CERTI }
                       <br>
                       <br>
                       수정할 값 :<br>
@@ -186,20 +156,20 @@
 		
 		function fn_openProductList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openProductList.do' />");
+			comSubmit.setUrl("<c:url value='/product/openProductList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_updateProduct(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/updateProduct.do' />");
+			comSubmit.setUrl("<c:url value='/product/updateProduct.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_deleteProduct(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/deleteProduct.do' />");
-			comSubmit.addParam("SEQ_NO", $("#SEQ_NO").val());
+			comSubmit.setUrl("<c:url value='/product/deleteProduct.do' />");
+			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			
 		}

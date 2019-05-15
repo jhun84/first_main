@@ -28,7 +28,7 @@ public class StartupTeamController {
 	@Resource(name="startupTeamService")
 	private StartupTeamService startupTeamService;
 	
-	@RequestMapping(value="/sample/open_StartupTeamList.do")
+	@RequestMapping(value="/team/open_StartupTeamList.do")
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_team/startup_teamList");
 	     
@@ -39,8 +39,8 @@ public class StartupTeamController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/open_startup_teamSearch.do", method=RequestMethod.GET)
-	public ModelAndView openCooperSearch(CommandMap commandMap) throws Exception{
+	@RequestMapping(value="/team/open_startup_teamSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView openStartupTeamSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_team/startup_teamList");
 	     
 	    Map<String,Object> resultMap = startupTeamService.startupTeamBoardSearch(commandMap.getMap());
@@ -50,21 +50,21 @@ public class StartupTeamController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/open_startup_teamWrite.do")
+	@RequestMapping(value="/team/open_startup_teamWrite.do")
 	public ModelAndView openStartupTeamWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_team/startup_teamWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertStartupTeam.do")
+	@RequestMapping(value="/team/insertStartupTeam.do")
 	public ModelAndView insertStartupTeam(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/open_StartupTeamList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/team/open_StartupTeamList.do");
 	     
 	    startupTeamService.insertStartupTeam(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openStartupTeamDetail.do")
+	@RequestMapping(value="/team/openStartupTeamDetail.do")
 	public ModelAndView openStartupTeamDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_team/startup_teamDetail");
 	     
@@ -74,7 +74,7 @@ public class StartupTeamController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openStartupTeamUpdate.do")
+	@RequestMapping(value="/team/openStartupTeamUpdate.do")
 	public ModelAndView openStartupTeamUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/startup_team/startup_teamUpdate");
 	     
@@ -85,17 +85,17 @@ public class StartupTeamController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateStartupTeam.do")
+	@RequestMapping(value="/team/updateStartupTeam.do")
 	public ModelAndView updateStartupTeam(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openStartupTeamDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/team/openStartupTeamDetail.do");
 	     
 	    startupTeamService.updateStartupTeam(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteStartupTeam.do")
+	@RequestMapping(value="/team/deleteStartupTeam.do")
 	public ModelAndView deleteStartupTeam(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/open_StartupTeamList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/team/open_StartupTeamList.do");
 	     
 	    startupTeamService.deleteStartupTeam(commandMap.getMap());
 	     

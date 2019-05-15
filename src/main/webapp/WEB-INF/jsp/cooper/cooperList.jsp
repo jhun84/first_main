@@ -28,7 +28,7 @@
 			<c:when test="${fn:length(list) > 0}">
 				<c:forEach items="${list }" var="row">
 					<tr>
-						<td>${row.SEQ_NO }</td>
+						<td>${row.IDX }</td>
 						<td>
 						<c:choose>
                         <c:when test="${row.area eq 'CA01'}">
@@ -114,7 +114,7 @@
 						</td>
 						<td class="title">
 						<a href="#this" name="title">${row.cooperative_name }</a>
-                        <input type="hidden" id="SEQ_NO" value="${row.SEQ_NO }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">
                         </td>
 						<td>${row.ceo_name }</td>
 					</tr>
@@ -131,9 +131,6 @@
 </table>
 <div align="center" style="padding-top:20px;">
 <form id="frm" name="frm" enctype="multipart/form-data">
-<!-- <select id="sch_type" name="sch_type"> 
-<option value="PRODUCT_NAME" selected="selected">제품명</option> 
-</select> --> 
 <input type="text" id="cooperative_name" name="cooperative_name" /> 
 <a href="#search" class="btn" id="search" >검색</a>
 </form>
@@ -170,25 +167,26 @@
          
         function fn_openCooperWrite(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openCooperWrite.do' />");
+            comSubmit.setUrl("<c:url value='/cooper/openCooperWrite.do' />");
             comSubmit.submit();
         }
         
         function fn_openCooperSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openCooperSearch.do' />");
+            comSubmit.setUrl("<c:url value='/cooper/openCooperSearch.do' />");
+            comSubmit.addParam("cooperative_name", $('#cooperative_name').val());
             comSubmit.submit();
         }
          
         function fn_openCooperDetail(obj){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openCooperDetail.do' />");
-            comSubmit.addParam("SEQ_NO", obj.parent().find("#SEQ_NO").val());
+            comSubmit.setUrl("<c:url value='/cooper/openCooperDetail.do' />");
+            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openCooperList.do' />");
+            comSubmit.setUrl("<c:url value='/cooper/openCooperList.do' />");
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
         }

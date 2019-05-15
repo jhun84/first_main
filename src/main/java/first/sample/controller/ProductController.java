@@ -26,7 +26,7 @@ public class ProductController {
 	@Resource(name="productService")
 	private ProductService productService;
 	
-	@RequestMapping(value="/sample/openProductList.do")
+	@RequestMapping(value="/product/openProductList.do")
 	public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productList");
 	     
@@ -37,7 +37,7 @@ public class ProductController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openProductSearch.do", method=RequestMethod.GET)
+	@RequestMapping(value="/product/openProductSearch.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView openProductSearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productList");
 	     
@@ -48,23 +48,24 @@ public class ProductController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openProductWrite.do")
+	@RequestMapping(value="/product/openProductWrite.do")
 	public ModelAndView openProductWrite(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productWrite");
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/insertProduct.do")
+	@RequestMapping(value="/product/insertProduct.do")
 	public ModelAndView insertProduct(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/product/openProductList.do");
 	     
 	    productService.insertProduct(commandMap.getMap(), request);
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openProductDetail.do")
+	@RequestMapping(value="/product/openProductDetail.do")
 	public ModelAndView openProductDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productDetail");
+	    System.out.println("seq_no = "+commandMap.get("SEQ_NO"));
 	     
 	    Map<String,Object> map = productService.selectProductDetail(commandMap.getMap());
 	    mv.addObject("map", map.get("map"));
@@ -72,7 +73,7 @@ public class ProductController {
 	     
 	    return mv;
 	}
-	@RequestMapping(value="/sample/openProductUpdate.do")
+	@RequestMapping(value="/product/openProductUpdate.do")
 	public ModelAndView openProductUpdate(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/product/productUpdate");
 	     
@@ -83,17 +84,17 @@ public class ProductController {
 	    return mv;
 	}
 	 
-	@RequestMapping(value="/sample/updateProduct.do")
+	@RequestMapping(value="/product/updateProduct.do")
 	public ModelAndView updateProduct(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductDetail.do");
+	    ModelAndView mv = new ModelAndView("redirect:/product/openProductDetail.do");
 	     
 	    productService.updateProduct(commandMap.getMap(), request);
 	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
 	    return mv;
 	}
-	@RequestMapping(value="/sample/deleteProduct.do")
+	@RequestMapping(value="/product/deleteProduct.do")
 	public ModelAndView deleteProduct(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openProductList.do");
+	    ModelAndView mv = new ModelAndView("redirect:/product/openProductList.do");
 	     
 	    productService.deleteProduct(commandMap.getMap());
 	     
@@ -112,5 +113,6 @@ public class ProductController {
 			e.printStackTrace();
 		}
 	}
+
 	
 }

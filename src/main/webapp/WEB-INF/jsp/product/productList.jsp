@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+String PRODUCT_NAME = "";
+if (request.getParameter("PRODUCT_NAME") != null) {
+	PRODUCT_NAME = request.getParameter("PRODUCT_NAME");
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +34,11 @@
 			<c:when test="${fn:length(list) > 0}">
 				<c:forEach items="${list }" var="row">
 					<tr>
-						<td>${row.SEQ_NO }</td>
+						<td>${row.IDX }</td>
 						<td>${row.CERTI }</td>
 						<td class="title">
 						<a href="#this" name="title">${row.PRODUCT_NAME }</a>
-                        <input type="hidden" id="SEQ_NO" value="${row.SEQ_NO }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">
                         </td>
 						<td>${row.MAKE_COMPANY }</td>
 						<td>${row.REQ_DATE }</td>
@@ -49,13 +55,9 @@
 	</tbody>
 </table>
 <div align="center" style="padding-top:20px;">
-<form id="frm" name="frm" enctype="multipart/form-data">
-<!-- <select id="sch_type" name="sch_type"> 
-<option value="PRODUCT_NAME" selected="selected">제품명</option> 
-</select> --> 
-<input type="text" id="PRODUCT_NAME" name="PRODUCT_NAME" /> 
+<span>제품명:</span>
+<input type="text" id="PRODUCT_NAME" value="<%=PRODUCT_NAME%>" /> 
 <a href="#this" class="btn" id="search" >검색</a>
-</form>
 </div>
 
 <div align="center" style="padding-top:20px;">
@@ -89,25 +91,27 @@
          
         function fn_openProductWrite(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductWrite.do' />");
+            comSubmit.setUrl("<c:url value='/product/openProductWrite.do' />");
             comSubmit.submit();
         }
         
         function fn_openProductSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductSearch.do' />");
+            comSubmit.setUrl("<c:url value='/product/openProductSearch.do' />");
+            comSubmit.addParam("PRODUCT_NAME", $('#PRODUCT_NAME').val());
             comSubmit.submit();
         }
          
         function fn_openProductDetail(obj){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductDetail.do' />");
-            comSubmit.addParam("SEQ_NO", obj.parent().find("#SEQ_NO").val());
+            comSubmit.setUrl("<c:url value='/product/openProductDetail.do' />");
+            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openProductList.do' />");
+            comSubmit.setUrl("<c:url value='/product/openProductSearch.do' />");
+            comSubmit.addParam("PRODUCT_NAME", $('#PRODUCT_NAME').val());
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
         }

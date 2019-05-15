@@ -19,11 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 import first.common.util.FileUtils;
 import first.sample.dao.SampleDAO;
 
+import com.google.gson.JsonObject;
+
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService{
 	Logger log = Logger.getLogger(this.getClass());
-	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
-	private String SAVE_URL = "/upload/";
+	//private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
+	private String FILE_URL = "/Users/hoonyhun/Documents/Upload/";
+	private String SAVE_URL = "/Upload/";
 	
 	@Resource(name="fileUtils")
     private FileUtils fileUtils;
@@ -86,6 +89,7 @@ public class SampleServiceImpl implements SampleService{
 	@SuppressWarnings("resource")
 	public void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception {
 
+		JsonObject json = new JsonObject();
 		OutputStream out = null;
 		PrintWriter printWriter = null;	
 		String fileName = file.getOriginalFilename();
@@ -97,12 +101,19 @@ public class SampleServiceImpl implements SampleService{
 		out = new FileOutputStream(new File(uploadPath));
 		out.write(bytes);
 
-		String callback = "1";
+		String callback = request.getParameter("CKEditorFuncNum");
 		System.out.println("callback:"+callback);
 		printWriter = response.getWriter();
 
 		String fileUrl = SAVE_URL + fileName; //url 경로
 		System.out.println("fileurl="+fileUrl);
+		
+		 json.addProperty("uploaded", 1);
+         json.addProperty("fileName", fileName);
+         json.addProperty("url", fileUrl);
+         
+         /*printWriter.println(json);*/
+
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
@@ -110,6 +121,7 @@ public class SampleServiceImpl implements SampleService{
 	               + "','이미지를 업로드 하였습니다.'"
 	               + ")</script>");
 		printWriter.flush();
+		printWriter.close();
 	    
 	}
 }

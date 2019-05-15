@@ -169,23 +169,23 @@
          
         function fn_openServiceList(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceList.do' />");
+            comSubmit.setUrl("<c:url value='/service/openServiceList.do' />");
             comSubmit.submit();
         }
          
         function fn_openServiceUpdate(){
-        	var seq_no = "${map.SEQ_NO}";
+        	var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openServiceUpdate.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.setUrl("<c:url value='/service/openServiceUpdate.do' />");
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         
         function fn_downloadFile(obj){
-            var seq_no = obj.parent().find("#SEQ_NO").val();
+            var idx = obj.parent().find("#IDX").val();
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         

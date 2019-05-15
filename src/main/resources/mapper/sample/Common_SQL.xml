@@ -55,6 +55,15 @@ FROM(
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
 
+<sql id="product_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM ProductBoard WHERE PRODUCT_NAME like '%${PRODUCT_NAME}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
 <sql id="service_pagingPre">
 SELECT T4.*
 FROM(
@@ -71,6 +80,15 @@ FROM(
 (SELECT @RNUM :=0)R
 )T2,
 (SELECT COUNT(*) AS TOTAL_COUNT FROM ServiceBoard WHERE DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+<sql id="service_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM ServiceBoard WHERE SERVICE_NAME like '%${SERVICE_NAME}%' AND DEL_GB = 'N')T3
 )T4
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
@@ -95,6 +113,15 @@ FROM(
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
 
+<sql id="cooper_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM CooperBoard WHERE cooperative_name like '%${cooperative_name}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
 <sql id="s_cooper_pagingPre">
 SELECT T4.*
 FROM(
@@ -111,6 +138,15 @@ FROM(
 (SELECT @RNUM :=0)R
 )T2,
 (SELECT COUNT(*) AS TOTAL_COUNT FROM S_CooperBoard WHERE DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+<sql id="s_cooper_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM S_CooperBoard WHERE cooperative_name like '%${cooperative_name}%' AND DEL_GB = 'N')T3
 )T4
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
@@ -135,7 +171,39 @@ FROM(
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
 
-<sql id="startupClub_pagingPre">
+<sql id="startupTeam_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM StartupTeamBoard WHERE company_name like '%${company_name}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql><sql id="startupClub_pagingPre">
+SELECT T4.*
+FROM(
+  SELECT T3.TOTAL_COUNT,T2.*
+  FROM (
+    SELECT @RNUM := @RNUM + 1 AS ROWNUM,T1.*
+    FROM
+    (
+    
+</sql><sql id="startupClub_pagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM StartupClubBoard WHERE DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql><sql id="startupClub_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM StartupClubBoard WHERE club_name like '%${club_name}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+<sql id="certi_pagingPre">
 SELECT T4.*
 FROM(
   SELECT T3.TOTAL_COUNT,T2.*
@@ -146,13 +214,28 @@ FROM(
     
 </sql>
 
-<sql id="startupClub_pagingPost">
+<sql id="certi_pagingPost">
 )T1,
 (SELECT @RNUM :=0)R
 )T2,
-(SELECT COUNT(*) AS TOTAL_COUNT FROM StartupClubBoard WHERE DEL_GB = 'N')T3
+(SELECT COUNT(*) AS TOTAL_COUNT FROM Certified_Company WHERE DEL_GB = 'N')T3
 )T4
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
+
+<sql id="certi_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM Certified_Company WHERE club_name like '%${club_name}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+
+
+
+
+
  
 </mapper>

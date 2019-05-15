@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form id="frm" name="frm" enctype="multipart/form-data">
-	<input type="hidden" id="SEQ_NO" name="SEQ_NO" value="${map.SEQ_NO }">
+	<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
 		<table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
             <colgroup>
                 <col width="10%"/>
@@ -144,20 +144,20 @@
 		
 		function fn_open_startup_teamList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/open_StartupTeamList.do' />");
+			comSubmit.setUrl("<c:url value='/team/open_StartupTeamList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_update_StartupTeam(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/sample/updateStartupTeam.do' />");
+			comSubmit.setUrl("<c:url value='/team/updateStartupTeam.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_delete_StartupTeam(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/deleteStartupTeam.do' />");
-			comSubmit.addParam("SEQ_NO", $("#SEQ_NO").val());
+			comSubmit.setUrl("<c:url value='/team/deleteStartupTeam.do' />");
+			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			
 		}

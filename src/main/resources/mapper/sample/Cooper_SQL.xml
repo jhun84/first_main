@@ -7,7 +7,7 @@
     <include refid="common.cooper_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              cooperative_name,
              biz_detail,
              s_agree,
@@ -28,16 +28,17 @@
              FROM CooperBoard
              WHERE
               cooperative_name like '%${cooperative_name}%'
+              AND DEL_GB = 'N'
              ORDER BY req_date DESC
 			 ]]>
-    <include refid="common.cooper_pagingPost"/>
+    <include refid="common.cooper_SearchpagingPost"/>
     </select>
     
     <select id="cooperBoardList" parameterType="hashmap" resultType="hashmap">
     <include refid="common.cooper_pagingPre"/>
     <![CDATA[
              SELECT
-	         SEQ_NO,
+	         IDX,
              cooperative_name,
              biz_detail,
              s_agree,
@@ -63,7 +64,7 @@
 			 ]]>
     <include refid="common.cooper_pagingPost"/>
     </select>
-    <insert id="insertCooper" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEQ_NO">
+    <insert id="insertCooper" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO CooperBoard
         (
@@ -102,12 +103,12 @@
              "${e_mail}",
              "${homepage}",
              NOW(),
-             "${contents}")       
+             '${contents}')       
       </insert>
       <select id="selectCooperDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
-             SEQ_NO,
+             IDX,
              cooperative_name,
              biz_detail,
              s_agree,
@@ -128,7 +129,7 @@
              CONTENTS			 
              FROM CooperBoard
         WHERE
-            SEQ_NO = #{SEQ_NO}
+            IDX = #{IDX}
         AND
             DEL_GB = 'N'       
     ]]>
@@ -153,9 +154,9 @@
             e_mail = "${e_mail}",
             homepage = "${homepage}",
             req_date = NOW(),
-            CONTENTS = "${contents}"
+            CONTENTS = '${contents}'
         WHERE
-            SEQ_NO = "${SEQ_NO}"   
+            IDX = "${IDX}"   
     
      </update>
      <update id="deleteCooper" parameterType="hashmap">
@@ -164,7 +165,7 @@
              SET
                  DEL_GB = 'Y'
              WHERE
-                 SEQ_NO = #{SEQ_NO}
+                 IDX = #{IDX}
          ]]>
      </update>
 

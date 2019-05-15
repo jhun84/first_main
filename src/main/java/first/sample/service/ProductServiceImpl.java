@@ -23,7 +23,8 @@ import first.sample.dao.SampleDAO;
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
 	Logger log = Logger.getLogger(this.getClass());
-	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
+	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
+	//private String FILE_URL = "/Users/hoonyhun/Documents/Upload/";
 	private String SAVE_URL = "/upload/";
 	
 	@Resource(name="productDAO")
@@ -46,10 +47,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
     public void insertProduct(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		productDAO.insertProduct(map);
-         
+		
         List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
-        for(int i=0, size=list.size(); i<size; i++){
-            sampleDAO.insertFile(list.get(i));
+        for(int i=0, size=list.size(); i<size; i++){	
+        	productDAO.insertFile(list.get(i));
         }
     }
 	@Override
@@ -59,7 +60,7 @@ public class ProductServiceImpl implements ProductService{
 	    Map<String, Object> tempMap = productDAO.selectProductDetail(map);
 	    resultMap.put("map", tempMap);
 	     
-	    List<Map<String,Object>> list = sampleDAO.selectFileList(map);
+	    List<Map<String,Object>> list = productDAO.selectFileList(map);
 	    resultMap.put("list", list);
 	     
 	    return resultMap;
@@ -87,7 +88,8 @@ public class ProductServiceImpl implements ProductService{
 		out = new FileOutputStream(new File(uploadPath));
 		out.write(bytes);
 
-		String callback = "1";
+		//String callback = "1";
+		String callback = request.getParameter("CKEditorFuncNum");
 		printWriter = response.getWriter();
 
 		String fileUrl = SAVE_URL + fileName; //url 경로

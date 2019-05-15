@@ -14,13 +14,72 @@
             <col width="10%"/>
             <col width="20%"/>
         </colgroup>
-        <caption>게시글 상세</caption>
         <tbody>
             <tr>
                 <th scope="row">구분</th>
                 <td>${map.club_type }</td>
                 <th scope="row">지역</th>
-                <td>${map.area }</td>
+                <td>
+                <c:choose>
+                        <c:when test="${map.area eq 'CA01'}">
+                        강릉    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA02'}">
+                        태백 
+                        </c:when>
+                        <c:when test="${map.area eq 'CA03'}">
+                        춘천    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA04'}">
+                        화천    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA05'}">
+                        평창    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA06'}">
+                        횡성    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA07'}">
+                        원주    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA08'}">
+                        영원    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA09'}">
+                        삼척    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA10'}">
+                        정선    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA11'}">
+                        철원    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA12'}">
+                        양구    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA13'}">
+                        인제    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA14'}">
+                        고성    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA15'}">
+                        양양    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA16'}">
+                        동해    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA17'}">
+                        홍천    
+                        </c:when>
+                        <c:when test="${map.area eq 'CA18'}">
+                        속초    
+                        </c:when>
+                        <c:otherwise>
+                        지역없음.
+                        </c:otherwise>
+                </c:choose>
+                </td>
                 <th scope="row">동아리명</th>
                 <td>${map.club_name }</td>
             </tr>
@@ -71,23 +130,23 @@
          
         function fn_open_startup_clubList(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/open_StartupClubList.do' />");
+            comSubmit.setUrl("<c:url value='/club/open_StartupClubList.do' />");
             comSubmit.submit();
         }
          
         function fn_open_startup_clubUpdate(){
-        	var seq_no = "${map.SEQ_NO}";
+        	var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/sample/openStartupClubUpdate.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.setUrl("<c:url value='/club/openStartupClubUpdate.do' />");
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         
         function fn_downloadFile(obj){
-            var seq_no = obj.parent().find("#SEQ_NO").val();
+            var idx = obj.parent().find("#IDX").val();
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
-            comSubmit.addParam("SEQ_NO", seq_no);
+            comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
         
