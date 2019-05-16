@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="certi">
+	   
+    <select id="certiBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.certi_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         IDX,
+             cooperative_name,
+             biz_detail,
+             s_agree,
+             ch_money,
+             su_date,
+             area,
+             upjong,
+             c_type,
+             zip_num,
+             cooperative_addr,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM CooperBoard
+             WHERE
+              cooperative_name like '%${cooperative_name}%'
+              AND DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.certi_SearchpagingPost"/>
+    </select>
+    
+    <select id="certiBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.certi_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         IDX,
+             company_name,
+             company_address,
+             company_zip,
+             cc_area,
+             ca_area,
+             cert_num,
+             spt,
+             ji_date,
+             m_cert,
+             company_type,
+             se_area_type,
+             se_bu_type,
+             jojik_type,
+             es_date,
+             bm_number,
+             company_bnum,
+             company_jnum,
+             uniq_num,
+             cr_num,
+             sud_nm,
+             sud_num,
+             biz_detail,
+             item_gubun,
+             item_dru,
+             item_jru,
+             industry_bunryu,
+             ceo_nm,
+             ceo_birth,
+             pic,
+             c_pos,
+             hp_number,
+             areap_number,
+             fax_number,
+             email,
+             homepage,
+             req_date			 
+             FROM Certified_Company
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.certi_pagingPost"/>
+    </select>
+    <insert id="insertCerti_company" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_Company
+        (
+            company_name,
+            company_address,
+            company_zip,
+            cc_area,
+            ca_area,
+            cert_num,
+            spt,
+            ji_date,
+            m_cert,
+            company_type,
+            se_area_type,
+            se_bu_type,
+            jojik_type,
+            es_date,
+            bm_number,
+            company_bnum,
+            company_jnum,
+            uniq_num,
+            cr_num,
+            sud_nm,
+            sud_num,
+            biz_detail,
+            item_gubun,
+            item_dru,
+            item_jru,
+            industry_bunryu,
+            ceo_nm,
+            ceo_birth,
+            pic,
+            c_pos,
+            hp_number,
+            areap_number,
+            fax_number,
+            email,
+            homepage,
+            req_date
+        )
+        VALUES
+            ("${company_name}",
+             "${company_address}",
+             "${company_zip}",
+             "${cc_area}",
+             "${ca_area}",
+             "${cert_num}",
+             "${spt}",
+             "${ji_date}",
+             "${m_cert}",
+             "${company_type}",
+             "${se_area_type}",
+             "${se_bu_type}",
+             "${jojik_type}",
+             "${es_date}",
+             "${bm_number}",
+             "${company_bnum}",
+             "${company_jnum}",
+             "${uniq_num}",
+             "${cr_num}",
+             "${sud_nm}",
+             "${sud_num}",
+             "${biz_detail}",
+             "${item_gubun}",
+             "${item_dru}",
+             "${item_jru}",
+             "${industry_bunryu}",
+             "${ceo_nm}",
+             "${ceo_birth}",
+             "${pic}",
+             "${c_pos}",
+             "${hp_number}",
+             "${areap_number}",
+             "${fax_number}",
+             "${email}",
+             "${homepage}",
+             NOW())    
+      </insert>
+      <insert id="insertYears" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_Mony
+        (
+            board_seq,
+            years,
+            total_sales,
+            oper_profit,
+            income_term,
+            total_labor,
+            total_devel_sales,
+            basic_consalting,
+            pro_consalting,
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${years}",
+             "${total_sales}",
+             "${oper_profit}",
+             "${income_term}",
+             "${total_labor}",
+             "${total_devel_sales}",
+             "${basic_consalting}",
+             "${pro_consalting}",
+             NOW())    
+      </insert>
+      <insert id="insertPeoples" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_People
+        (
+            board_seq,
+            people_years,
+            social_people,
+            prof_people,
+            salary_people,
+            vul_people,
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${people_years}",
+             "${social_people}",
+             "${prof_people}",
+             "${salary_people}",
+             "${vul_people}",
+             NOW())    
+      </insert>
+      <insert id="insertVulInfo" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_VulInfo
+        (
+            board_seq,
+            jsd,
+            krj,
+            jai,
+            spj,
+            ckd,
+            bej,
+            kpp,
+            hwb,
+            kej,
+            kbd,
+            jsj,
+            bkp,
+            cka,
+            ska,
+            nsj,
+            yad,
+            ykj,
+            jsk,
+            oik,
+            jsy,
+            hpp,
+            hbc,
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${jsd}",
+             "${krj}",
+             "${jai}",
+             "${spj}",
+             "${ckd}",
+             "${bej}",
+             "${kpp}",
+             "${hwb}",
+             "${kej}",
+             "${kbd}",
+             "${jsj}",
+             "${bkp}",
+             "${cka}",
+             "${ska}",
+             "${nsj}",
+             "${yad}",
+             "${ykj}",
+             "${jsk}",
+             "${oik}",
+             "${jsy}",
+             "${hpp}",
+             "${hbc}",
+             NOW())    
+      </insert>
+      <select id="selectCertiDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             company_name,
+             company_address,
+             company_zip,
+             cc_area,
+             ca_area,
+             cert_num,
+             spt,
+             ji_date,
+             m_cert,
+             company_type,
+             se_area_type,
+             se_bu_type,
+             jojik_type,
+             es_date,
+             bm_number,
+             company_bnum,
+             company_jnum,
+             uniq_num,
+             cr_num,
+             sud_nm,
+             sud_num,
+             biz_detail,
+             item_gubun,
+             item_dru,
+             item_jru,
+             industry_bunryu,
+             ceo_nm,
+             ceo_birth,
+             pic,
+             c_pos,
+             hp_number,
+             areap_number,
+             fax_number,
+             email,
+             homepage,
+             req_date			 
+             FROM Certified_Company
+        WHERE
+            IDX = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <select id="selectCertiDetail_Mony" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             board_seq,
+             years,
+             total_sales,
+             oper_profit,
+             income_term,
+             total_labor,
+             total_devel_sales,
+             basic_consalting,
+             pro_consalting,
+             req_date
+             FROM Certified_Mony
+        WHERE
+            board_seq = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <select id="selectCertiDetail_People" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             board_seq,
+             people_years,
+             social_people,
+             prof_people,
+             salary_people,
+             vul_people,
+             req_date
+             FROM Certified_People
+        WHERE
+            board_seq = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <select id="selectCertiDetail_Vul" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             board_seq,
+             jsd,
+             krj,
+             jai,
+             spj,
+             ckd,
+             bej,
+             kpp,
+             hwb,
+             kej,
+             kbd,
+             jsj,
+             bkp,
+             cka,
+             ska,
+             nsj,
+             yad,
+             ykj,
+             jsk,
+             oik,
+             jsy,
+             hpp,
+             hbc,
+             req_date
+             FROM Certified_VulInfo
+        WHERE
+            board_seq = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <update id="updateCerti_company" parameterType="hashmap">
+    
+        UPDATE Certified_Company
+        SET
+            company_name = "${company_name}",
+            company_address = "${company_address}",
+            company_zip = "${company_zip}",
+            cc_area = "${cc_area}",
+            ca_area = "${ca_area}",
+            cert_num = "${cert_num}",
+            spt = "${spt}",
+            ji_date = "${ji_date}",
+            m_cert = "${m_cert}",
+            company_type = "${company_type}",
+            se_area_type = "${se_area_type}",
+            se_bu_type = "${se_bu_type}",
+            jojik_type = "${jojik_type}",
+            es_date = "${es_date}",
+            bm_number = "${bm_number}",
+            company_bnum = "${company_bnum}",
+            company_jnum = "${company_jnum}",
+            uniq_num = "${uniq_num}",
+            cr_num = "${cr_num}",
+            sud_nm = "${sud_nm}",
+            sud_num = "${sud_num}",
+            biz_detail = "${biz_detail}",
+            item_gubun = "${item_gubun}",
+            item_dru = "${item_dru}",
+            item_jru = "${item_jru}",
+            industry_bunryu = "${industry_bunryu}",
+            ceo_nm = "${ceo_nm}",
+            ceo_birth = "${ceo_birth}",
+            pic = "${pic}",
+            c_pos = "${c_pos}",
+            hp_number = "${hp_number}",
+            areap_number = "${areap_number}",
+            fax_number = "${fax_number}",
+            email = "${email}",
+            homepage = "${homepage}",
+            req_date = NOW()
+        WHERE
+            IDX = "${IDX}"   
+    
+     </update>
+     <update id="deleteCerti_company" parameterType="hashmap">
+         <![CDATA[
+             UPDATE CooperBoard
+             SET
+                 DEL_GB = 'Y'
+             WHERE
+                 IDX = #{IDX}
+         ]]>
+     </update>
+
+</mapper>
