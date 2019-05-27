@@ -88,5 +88,11 @@ public class CertiDAO extends AbstractDAO{
 	public void deleteCerti_people(Map<String, Object> map) throws Exception{
 	    update("certi.deleteCerti_money", map);
 	}
+	public void updateMony(Map<String, Object> map) throws Exception{
+	    update("certi.updateMony", map);
+	}
+	public void updatePeople(Map<String, Object> map) throws Exception{
+	    update("certi.updatePeople", map);
+	}
 
 }

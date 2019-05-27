@@ -385,46 +385,19 @@
             DEL_GB = 'N'       
     ]]>
       </select>
-      <update id="updateCerti_company" parameterType="hashmap">
+      <update id="updateMony" parameterType="hashmap">
     
-        UPDATE Certified_Company
+        UPDATE certified_mony
         SET
-            company_name = "${company_name}",
-            company_address = "${company_address}",
-            company_zip = "${company_zip}",
-            cc_area = "${cc_area}",
-            ca_area = "${ca_area}",
-            cert_num = "${cert_num}",
-            spt = "${spt}",
-            ji_date = "${ji_date}",
-            m_cert = "${m_cert}",
-            company_type = "${company_type}",
-            se_area_type = "${se_area_type}",
-            se_bu_type = "${se_bu_type}",
-            jojik_type = "${jojik_type}",
-            es_date = "${es_date}",
-            bm_number = "${bm_number}",
-            company_bnum = "${company_bnum}",
-            company_jnum = "${company_jnum}",
-            uniq_num = "${uniq_num}",
-            cr_num = "${cr_num}",
-            sud_nm = "${sud_nm}",
-            sud_num = "${sud_num}",
-            biz_detail = "${biz_detail}",
-            item_gubun = "${item_gubun}",
-            item_dru = "${item_dru}",
-            item_jru = "${item_jru}",
-            industry_bunryu = "${industry_bunryu}",
-            ceo_nm = "${ceo_nm}",
-            ceo_birth = "${ceo_birth}",
-            pic = "${pic}",
-            c_pos = "${c_pos}",
-            hp_number = "${hp_number}",
-            areap_number = "${areap_number}",
-            fax_number = "${fax_number}",
-            email = "${email}",
-            homepage = "${homepage}",
-            req_date = NOW()
+            years = "${years}",
+            total_sales = "${total_sales}",
+            oper_profit = "${oper_profit}",
+            income_term = "${income_term}",
+            total_labor = "${total_labor}",
+            total_devel_sales = "${total_devel_sales}",
+            basic_consalting = "${basic_consalting}",
+            pro_consalting = "${pro_consalting}",
+            req_date = NOW()            
         WHERE
             IDX = "${IDX}"   
     

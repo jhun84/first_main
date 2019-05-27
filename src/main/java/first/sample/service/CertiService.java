@@ -16,11 +16,12 @@ public interface CertiService {
 	void updateCerti_company(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void deleteCerti_company(Map<String, Object> map) throws Exception;
 	void insertCerti_money(Map<String, Object> map, HttpServletRequest request) throws Exception;
-	void updateCerti_money(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void deleteCerti_money(Map<String, Object> map) throws Exception;
 	void insertCerti_people(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updateCerti_people(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void deleteCerti_people(Map<String, Object> map) throws Exception;
+	void updateMony(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void updatePeople(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectCertiDetail(Map<String, Object> map) throws Exception;
 	
