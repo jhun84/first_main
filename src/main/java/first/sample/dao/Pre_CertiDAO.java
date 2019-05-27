@@ -46,13 +46,13 @@ public class Pre_CertiDAO extends AbstractDAO{
 	public void insertFile(Map<String, Object> map) throws Exception{
 	    insert("pre_certi.insertFile", map);
 	}
-	public void insertYears(Map<String, String> map) throws Exception{
+	public void insertPre_Years(Map<String, String> map) throws Exception{
 	    insert("pre_certi.insertYears", map);
 	}
-	public void insertPeoples(Map<String, String> map) throws Exception{
+	public void insertPre_Peoples(Map<String, String> map) throws Exception{
 	    insert("pre_certi.insertPeoples", map);
 	}
-	public void insertVulInfo(Map<String, String> map) throws Exception{
+	public void insertPre_VulInfo(Map<String, String> map) throws Exception{
 	    insert("pre_certi.insertVulInfo", map);
 	}
 	@SuppressWarnings("unchecked")

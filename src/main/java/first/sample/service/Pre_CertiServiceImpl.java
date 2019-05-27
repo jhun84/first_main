@@ -71,7 +71,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 			    years_list.put("basic_consalting", basic_consalting_i);
 			    years_list.put("pro_consalting", pro_consalting_i);
 			    
-			    pre_certiDAO.insertYears(years_list);
+			    pre_certiDAO.insertPre_Years(years_list);
 			}  
 		}
 		
@@ -93,7 +93,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 				    	peoples_list.put("salary_people", salary_people_i);
 				    	peoples_list.put("vul_people", vul_people_i);
 					    
-					    pre_certiDAO.insertPeoples(peoples_list);
+					    pre_certiDAO.insertPre_Peoples(peoples_list);
 					}  
 				}
 		Map<String, String> vulinfo_list = new HashMap<String, String>();
@@ -145,7 +145,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 		vulinfo_list.put("hpp",hpp);
 		vulinfo_list.put("hbc",hbc);
 		
-		pre_certiDAO.insertVulInfo(vulinfo_list);
+		pre_certiDAO.insertPre_VulInfo(vulinfo_list);
 		
 		
         List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
@@ -202,7 +202,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 					    years_list.put("basic_consalting", basic_consalting_i);
 					    years_list.put("pro_consalting", pro_consalting_i);
 					    
-					    pre_certiDAO.insertYears(years_list);
+					    pre_certiDAO.insertPre_Years(years_list);
 					}  
 				}
 
@@ -224,7 +224,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 						    	peoples_list.put("salary_people", salary_people_i);
 						    	peoples_list.put("vul_people", vul_people_i);
 							    
-							    pre_certiDAO.insertPeoples(peoples_list);
+							    pre_certiDAO.insertPre_Peoples(peoples_list);
 							}  
 						}
 				Map<String, String> vulinfo_list = new HashMap<String, String>();
@@ -276,7 +276,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 				vulinfo_list.put("hpp",hpp);
 				vulinfo_list.put("hbc",hbc);
 				
-				pre_certiDAO.insertVulInfo(vulinfo_list);
+				pre_certiDAO.insertPre_VulInfo(vulinfo_list);
 	}
 	
 	@Override
