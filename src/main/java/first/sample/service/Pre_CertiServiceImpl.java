@@ -292,17 +292,7 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 	    for(int i=0, size=list.size(); i<size; i++){
 	        sampleDAO.insertFile(list.get(i));
 	    }
-	}
-	@Override
-	public void updateMony(Map<String, Object> map, HttpServletRequest request) throws Exception{
-		pre_certiDAO.updateMony(map);
-	    
-	}
-	@Override
-	public void updatePeople(Map<String, Object> map, HttpServletRequest request) throws Exception{
-		pre_certiDAO.updatePeople(map);
-	    
-	}
+	}	
 	@Override
 	public void deletePre_Certi_money(Map<String, Object> map) throws Exception {
 		pre_certiDAO.deletePre_Certi_money(map);

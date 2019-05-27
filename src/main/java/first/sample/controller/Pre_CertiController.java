@@ -17,8 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import first.common.common.CommandMap;
-import first.sample.service.CooperService;
-import first.sample.service.ProductService;
 import first.sample.service.Pre_CertiService;
 
 @Controller
@@ -41,7 +39,7 @@ public class Pre_CertiController {
 	}
 	@RequestMapping(value="/pre_certi/openPre_CertiDetail.do")
 	public ModelAndView openPre_CertiDetail(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("/pre_certi/certiDetail");
+	    ModelAndView mv = new ModelAndView("/pre_certi/pre_certiDetail");
 	     
 	    Map<String,Object> map = pre_certiService.selectPre_CertiDetail(commandMap.getMap());
 	    mv.addObject("map", map.get("map"));
@@ -88,15 +86,5 @@ public class Pre_CertiController {
 	     
 	    return mv;
 	}
-	
-	@RequestMapping(value="/sample/updateMony.do")
-	public ModelAndView updateMony(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openBoardDetail.do");
-	     
-	    pre_certiService.updateMony(commandMap.getMap(), request);
-	     
-	    mv.addObject("IDX", commandMap.get("IDX"));
-	    return mv;
-	}
-	
+		
 }

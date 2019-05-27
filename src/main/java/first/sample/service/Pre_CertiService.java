@@ -20,8 +20,6 @@ public interface Pre_CertiService {
 	void insertPre_Certi_people(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updatePre_Certi_people(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void deletePre_Certi_people(Map<String, Object> map) throws Exception;
-	void updateMony(Map<String, Object> map, HttpServletRequest request) throws Exception;
-	void updatePeople(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectPre_CertiDetail(Map<String, Object> map) throws Exception;
 	

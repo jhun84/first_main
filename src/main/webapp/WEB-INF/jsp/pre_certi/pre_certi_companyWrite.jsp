@@ -542,12 +542,12 @@ $(function(){
 		
 		function fn_openCertiList(){
 	            var comSubmit = new ComSubmit();
-	            comSubmit.setUrl("<c:url value='/certi/openCertifiedList.do' />");
+	            comSubmit.setUrl("<c:url value='/pre_certi/openPre_CertifiedList.do' />");
 	            comSubmit.submit();
 	    }
 		function fn_insertCertified_Company(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/certi/insertCertified_Company.do' />");
+			comSubmit.setUrl("<c:url value='/pre_certi/insertPre_Certified_Company.do' />");
 			comSubmit.submit();
 		}
 		function fn_addYear(){

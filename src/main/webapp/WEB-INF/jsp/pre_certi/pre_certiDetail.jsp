@@ -251,14 +251,14 @@
          
         function fn_openCertiList(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certi/openCertifiedList.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_CertifiedList.do' />");
             comSubmit.submit();
         }
          
         function fn_openCertiUpdate(){
         	var idx = "${map.IDX}";
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certi/openCerti_CompanyUpdate.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_Certi_CompanyUpdate.do' />");
             comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }

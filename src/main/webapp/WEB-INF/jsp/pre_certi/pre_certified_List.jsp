@@ -154,26 +154,26 @@
          
         function fn_openCerti_CompanyWrite(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certi/openCerti_CompanyWrite.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_Certi_CompanyWrite.do' />");
             comSubmit.submit();
         }
         
         function fn_openCertifiedSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certo/openCertified_CompanySearch.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_Certified_CompanySearch.do' />");
             comSubmit.addParam("company_name", $('#company_name').val());
             comSubmit.submit();
         }
          
         function fn_openCertifiedDetail(obj){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certi/openCertiDetail.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_CertiDetail.do' />");
             comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
             comSubmit.submit();
         }
         function fn_search(pageNo){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certi/openCertifiedList.do' />");
+            comSubmit.setUrl("<c:url value='/pre_certi/openPre_CertifiedList.do' />");
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
         }
