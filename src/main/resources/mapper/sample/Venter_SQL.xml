@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="v_enter">
+	   
+    <select id="venterBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.venter_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         IDX,
+             company_name,
+             area,
+             n_year,
+             t_year,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM v_enterprise
+             WHERE
+              company_name like '%${company_name}%'
+              AND DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.venter_SearchpagingPost"/>
+    </select>
+    
+    <select id="venterBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.venter_pagingPre"/>
+    <![CDATA[
+             SELECT
+	         IDX,
+             company_name,
+             area,
+             n_year,
+             t_year,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM v_enterprise
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    <include refid="common.venter_pagingPost"/>
+    </select>
+    <insert id="insertVenterprise" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO v_enterprise
+        (
+            company_name,
+            area,
+            n_year,
+            t_year,
+            biz_detail,
+            sa_number,
+            su_date,
+            company_zip,
+            company_address,
+            ceo_name,
+            p_number,
+            c_number,
+            e_mail,
+            homepage,
+            req_date,
+            CONTENTS
+        )
+        VALUES
+            ("${company_name}",
+             "${area}",
+             "${n_year}",
+             "${t_year}",
+             "${biz_detail}",
+             "${sa_number}",
+             "${su_date}",
+             "${company_zip}",
+             "${company_address}",
+             "${ceo_name}",
+             "${p_number}",
+             "${c_number}",
+             "${e_mail}",
+             "${homepage}",
+             NOW(),
+             "${CONTENTS}")    
+      </insert>
+      <insert id="insertVenter_Mony" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO v_enterprise_mony
+        (
+            board_seq,
+            years,
+            ja_mony,
+            me_mony,
+            ji_list,
+            ji_mony,            
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${years}",
+             "${ja_mony}",
+             "${me_mony}",
+             "${ji_list}",
+             "${ji_mony}",             
+             NOW())    
+      </insert>      
+      <select id="selectVenterpriseDetail" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             company_name,
+             area,
+             n_year,
+             t_year,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM v_enterprise
+        WHERE
+            IDX = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      <select id="selectVenterprise_Mony" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             board_seq,
+             years,
+             ja_mony,
+             me_mony,
+             ji_list,
+             ji_mony,
+             req_date
+             FROM v_enterprise_mony
+        WHERE
+            board_seq = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>           
+
+</mapper>

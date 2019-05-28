@@ -27,6 +27,15 @@ function go_StartupClub(){
 function go_Certi(){
 	location.href="<c:url value='/certi/openCertifiedList.do' />";
 }
+function go_Pre_Certi(){
+	location.href="<c:url value='/pre_certi/openPre_CertifiedList.do' />";
+}
+function go_V_Enter(){
+	location.href="<c:url value='/v_enterprise/openVenterpriseList.do' />";
+}
+function go_PREV_Enter(){
+	location.href="<c:url value='/prev_enterprise/openPreVenterpriseList.do' />";
+}
 function goLogout(){
 	location.href="<c:url value='/sample/logoutTry.do' />";
 }
@@ -42,6 +51,9 @@ function goLogout(){
  <td><input type="button" onclick="go_StartupTeam();" value="사회적육성_창업팀"></td>
  <td><input type="button" onclick="go_StartupClub();" value="사회적육성_동아리"></td>
  <td><input type="button" onclick="go_Certi();" value="인증사회적기업"></td>
+ <td><input type="button" onclick="go_Pre_Certi();" value="예비인증사회적기업"></td>
+ <td><input type="button" onclick="go_V_Enter();" value="마을기업"></td>
+ <td><input type="button" onclick="go_PREV_Enter();" value="예비마을기업"></td>
  
 </tr>
 </table>

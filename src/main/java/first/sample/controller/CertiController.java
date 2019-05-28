@@ -89,4 +89,14 @@ public class CertiController {
 	    return mv;
 	}
 	
+	@RequestMapping(value="/sample/updateMony.do")
+	public ModelAndView updateMony(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/sample/openBoardDetail.do");
+	     
+	    certiService.updateMony(commandMap.getMap(), request);
+	     
+	    mv.addObject("IDX", commandMap.get("IDX"));
+	    return mv;
+	}
+	
 }

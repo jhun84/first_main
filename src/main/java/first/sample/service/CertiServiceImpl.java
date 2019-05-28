@@ -17,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import first.common.util.FileUtils;
-import first.sample.dao.CooperDAO;
-import first.sample.dao.ProductDAO;
 import first.sample.dao.SampleDAO;
 import first.sample.dao.CertiDAO;
 
@@ -49,7 +47,6 @@ public class CertiServiceImpl implements CertiService{
     public void insertCerti_company(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		certiDAO.insertCerti_company(map);
 		
-		//재무정보 다중데이터 db 입력시 필요.
 		for(int i=0; i<10; i++){
 			Map<String, String> years_list = new HashMap<String, String>();
 			String boardSeq_no = String.valueOf(map.get("IDX"));
@@ -77,7 +74,7 @@ public class CertiServiceImpl implements CertiService{
 			    certiDAO.insertYears(years_list);
 			}  
 		}
-		//인원정보 다중데이터 db 입력시 필요.
+		
 				for(int i=0; i<10; i++){
 					Map<String, String> peoples_list = new HashMap<String, String>();
 					String boardSeq_no = String.valueOf(map.get("IDX"));
@@ -150,7 +147,7 @@ public class CertiServiceImpl implements CertiService{
 		
 		certiDAO.insertVulInfo(vulinfo_list);
 		
-		//다중파일 업로드시 필요.
+		
         List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
         for(int i=0, size=list.size(); i<size; i++){
             sampleDAO.insertFile(list.get(i));
@@ -180,7 +177,7 @@ public class CertiServiceImpl implements CertiService{
 	public void updateCerti_company(Map<String, Object> map, HttpServletRequest request) throws Exception{
 		certiDAO.updateCerti_company(map);
 		
-		//재무정보 다중데이터 db 업데이트.
+
 				for(int i=0; i<10; i++){
 					Map<String, String> years_list = new HashMap<String, String>();
 					String boardSeq_no = String.valueOf(map.get("IDX"));
@@ -208,7 +205,7 @@ public class CertiServiceImpl implements CertiService{
 					    certiDAO.insertYears(years_list);
 					}  
 				}
-				//인원정보 다중데이터 db 업데이트.
+
 						for(int i=0; i<10; i++){
 							Map<String, String> peoples_list = new HashMap<String, String>();
 							String boardSeq_no = String.valueOf(map.get("IDX"));
@@ -297,8 +294,14 @@ public class CertiServiceImpl implements CertiService{
 	    }
 	}
 	@Override
-	public void updateCerti_money(Map<String, Object> map, HttpServletRequest request) throws Exception{
-		certiDAO.updateCerti_money(map);
+	public void updateMony(Map<String, Object> map, HttpServletRequest request) throws Exception{
+		certiDAO.updateMony(map);
+	    
+	}
+	@Override
+	public void updatePeople(Map<String, Object> map, HttpServletRequest request) throws Exception{
+		certiDAO.updatePeople(map);
+	    
 	}
 	@Override
 	public void deleteCerti_money(Map<String, Object> map) throws Exception {
@@ -336,12 +339,12 @@ public class CertiServiceImpl implements CertiService{
 		String callback = "1";
 		printWriter = response.getWriter();
 	
-		String fileUrl = SAVE_URL + fileName; //url 경로
+		String fileUrl = SAVE_URL + fileName; 
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','이미지를 업로드 하였습니다.'"
+	               + "','complete.'"
 	               + ")</script>");
 		printWriter.flush();
 	    
