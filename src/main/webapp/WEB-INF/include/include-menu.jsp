@@ -36,6 +36,9 @@ function go_V_Enter(){
 function go_PREV_Enter(){
 	location.href="<c:url value='/prev_enterprise/openPreVenterpriseList.do' />";
 }
+function go_S_Enter(){
+	location.href="<c:url value='/s_enterprise/openSenterpriseList.do' />";
+}
 function goLogout(){
 	location.href="<c:url value='/sample/logoutTry.do' />";
 }
@@ -54,6 +57,7 @@ function goLogout(){
  <td><input type="button" onclick="go_Pre_Certi();" value="예비인증사회적기업"></td>
  <td><input type="button" onclick="go_V_Enter();" value="마을기업"></td>
  <td><input type="button" onclick="go_PREV_Enter();" value="예비마을기업"></td>
+ <td><input type="button" onclick="go_S_Enter();" value="자활기업"></td>
  
 </tr>
 </table>
