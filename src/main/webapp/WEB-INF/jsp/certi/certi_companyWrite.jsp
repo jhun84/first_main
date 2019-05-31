@@ -43,7 +43,7 @@ function itemChange(){
 		var life = ["가정용품","인테리어용품","화장품비누","패션잡화","의류","기타생활용품"];
 		var company = ["사무용품","전산용품","산업용품","기타기업용품"];
 		var edu = ["전문교육","방과후교육","장애인교육"];
-		var bokun = ["의료"];
+		var bokun = ["의료","보건"];
 		var hwan = ["청소","재활용","집수리"];
 		var boyuk = ["보육"];
 		var munhwa = ["문화예술공연","여행,관광"];
@@ -78,7 +78,7 @@ function itemChange(){
 		else if(selectItem == "문화"){
 			  changeItem = munhwa;
 		}
-		else if(selectItem == "간병가사"){
+		else if(selectItem == "간병가사지원"){
 			  changeItem = kan_byung;
 		}
 		else if(selectItem == "기타"){
@@ -286,7 +286,8 @@ $(function(){
     <td>
         <select name="industry_bunryu">
 		<option value="">선택</option>
-		<option value="교육">교육</option>				
+		<option value="교육">교육</option>
+		<option value="의료">의료</option>				
 		<option value="보건">보건</option>
 		<option value="사회복지">사회복지</option>
 		<option value="환경">환경</option>
