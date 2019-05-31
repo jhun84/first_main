@@ -228,7 +228,7 @@
 </table>
      
     <a href="#this" class="btn" id="list">목록으로</a>
-    <a href="#this" class="btn" id="update">수정하기</a>
+    <!-- <a href="#this" class="btn" id="update">수정하기</a> -->
     
     <%@ include file="/WEB-INF/include/include-body.jsp" %>
     <script type="text/javascript">

@@ -142,8 +142,8 @@ $(function(){
                     <td><input type="text" id="e_mail" name="e_mail" value=""></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="" size="50"></td>
-                    <th></th>
-                    <td></td>
+                    <th>비고</th>
+                    <td><input type="text" id="bigo" name="bigo" size="50"></td>
                 </tr>
                 </tbody>
              </table> 
@@ -211,10 +211,13 @@ $(function(){
 			});
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
-				
-				   e.preventDefault();
-				   fn_insertVenterprise();
-				
+				if($('#company_name').val() == ""){
+				    alert('업체명을 입력해주세요.');
+				    return false;
+				}else{
+					e.preventDefault();
+					fn_insertVenterprise();
+				}				   			
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();

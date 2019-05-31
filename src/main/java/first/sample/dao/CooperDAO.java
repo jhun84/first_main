@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import first.common.dao.AbstractDAO;
+import first.excel.vo.*;
 
 @Repository("cooperDAO")
 public class CooperDAO extends AbstractDAO{
@@ -48,6 +49,10 @@ public class CooperDAO extends AbstractDAO{
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectCooperList(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("cooper.selectCooperList", map);
+	}
+	@SuppressWarnings("unchecked")
+	public List<CooperVO> cooperExcelList() throws Exception{
+	    return (List<CooperVO>)selectList("cooper.cooperExcelList");
 	}
 
 }

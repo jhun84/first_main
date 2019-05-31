@@ -133,8 +133,8 @@
 			$("#write").on("click", function(e){ //작성하기 버튼
 				var isSeasonChk = $("input:checkbox[name='CERTI']").is(":checked");
 				
-				if(!isSeasonChk){
-				    alert("인증/지정 여부를 한개 이상 선택해주세요.");
+				if(!isSeasonChk || $('#company_name').val() == ""){
+				    alert('인증/지정 여부를 한개 이상 선택해주세요.또는 업체명을 입력해주세요.');
 				    return false;
 				}else{
 				   e.preventDefault();

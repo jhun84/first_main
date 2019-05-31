@@ -31,7 +31,6 @@ $(function(){
                 <col width="10%"/>
                 <col width="20%"/>
             </colgroup>
-            <caption>startup_club write page</caption>
             <tbody>
                 <tr>
                     <th>구분</th>
@@ -125,10 +124,14 @@ $(function(){
 			});
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
-				
-				   e.preventDefault();
-				   fn_insert_StartupClub();
-				
+				if($('#club_name').val() == ""){
+				    alert('업체명을 입력해주세요.');
+				    return false;
+				}else{
+					e.preventDefault();
+					fn_insert_StartupClub();
+				}
+				   
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();

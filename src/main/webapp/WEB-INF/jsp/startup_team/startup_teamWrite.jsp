@@ -157,10 +157,14 @@ $(function(){
 			});
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
-				
-				   e.preventDefault();
-				   fn_insert_StartupTeam();
-				
+				if($('#team_name').val() == ""){
+				    alert('업체명을 입력해주세요.');
+				    return false;
+				}else{
+					e.preventDefault();
+					fn_insert_StartupTeam();
+				}
+				  
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="v_enter">
+<mapper namespace="s_enter">
 	   
-    <select id="venterBoardSearch" parameterType="hashmap" resultType="hashmap">
-    <include refid="common.venter_pagingPre"/>
+    <select id="senterBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.senter_pagingPre"/>
     <![CDATA[
              SELECT
 	         IDX,
+	         gyumo,
+             bunya,
+             upjomg,
+             pe_sts,
+             sa_type,
              company_name,
              area,
-             n_year,
-             t_year,
+             certi_situ,
+             certi_year,
+             certi_type,
              biz_detail,
              sa_number,
              su_date,
@@ -23,26 +29,31 @@
              e_mail,
              homepage,
              req_date,
-             bigo,
              CONTENTS			 
-             FROM v_enterprise
+             FROM s_enterprise
              WHERE
               company_name like '%${company_name}%'
               AND DEL_GB = 'N'
              ORDER BY req_date DESC
 			 ]]>
-    <include refid="common.venter_SearchpagingPost"/>
+    <include refid="common.senter_SearchpagingPost"/>
     </select>
     
-    <select id="venterBoardList" parameterType="hashmap" resultType="hashmap">
-    <include refid="common.venter_pagingPre"/>
+    <select id="senterBoardList" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.senter_pagingPre"/>
     <![CDATA[
              SELECT
 	         IDX,
+	         gyumo,
+             bunya,
+             upjomg,
+             pe_sts,
+             sa_type,
              company_name,
              area,
-             n_year,
-             t_year,
+             certi_situ,
+             certi_year,
+             certi_type,
              biz_detail,
              sa_number,
              su_date,
@@ -54,23 +65,28 @@
              e_mail,
              homepage,
              req_date,
-             bigo,
              CONTENTS			 
-             FROM v_enterprise
+             FROM s_enterprise
              WHERE
              DEL_GB = 'N'
              ORDER BY req_date DESC
 			 ]]>
-    <include refid="common.venter_pagingPost"/>
+    <include refid="common.senter_pagingPost"/>
     </select>
-    <insert id="insertVenterprise" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    <insert id="insertSenterprise" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
-        INSERT INTO v_enterprise
+        INSERT INTO s_enterprise
         (
+            gyumo,
+            bunya,
+            upjomg,
+            pe_sts,
+            sa_type,
             company_name,
             area,
-            n_year,
-            t_year,
+            certi_situ,
+            certi_year,
+            certi_type,
             biz_detail,
             sa_number,
             su_date,
@@ -82,14 +98,19 @@
             e_mail,
             homepage,
             req_date,
-            bigo,
             CONTENTS
         )
         VALUES
-            ("${company_name}",
+            ("${gyumo}",
+             "${bunya}",
+             "${upjomg}",
+             "${pe_sts}",
+             "${sa_type}",
+             "${company_name}",
              "${area}",
-             "${n_year}",
-             "${t_year}",
+             "${certi_situ}",
+             "${certi_year}",
+             "${certi_type}",             
              "${biz_detail}",
              "${sa_number}",
              "${su_date}",
@@ -101,12 +122,11 @@
              "${e_mail}",
              "${homepage}",
              NOW(),
-             "${bigo}",
              "${CONTENTS}")    
       </insert>
-      <insert id="insertVenter_Mony" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+      <insert id="insertSenter_Mony" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
-        INSERT INTO v_enterprise_mony
+        INSERT INTO s_enterprise_mony
         (
             board_seq,
             years,
@@ -125,14 +145,20 @@
              "${ji_mony}",             
              NOW())    
       </insert>      
-      <select id="selectVenterpriseDetail" parameterType="hashmap" resultType="hashmap">
+      <select id="selectSenterpriseDetail" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
              IDX,
+             gyumo,
+             bunya,
+             upjomg,
+             pe_sts,
+             sa_type,
              company_name,
              area,
-             n_year,
-             t_year,
+             certi_situ,
+             certi_year,
+             certi_type,
              biz_detail,
              sa_number,
              su_date,
@@ -144,16 +170,15 @@
              e_mail,
              homepage,
              req_date,
-             bigo,
              CONTENTS			 
-             FROM v_enterprise
+             FROM s_enterprise
         WHERE
             IDX = #{IDX}
         AND
             DEL_GB = 'N'       
     ]]>
       </select>
-      <select id="selectVenterprise_Mony" parameterType="hashmap" resultType="hashmap">
+      <select id="selectSenterprise_Mony" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
              IDX,
@@ -164,7 +189,7 @@
              ji_list,
              ji_mony,
              req_date
-             FROM v_enterprise_mony
+             FROM s_enterprise_mony
         WHERE
             board_seq = #{IDX}
         AND

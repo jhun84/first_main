@@ -19,7 +19,7 @@ public class SenterDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("s_enter.senterBoardSearch", map);
 	}
 	public void insertSenterprise(Map<String, Object> map) throws Exception{
-	    insert("v_enter.insertSenterprise", map);
+	    insert("s_enter.insertSenterprise", map);
 	}
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectSenterpriseDetail(Map<String, Object> map) throws Exception{

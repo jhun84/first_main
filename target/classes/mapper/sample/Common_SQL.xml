@@ -319,4 +319,33 @@ WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
 
+<sql id="senter_pagingPre">
+SELECT T4.*
+FROM(
+  SELECT T3.TOTAL_COUNT,T2.*
+  FROM (
+    SELECT @RNUM := @RNUM + 1 AS ROWNUM,T1.*
+    FROM
+    (
+    
+</sql>
+
+<sql id="senter_pagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM s_enterprise WHERE DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
+<sql id="senter_SearchpagingPost">
+)T1,
+(SELECT @RNUM :=0)R
+)T2,
+(SELECT COUNT(*) AS TOTAL_COUNT FROM s_enterprise WHERE club_name like '%${company_name}%' AND DEL_GB = 'N')T3
+)T4
+WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
+</sql>
+
 </mapper>

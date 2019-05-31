@@ -52,7 +52,7 @@ public class Pre_VenterpriseServiceImpl implements Pre_VenterpriseService{
 			String boardSeq_no = String.valueOf(map.get("IDX"));
 			
 			String year_i = String.valueOf(map.get("year_"+i));
-		    String ja_mony_i = String.valueOf(map.get("ji_mony_"+i));
+		    String ja_mony_i = String.valueOf(map.get("ja_mony_"+i));
 		    String me_mony_i = String.valueOf(map.get("me_mony_"+i));
 		    String ji_list_i = String.valueOf(map.get("ji_list_"+i));
 		    String ji_mony_i = String.valueOf(map.get("ji_mony_"+i));

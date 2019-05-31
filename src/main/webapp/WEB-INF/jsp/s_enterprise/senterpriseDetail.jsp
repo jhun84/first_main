@@ -20,11 +20,27 @@
             <tr>
                 <th scope="row">지역</th>
                 <td>${map.area}</td>
-                <th>신규지정연도</th>
-                <td>${map.n_year}</td>
-                <th>2차지정연도</th>
-                <td>${map.t_year}</td>
+                <th>규모</th>
+                <td>${map.gyumo}</td>
+                <th>분야</th>
+                <td>${map.bunya}</td>
             </tr>
+            <tr>
+                <th>업종</th>
+                <td>${map.upjong}</td>
+                <th>사업자유형</th>
+                <td>${map.sa_type}</td>
+                <th>폐업여부</th>
+                <td>${map.pe_sts}</td>
+                </tr>
+                <tr>
+                <th>사회적기업 인증현황</th>
+                <td>${map.certi_situ}</td>
+                <th>인증연도</th>
+                <td>${map.certi_year}</td>
+                <th>유형</th>
+                <td>${map.certi_type}</td>
+                </tr>
             <tr>
                 <th>기업명</th>
                 <td>${map.company_name}</td>

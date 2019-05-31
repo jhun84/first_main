@@ -20,6 +20,7 @@ import first.common.util.FileUtils;
 import first.sample.dao.CooperDAO;
 import first.sample.dao.ProductDAO;
 import first.sample.dao.SampleDAO;
+import first.excel.vo.*;
 
 @Service("cooperService")
 public class CooperServiceImpl implements CooperService{
@@ -91,16 +92,15 @@ public class CooperServiceImpl implements CooperService{
 		String callback = "1";
 		printWriter = response.getWriter();
 
-		String fileUrl = SAVE_URL + fileName; //url 경로
+		String fileUrl = SAVE_URL + fileName; //url 寃쎈�
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','이미지를 업로드 하였습니다.'"
+	               + "','�대�몄�瑜� ��濡��� �����듬����.'"
 	               + ")</script>");
 		printWriter.flush();
 	    
 	}
-	
-	
+
 }

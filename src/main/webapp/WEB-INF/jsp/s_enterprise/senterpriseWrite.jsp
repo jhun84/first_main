@@ -71,40 +71,56 @@ $(function(){
 	                	<option value="CA18">속초</option>
                      </select>
                     </td>
-                    <th>신규지정연도</th>
+                    <th>규모</th>
                     <td>
-                    <select name="n_year">
-                      <option value="">선택</option>
-	                	<option value="2010">2010</option>
-	                	<option value="2011">2011</option>
-	                	<option value="2012">2012</option>
-	                	<option value="2013">2013</option>
-	                	<option value="2014">2014</option>
-	                	<option value="2015">2015</option>
-	                	<option value="2016">2016</option>
-	                	<option value="2017">2017</option>
-	                	<option value="2018">2018</option>
-	                	<option value="2019">2019</option>
-	                	<option value="2020">2020</option> 
-	                	<option value="2021">2021</option> 	                	
+                    <select name="gyumo">
+                      <option value="">선택</option>	                		                	 
                      </select>
                     </td>
-                    <th>2차지정연도</th>
+                    <th>분야</th>
                     <td>
-                    <select name="t_year">
-                      <option value="">선택</option>
-	                	<option value="2010">2010</option>
-	                	<option value="2011">2011</option>
-	                	<option value="2012">2012</option>
-	                	<option value="2013">2013</option>
-	                	<option value="2014">2014</option>
-	                	<option value="2015">2015</option>
-	                	<option value="2016">2016</option>
-	                	<option value="2017">2017</option>
-	                	<option value="2018">2018</option>
-	                	<option value="2019">2019</option>
-	                	<option value="2020">2020</option> 
-	                	<option value="2021">2021</option> 	                	
+                    <select name="bunya">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>업종</th>
+                    <td>
+                    <select name="upjong">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                    <th>사업자유형</th>
+                    <td>
+                     <select name="sa_type">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                    <th>폐업여부</th>
+                    <td>
+                     <select name="pe_sts">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>사회적기업 인증현황</th>
+                    <td>
+                    <select name="certi_situ">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                    <th>인증연도</th>
+                    <td>
+                     <select name="certi_year">
+                      <option value="">선택</option>	                	                
+                     </select>
+                    </td>
+                    <th>유형</th>
+                    <td>
+                     <select name="certi_type">
+                      <option value="">선택</option>	                	                
                      </select>
                     </td>
                 </tr>
@@ -207,14 +223,17 @@ $(function(){
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
-				fn_openVenterpriseList();
+				fn_openSenterpriseList();
 			});
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
-				
-				   e.preventDefault();
-				   fn_insertVenterprise();
-				
+				if($('#company_name').val() == ""){
+				    alert('업체명을 입력해주세요.');
+				    return false;
+				}else{
+					e.preventDefault();
+					fn_insertSenterprise();
+				}				   			
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();

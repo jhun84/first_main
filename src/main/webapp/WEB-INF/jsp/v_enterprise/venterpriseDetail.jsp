@@ -54,8 +54,8 @@
                 <td>${map.e_mail}</td>
                 <th>홈페이지</th>
                 <td>${map.homepage}</td>
-                <th></th>
-                <td></td>
+                <th>비고</th>
+                <td>${map.bigo}</td>
             </tr>                                 
         </tbody>
     </table>

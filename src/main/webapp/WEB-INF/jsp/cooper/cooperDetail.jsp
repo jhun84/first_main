@@ -11,8 +11,7 @@
             <col width="35%"/>
             <col width="15%"/>
             <col width="35%"/>
-        </colgroup>
-        <caption>게시글 상세</caption>
+        </colgroup>        
         <tbody>
             <tr>
                 <th scope="row">협동조합명</th>

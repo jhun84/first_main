@@ -124,7 +124,7 @@ $(function(){
 <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
   <tr>
     <th scope="row">기관명</th>
-    <td><input type="text" name="company_name" ></td>
+    <td><input type="text" id="company_name" name="company_name" ></td>
     <th scope="row">우편번호&nbsp;&nbsp;<input type="button" onClick="goPopup();" value="주소검색"></th>
     <td><input type="text" id="zipNo" name="company_zip" value=""></td>
     <th scope="row">주소</th>
@@ -520,8 +520,13 @@ $(function(){
 			
 			$("#write").on("click", function(e){ //작성하기 버튼
 				
-				   e.preventDefault();
-				   fn_insertCertified_Company();
+				   if($('#company_name').val() == ""){
+					   alert("업체명을 입력해주세요.");
+					   return false;
+				   }else{
+					   e.preventDefault();
+					   fn_insertCertified_Company();					   
+				   }			
 				
 			});
 			$("#addyear").on("click", function(e){ //재무정보 연도 추가 버튼

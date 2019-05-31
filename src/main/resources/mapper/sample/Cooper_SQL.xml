@@ -64,6 +64,36 @@
 			 ]]>
     <include refid="common.cooper_pagingPost"/>
     </select>
+    
+    <select id="cooperExcelList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+             SELECT
+	         IDX,
+             cooperative_name,
+             biz_detail,
+             s_agree,
+             ch_money,
+             su_date,
+             area,
+             upjong,
+             c_type,
+             zip_num,
+             cooperative_addr,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM CooperBoard
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>
+    </select>
+    
     <insert id="insertCooper" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO CooperBoard

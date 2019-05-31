@@ -23,8 +23,8 @@ import first.sample.dao.SampleDAO;
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
 	Logger log = Logger.getLogger(this.getClass());
-	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
-	//private String FILE_URL = "/Users/hoonyhun/Documents/Upload/";
+	//private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
+	private String FILE_URL = "C:\\Users\\JeongHun\\Documents\\Upload";
 	private String SAVE_URL = "/upload/";
 	
 	@Resource(name="productDAO")
@@ -92,12 +92,12 @@ public class ProductServiceImpl implements ProductService{
 		String callback = request.getParameter("CKEditorFuncNum");
 		printWriter = response.getWriter();
 
-		String fileUrl = SAVE_URL + fileName; //url 경로
+		String fileUrl = SAVE_URL + fileName; //url 寃쎈�
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','이미지를 업로드 하였습니다.'"
+	               + "','�대�몄�瑜� ��濡��� �����듬����.'"
 	               + ")</script>");
 		printWriter.flush();
 	    

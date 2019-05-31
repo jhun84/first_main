@@ -16,7 +16,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("fileUtils")
 public class FileUtils {
     //private static final String filePath = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
-    private static final String filePath = "/Users/hoonyhun/Documents/Upload/";
+    //private static final String filePath = "/Users/hoonyhun/Documents/Upload/";
+	private static final String filePath = "C:\\Users\\JeongHun\\Documents\\Upload";
      
     public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
@@ -32,8 +33,7 @@ public class FileUtils {
          
         //String boardIdx = (String)map.get("IDX");
         String boardIdx = String.valueOf(map.get("IDX"));
-        System.out.println("boardIdx = "+boardIdx);
-         
+                 
         File file = new File(filePath);
         if(file.exists() == false){
             file.mkdirs();
@@ -43,21 +43,22 @@ public class FileUtils {
             multipartFile = multipartHttpServletRequest.getFile(iterator.next());
             
             if(multipartFile.isEmpty() == false){
-	
             	originalFileName = multipartFile.getOriginalFilename();
                 originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
                 storedFileName = CommonUtils.getRandomString() + originalFileExtension;
+                String subject = String.valueOf(map.get("subject_0"));
                 
                 file = new File(filePath + storedFileName);
-                multipartFile.transferTo(file);
+                multipartFile.transferTo(file);                                
                 
                 listMap = new HashMap<String,Object>();
                 listMap.put("BOARD_IDX", boardIdx);
                 listMap.put("ORIGINAL_FILE_NAME", originalFileName);
                 listMap.put("STORED_FILE_NAME", storedFileName);
                 listMap.put("FILE_SIZE", multipartFile.getSize());
-                list.add(listMap);
-                    
+                listMap.put("SUBJECT", subject);
+                                                      
+                list.add(listMap);                                                 
             }
         }
         return list;
@@ -76,7 +77,9 @@ public class FileUtils {
          
         //String boardIdx = (String)map.get("IDX");
         String boardIdx = String.valueOf(map.get("IDX"));
+        String subject = String.valueOf(map.get("SUBJECT"));
         System.out.println("Called parse Update !!!" + boardIdx);
+        System.out.println("File Subject !!!" + subject);
         String requestName = null;
         String idx = null;
          
