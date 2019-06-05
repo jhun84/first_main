@@ -49,6 +49,7 @@ function itemChange(){
 		var munhwa = ["문화예술공연","여행,관광"];
 		var kan_byung = ["간병가사","산모도우미"];
 		var etc = ["지역개발","물류유통","출판인쇄","컨설팅","IT","기타"];
+		var bokji = ["기타생활용품","문화예술공연","물류유통","보육","의료","재활용","전문교육","집수리","청소"];
 		 
 		var selectItem = $("#item_dru").val();
 		 
@@ -83,6 +84,9 @@ function itemChange(){
 		}
 		else if(selectItem == "기타"){
 			  changeItem = etc;
+		}
+		else if(selectItem == "사회복지"){
+			  changeItem = bokji;
 		}
 		
 		 

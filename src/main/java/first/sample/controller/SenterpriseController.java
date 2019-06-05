@@ -70,11 +70,21 @@ public class SenterpriseController {
 	    senterpriseService.insertSenterprise(commandMap.getMap(), request);	     
 	    return mv;
 	}
-	@RequestMapping(value="/s_enterprise/openSenter_MoneyWrite.do")
-	public ModelAndView openSenter_MoneyWrite(CommandMap commandMap) throws Exception{
-	    ModelAndView mv = new ModelAndView("/s_enterprise/senter_moneyWrite");
-	     
+	@RequestMapping(value="/s_enterprise/updateSenterprise.do")
+	public ModelAndView updateSenterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/s_enterprise/openSenterpriseDetail.do");	    
+	    senterpriseService.updateSenterprise(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
 	    return mv;
-	}	
-		
+	}
+	@RequestMapping(value="/s_enterprise/addYear_insert.do")
+	public ModelAndView addYear_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/s_enterprise/openSenterpriseDetail.do");	    
+	    senterpriseService.addYear_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	
 }

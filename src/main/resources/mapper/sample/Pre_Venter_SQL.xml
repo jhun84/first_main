@@ -165,6 +165,67 @@
         AND
             DEL_GB = 'N'       
     ]]>
-      </select>           
+      </select>
+      
+      <insert id="addYear_insert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO prev_enterprise_mony
+        (
+            board_seq,
+            years,
+            ja_mony,
+            me_mony,
+            ji_list,
+            ji_mony,            
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${years}",
+             "${ja_mony}",
+             "${me_mony}",
+             "${ji_list}",
+             "${ji_mony}",             
+             NOW())    
+      </insert>
+      
+      <update id="updatePreVenterprise_Mony" parameterType="hashmap">
+      <![CDATA[
+          UPDATE prev_enterprise_mony SET
+              ja_mony = #{ja_mony},
+              me_mony = #{me_mony},
+              ji_list = #{ji_list},
+              ji_mony = #{ji_mony},
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{IDX}
+              AND
+              years = #{years}
+              AND
+              DEL_GB = 'N'  
+      ]]>
+      </update>
+      
+       <update id="updatePreVenterprise" parameterType="hashmap">
+      <![CDATA[
+          UPDATE prev_enterprise SET
+              company_name = #{company_name},
+              area = #{area},
+              n_year = #{n_year},
+              t_year = #{t_year},
+              biz_detail = #{biz_detail},
+              sa_number = #{sa_number},
+              su_date = #{su_date},
+              company_zip = #{company_zip},
+              company_address = #{company_address},
+              ceo_name = #{ceo_name},
+              p_number = #{p_number},
+              c_number = #{c_number},
+              e_mail = #{e_mail},
+              homepage = #{homepage}              
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>           
 
 </mapper>

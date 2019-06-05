@@ -10,7 +10,7 @@
 	         IDX,
 	         gyumo,
              bunya,
-             upjomg,
+             upjong,
              pe_sts,
              sa_type,
              company_name,
@@ -46,7 +46,7 @@
 	         IDX,
 	         gyumo,
              bunya,
-             upjomg,
+             upjong,
              pe_sts,
              sa_type,
              company_name,
@@ -79,7 +79,7 @@
         (
             gyumo,
             bunya,
-            upjomg,
+            upjong,
             pe_sts,
             sa_type,
             company_name,
@@ -103,7 +103,7 @@
         VALUES
             ("${gyumo}",
              "${bunya}",
-             "${upjomg}",
+             "${upjong}",
              "${pe_sts}",
              "${sa_type}",
              "${company_name}",
@@ -151,7 +151,7 @@
              IDX,
              gyumo,
              bunya,
-             upjomg,
+             upjong,
              pe_sts,
              sa_type,
              company_name,
@@ -178,6 +178,41 @@
             DEL_GB = 'N'       
     ]]>
       </select>
+      
+      <select id="selectSenterpriseInfo" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+             IDX,
+             gyumo,
+             bunya,
+             upjong,
+             pe_sts,
+             sa_type,
+             company_name,
+             area,
+             certi_situ,
+             certi_year,
+             certi_type,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM s_enterprise
+        WHERE
+            IDX = #{IDX}
+        AND
+            DEL_GB = 'N'       
+    ]]>
+      </select>
+      
       <select id="selectSenterprise_Mony" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
@@ -195,6 +230,74 @@
         AND
             DEL_GB = 'N'       
     ]]>
-      </select>           
+      </select>
+      
+      <update id="updateSenter_Mony" parameterType="hashmap">
+      <![CDATA[
+          UPDATE s_enterprise_mony SET
+              ja_mony = #{ja_mony},
+              me_mony = #{me_mony},
+              ji_list = #{ji_list},
+              ji_mony = #{ji_mony},
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{IDX}
+              AND
+              years = #{years}
+              AND
+              DEL_GB = 'N'  
+      ]]>
+      </update>
+      
+       <update id="updateSenterprise" parameterType="hashmap">
+      <![CDATA[
+          UPDATE s_enterprise SET
+              gyumo = #{gyumo},
+              bunya = #{bunya},
+              upjong = #{upjong},
+              pe_sts = #{pe_sts},
+              sa_type = #{sa_type},
+              company_name = #{company_name},
+              area = #{area},
+              certi_situ = #{certi_situ},
+              certi_year = #{certi_year},
+              certi_type = #{certi_type},
+              biz_detail = #{biz_detail},
+              sa_number = #{sa_number},
+              su_date = #{su_date},
+              company_zip = #{company_zip},
+              company_address = #{company_address},
+              ceo_name = #{ceo_name},
+              p_number = #{p_number},
+              c_number = #{c_number},
+              e_mail = #{e_mail},
+              homepage = #{homepage},
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>
+      
+      <insert id="addYear_insert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO s_enterprise_mony
+        (
+            board_seq,
+            years,
+            ja_mony,
+            me_mony,
+            ji_list,
+            ji_mony,            
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${years}",
+             "${ja_mony}",
+             "${me_mony}",
+             "${ji_list}",
+             "${ji_mony}",             
+             NOW())    
+      </insert>           
 
 </mapper>

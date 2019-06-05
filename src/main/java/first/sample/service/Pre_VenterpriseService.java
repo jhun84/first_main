@@ -15,5 +15,7 @@ public interface Pre_VenterpriseService {
 	void insertPreVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectPreVenterpriseDetail(Map<String, Object> map) throws Exception;
+	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void updatePre_Venterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
 }

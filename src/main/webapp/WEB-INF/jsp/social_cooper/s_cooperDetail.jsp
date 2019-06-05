@@ -54,7 +54,7 @@
                         원주    
                         </c:when>
                         <c:when test="${map.area eq 'CA08'}">
-                        영원    
+                        영월    
                         </c:when>
                         <c:when test="${map.area eq 'CA09'}">
                         삼척    

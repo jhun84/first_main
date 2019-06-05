@@ -53,7 +53,7 @@
                         원주    
                         </c:when>
                         <c:when test="${map.area eq 'CA08'}">
-                        영원    
+                        영월    
                         </c:when>
                         <c:when test="${map.area eq 'CA09'}">
                         삼척    
@@ -92,7 +92,7 @@
                 </td>
             </tr>
             <tr>
-                <th scope="row">압종</th>
+                <th scope="row">업종</th>
                 <td>
                 <c:choose>
                       <c:when test="${map.upjong eq 'UP01'}">

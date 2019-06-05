@@ -28,7 +28,16 @@ public class Pre_VenterDAO extends AbstractDAO{
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectPreVenterprise_Mony(Map<String, Object> map) throws Exception{
 	    return (List<Map<String, Object>>) selectList("prev_enter.selectPreVenterprise_Mony", map);
-	}	
+	}
+	public void updatePreVenterprise(Map<String, Object> map) throws Exception{
+	    update("prev_enter.updatePreVenterprise", map);
+	}
+	public void updatePreVenterprise_Mony(Map<String, String> years_list) throws Exception{
+	    update("prev_enter.updatePreVenterprise_Mony", years_list);
+	}
+	public void addYear_insert(Map<String, String> years_list) throws Exception{
+	    update("prev_enter.addYear_insert", years_list);
+	}
 	public void insertFile(Map<String, Object> map) throws Exception{
 	    insert("pre_certi.insertFile", map);
 	}

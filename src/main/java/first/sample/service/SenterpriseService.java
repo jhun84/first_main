@@ -15,5 +15,6 @@ public interface SenterpriseService {
 	void insertSenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectSenterpriseDetail(Map<String, Object> map) throws Exception;
-	
+	void updateSenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 }

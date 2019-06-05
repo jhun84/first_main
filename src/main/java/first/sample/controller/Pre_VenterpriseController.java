@@ -69,6 +69,22 @@ public class Pre_VenterpriseController {
 	    
 	    pre_venterpriseService.insertPreVenterprise(commandMap.getMap(), request);	     
 	    return mv;
-	}	
+	}
+	@RequestMapping(value="/prev_enterprise/addYear_insert.do")
+	public ModelAndView addYear_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/prev_enterprise/openPreVenterpriseDetail.do");	    
+	    pre_venterpriseService.addYear_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/prev_enterprise/updatePre_Venterprise.do")
+	public ModelAndView updateSenterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/prev_enterprise/openPreVenterpriseDetail.do");	    
+	    pre_venterpriseService.updatePre_Venterprise(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
 		
 }

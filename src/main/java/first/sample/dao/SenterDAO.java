@@ -21,9 +21,22 @@ public class SenterDAO extends AbstractDAO{
 	public void insertSenterprise(Map<String, Object> map) throws Exception{
 	    insert("s_enter.insertSenterprise", map);
 	}
+	public void updateSenterprise(Map<String, Object> map) throws Exception{
+	    update("s_enter.updateSenterprise", map);
+	}
+	public void updateSenter_Mony(Map<String, String> years_list) throws Exception{
+	    update("s_enter.updateSenter_Mony", years_list);
+	}
+	public void addYear_insert(Map<String, String> years_list) throws Exception{
+	    update("s_enter.addYear_insert", years_list);
+	}
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectSenterpriseDetail(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>) selectOne("s_enter.selectSenterpriseDetail", map);
+	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectSenterpriseInfo(Map<String, Object> map) throws Exception{
+	    return (Map<String, Object>) selectOne("s_enter.selectSenterpriseInfo", map);
 	}
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectSenterprise_Mony(Map<String, Object> map) throws Exception{

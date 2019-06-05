@@ -113,6 +113,56 @@ public class VenterpriseServiceImpl implements VenterpriseService{
 		printWriter.flush();
 	    
 	}
+	@Override
+    public void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		
+		for(int i=0; i<10; i++){
+			Map<String, String> years_list = new HashMap<String, String>();
+			String boardSeq_no = String.valueOf(map.get("IDX"));
+			System.out.println("addyear idx = "+boardSeq_no);
+			String year_i = String.valueOf(map.get("year_"+i));
+		    String ja_mony_i = String.valueOf(map.get("ja_mony_"+i));
+		    String me_mony_i = String.valueOf(map.get("me_mony_"+i));
+		    String ji_list_i = String.valueOf(map.get("ji_list_"+i));
+		    String ji_mony_i = String.valueOf(map.get("ji_mony_"+i));
+		    
+		    if(!year_i.equals("null")){	
+		    	years_list.put("idx", boardSeq_no);
+			    years_list.put("years", year_i);
+			    years_list.put("ja_mony", ja_mony_i);
+			    years_list.put("me_mony", me_mony_i);
+			    years_list.put("ji_list", ji_list_i);
+			    years_list.put("ji_mony", ji_mony_i);
+			    
+			    venterDAO.addYear_insert(years_list);
+			}  
+		}	
+    }
+	@Override
+    public void updateVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		venterDAO.updateVenterprise(map);
+		
+		for(int i=0; i<10; i++){
+			Map<String, String> years_list = new HashMap<String, String>();
+			String boardSeq_no = String.valueOf(map.get("IDX_"+i));
+			String year_i = String.valueOf(map.get("year_"+i));
+		    String ja_mony_i = String.valueOf(map.get("ja_mony_"+i));
+		    String me_mony_i = String.valueOf(map.get("me_mony_"+i));
+		    String ji_list_i = String.valueOf(map.get("ji_list_"+i));
+		    String ji_mony_i = String.valueOf(map.get("ji_mony_"+i));
+		    
+		    if(!year_i.equals("null")){	
+		    	years_list.put("IDX", boardSeq_no);
+			    years_list.put("years", year_i);
+			    years_list.put("ja_mony", ja_mony_i);
+			    years_list.put("me_mony", me_mony_i);
+			    years_list.put("ji_list", ji_list_i);
+			    years_list.put("ji_mony", ji_mony_i);
+			    
+			    venterDAO.updateVenterprise_Mony(years_list);
+			}  
+		}	
+    }
 	
 	
 }

@@ -6,18 +6,23 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
- 
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
  
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import first.sample.dao.SenterDAO;
  
 @Component("fileUtils")
 public class FileUtils {
     //private static final String filePath = "/home/hosting_users/hunchori/tomcat/webapps/ROOT/upload/";
     //private static final String filePath = "/Users/hoonyhun/Documents/Upload/";
 	private static final String filePath = "C:\\Users\\JeongHun\\Documents\\Upload";
+	@Resource(name="senterDAO")
+	private SenterDAO senterDAO;
      
     public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
@@ -77,9 +82,6 @@ public class FileUtils {
          
         //String boardIdx = (String)map.get("IDX");
         String boardIdx = String.valueOf(map.get("IDX"));
-        String subject = String.valueOf(map.get("SUBJECT"));
-        System.out.println("Called parse Update !!!" + boardIdx);
-        System.out.println("File Subject !!!" + subject);
         String requestName = null;
         String idx = null;
          
@@ -114,6 +116,25 @@ public class FileUtils {
                 }
             }
         }
+        return list;
+    }
+    
+    public List<Map<String, Object>> parseUpdateInfo(Map<String, Object> map, HttpServletRequest request) throws Exception{
+        Map<String, Object> FileInfo = null;
+         
+        List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        Map<String, Object> listMap = null;
+        String boardIdx = String.valueOf(map.get("IDX"));
+        String requestName = null;
+        String idx = null;
+                 
+        	if(map.containsKey("IDX") == true){
+        		System.out.println("containskey is true!!");
+        	}else{
+        		System.out.println("containsKey is false!!");
+        	}
+        	
+         
         return list;
     }
 

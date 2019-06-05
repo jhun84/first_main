@@ -3,37 +3,39 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
+<script type='text/javascript'>
+function goPopup(){
+var pop = window.open("/first/Popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+}
+function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn , detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
+// 2017년 2월 제공항목이 추가되었습니다. 원하시는 항목을 추가하여 사용하시면 됩니다.
+document.frm.roadFullAddr.value = roadFullAddr; 
+//document.frm.roadAddrPart1.value = roadAddrPart1; 
+//document.frm.roadAddrPart2.value = roadAddrPart2; 
+//document.frm.addrDetail.value = addrDetail; 
+document.frm.zipNo.value = zipNo;
+}
+</script>
 </head>
 <body>
+
 	<form id="frm" name="frm" enctype="multipart/form-data">
 	<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
+	<h1>기업정보</h1>
 		<table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
             <colgroup>
-                <col width="15%">
-                <col width="30%"/>
-                <col width="15%">
-                <col width="*"/>
-            </colgroup>
-            <caption>cooperative write page</caption>
+                <col width="10%">
+                <col width="20%"/>
+                <col width="10%">
+                <col width="20%"/>
+                <col width="10%">
+                <col width="20%"/>
+            </colgroup>      
             <tbody>
                 <tr>
-                    <th>협동조합명</th>
-                    <td><input type="text" id="cooperative_name" name="cooperative_name" value="${map.cooperative_name}"></td>
-                    <th>주요사업내용</th>
-                    <td><input type="text" id="biz_detail" name="biz_detail" value="${map.biz_detail}"></td>
-                </tr>
-                <tr>
-                    <th>설립동의자수</th>
-                    <td><input type="text" id="s_agree" name="s_agree" value="${map.s_agree}"></td>
-                    <th>출자금(천원)</th>
-                    <td><input type="text" id="ch_money" name="ch_money" value="${map.ch_money}"></td>
-                </tr>
-                <tr>
-                    <th>수리(인가)일</th>
-                    <td><input type="text" id="su_date" name="su_date" value="${map.su_date}"></td>
-                    <th>지역</th>
+                    <th scope="row">지역</th>
                     <td>
-                    <select id="area" name="area">
+                     <select id="area" name="area">
 	                 <option value="CA01" <c:if test="${map.area eq 'CA01'}">selected</c:if>>강릉</option>
                      <option value="CA02" <c:if test="${map.area eq 'CA02'}">selected</c:if>>태백</option>
                      <option value="CA03" <c:if test="${map.area eq 'CA03'}">selected</c:if>>춘천</option>
@@ -54,95 +56,132 @@
                      <option value="CA18" <c:if test="${map.area eq 'CA18'}">selected</c:if>>속초</option>
 	                </select>
                     </td>
-                </tr>
-                <tr>
-                    <th>업종</th>
+                    <th>신규지정연도</th>
                     <td>
-                    <select id="upjong" name="upjong">
-	                 <option value="UP01" <c:if test="${map.upjong eq 'UP01'}">selected</c:if>>농업,어업 및 임업</option>                                
-                     <option value="UP02" <c:if test="${map.upjong eq 'UP02'}">selected</c:if>>광업</option>                                        
-                     <option value="UP03" <c:if test="${map.upjong eq 'UP03'}">selected</c:if>>제조업</option>                                       
-                     <option value="UP04" <c:if test="${map.upjong eq 'UP04'}">selected</c:if>>전기,가스,증기 및 수도사업</option>                           
-                     <option value="UP05" <c:if test="${map.upjong eq 'UP05'}">selected</c:if>>하수,폐기물 처리,원료재생 및 환경 복원업</option>                   
-                     <option value="UP06" <c:if test="${map.upjong eq 'UP06'}">selected</c:if>>건설업</option>                                       
-                     <option value="UP07" <c:if test="${map.upjong eq 'UP07'}">selected</c:if>>도매 및 소매업</option>                                  
-                     <option value="UP08" <c:if test="${map.upjong eq 'UP08'}">selected</c:if>>운수업</option>                                       
-                     <option value="UP09" <c:if test="${map.upjong eq 'UP09'}">selected</c:if>>숙박 및 음식점업</option>                                 
-                     <option value="UP10" <c:if test="${map.upjong eq 'UP10'}">selected</c:if>>출판,영상,방송통신 및 정보서비스업</option>                       
-                     <option value="UP11" <c:if test="${map.upjong eq 'UP11'}">selected</c:if>>금융 및 보험업</option>                                   
-                     <option value="UP12" <c:if test="${map.upjong eq 'UP12'}">selected</c:if>>부동산업 및 임대업</option>                                 
-                     <option value="UP13" <c:if test="${map.upjong eq 'UP13'}">selected</c:if>>전문,과학 및 기술 서비스업</option>                           
-                     <option value="UP14" <c:if test="${map.upjong eq 'UP14'}">selected</c:if>>사업시설관리 및 사업지원 서비스업</option>                        
-                     <option value="UP15" <c:if test="${map.upjong eq 'UP15'}">selected</c:if>>공공행정,국방 및 사회보장 행정</option>                         
-                     <option value="UP16" <c:if test="${map.upjong eq 'UP16'}">selected</c:if>>교육 서비스업</option>                                   
-                     <option value="UP17" <c:if test="${map.upjong eq 'UP17'}">selected</c:if>>보건업 및 사회복지서비스업</option>                            		   
-                     <option value="UP18" <c:if test="${map.upjong eq 'UP18'}">selected</c:if>>예술,스포츠 및 여가관련 서비스업</option>                        
-                     <option value="UP19" <c:if test="${map.upjong eq 'UP19'}">selected</c:if>>협회 및 단체,수리 및 기타 개인 서비스업</option>                   
-                     <option value="UP20" <c:if test="${map.upjong eq 'UP20'}">selected</c:if>>가구내 고용활동 및 달리 분류되지 않은 자가소비 생산활동</option>           		   
-                     <option value="UP21" <c:if test="${map.upjong eq 'UP21'}">selected</c:if>>국제 및 외국기관</option>                                 
-	                </select>
+                    <select name="n_year">
+                      <option value="">선택</option>
+	                	<option value="2010" <c:if test="${map.n_year eq '2010'}">selected</c:if>>2010</option>
+	                	<option value="2011" <c:if test="${map.n_year eq '2011'}">selected</c:if>>2011</option>
+	                	<option value="2012" <c:if test="${map.n_year eq '2012'}">selected</c:if>>2012</option>
+	                	<option value="2013" <c:if test="${map.n_year eq '2013'}">selected</c:if>>2013</option>
+	                	<option value="2014" <c:if test="${map.n_year eq '2014'}">selected</c:if>>2014</option>
+	                	<option value="2015" <c:if test="${map.n_year eq '2015'}">selected</c:if>>2015</option>
+	                	<option value="2016" <c:if test="${map.n_year eq '2016'}">selected</c:if>>2016</option>
+	                	<option value="2017" <c:if test="${map.n_year eq '2017'}">selected</c:if>>2017</option>
+	                	<option value="2018" <c:if test="${map.n_year eq '2018'}">selected</c:if>>2018</option>
+	                	<option value="2019" <c:if test="${map.n_year eq '2019'}">selected</c:if>>2019</option>
+	                	<option value="2020" <c:if test="${map.n_year eq '2020'}">selected</c:if>>2020</option> 
+	                	<option value="2021" <c:if test="${map.n_year eq '2021'}">selected</c:if>>2021</option> 	                	
+                     </select>
                     </td>
-                    <th>주사업유형</th>
+                    <th>2차지정연도</th>
                     <td>
-                    <select id="c_type" name="c_type">
-	                 <option value="HP01" <c:if test="${map.area eq 'HP01'}">selected</c:if>>생산자</option>			
-                     <option value="HP02" <c:if test="${map.area eq 'HP02'}">selected</c:if>>소비자</option>			
-                     <option value="HP03" <c:if test="${map.area eq 'HP03'}">selected</c:if>>직원</option>       
-                     <option value="HP04" <c:if test="${map.area eq 'HP04'}">selected</c:if>>다중이해관계자</option>  
-                     <option value="HP05" <c:if test="${map.area eq 'HP05'}">selected</c:if>>사업자</option>      
-	                </select>
+                    <select name="t_year">
+                      <option value="">선택</option>
+	                	<option value="2010" <c:if test="${map.t_year eq '2010'}">selected</c:if>>2010</option>
+	                	<option value="2011" <c:if test="${map.t_year eq '2011'}">selected</c:if>>2011</option>
+	                	<option value="2012" <c:if test="${map.t_year eq '2012'}">selected</c:if>>2012</option>
+	                	<option value="2013" <c:if test="${map.t_year eq '2013'}">selected</c:if>>2013</option>
+	                	<option value="2014" <c:if test="${map.t_year eq '2014'}">selected</c:if>>2014</option>
+	                	<option value="2015" <c:if test="${map.t_year eq '2015'}">selected</c:if>>2015</option>
+	                	<option value="2016" <c:if test="${map.t_year eq '2016'}">selected</c:if>>2016</option>
+	                	<option value="2017" <c:if test="${map.t_year eq '2017'}">selected</c:if>>2017</option>
+	                	<option value="2018" <c:if test="${map.t_year eq '2018'}">selected</c:if>>2018</option>
+	                	<option value="2019" <c:if test="${map.t_year eq '2019'}">selected</c:if>>2019</option>
+	                	<option value="2020" <c:if test="${map.t_year eq '2020'}">selected</c:if>>2020</option> 
+	                	<option value="2021" <c:if test="${map.t_year eq '2021'}">selected</c:if>>2021</option> 	                	
+                     </select>
                     </td>
                 </tr>
                 <tr>
-                    <th>우편번호</th>
-                    <td><input type="text" id="zipNo" name="zipNo" value="${map.zip_num}"></td>
-                    <th>주소</th>
-                    <td><input type="text" id="roadFullAddr" name="roadFullAddr" value="${map.cooperative_addr}" size="70"></td>
+                    <th>기업명</th>
+                    <td><input type="text" id="company_name" name="company_name" value="${map.company_name}"></td>
+                    <th>주요사업내용</th>
+                    <td><input type="text" id="biz_detail" name="biz_detail" value="${map.biz_detail}" size="70"></td>
+                    <th>사업자번호</th>
+                    <td><input type="text" id="sa_number" name="sa_number" value="${map.sa_number}"></td>
+                </tr>
+                <tr>
+                    <th>설립일</th>
+                    <td>
+                    <div class="input-group date" style="width:200px">
+                    <input type="text" id="su_date" name="su_date" class="form-control" value="${map.su_date}">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                    </td>
+                    <th scope="row">우편번호&nbsp;&nbsp;<input type="button" onClick="goPopup();" value="주소검색"></th>
+                    <td><input type="text" id="zipNo" name="company_zip" value="${map.company_zip}"></td>
+                    <th scope="row">주소</th>
+                    <td><input type="text" id="roadFullAddr" name="company_address" value="${map.company_address}" size="70"></td>
                 </tr>
                 <tr>
                     <th>대표자</th>
                     <td><input type="text" id="ceo_name" name="ceo_name" value="${map.ceo_name}"></td>
                     <th>휴대전화번호</th>
                     <td><input type="text" id="p_number" name="p_number" value="${map.p_number}"></td>
-                </tr>
-                <tr>
                     <th>일반전화번호</th>
                     <td><input type="text" id="c_number" name="c_number" value="${map.c_number}"></td>
-                    <th>이메일</th>
-                    <td><input type="text" id="e_mail" name="e_mail" value="${map.e_mail}"></td>
                 </tr>
                 <tr>
+                    <th>이메일</th>
+                    <td><input type="text" id="e_mail" name="e_mail" value="${map.e_mail}"></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="${map.homepage}" size="50"></td>
                     <th></th>
                     <td></td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="view_text">
-                        <textarea rows="20" cols="100" title="내용" id="contents" name="contents">${map.CONTENTS }</textarea>
-                    </td>
-                </tr>
-                
-            </tbody>
+                </tr>               
         </table>
-		<script type="text/javascript">
-
-	       // Replace the <textarea id="editor1"> with a CKEditor
-           
-	       // instance, using default configuration.
-           
-	       CKEDITOR.replace( 'contents', {
-           
-	       filebrowserUploadUrl: '${pageContext.request.contextPath}/product/ckeditorImageUpload.do'	
-           
-	       });
-
-        </script>
+		<h1>재무정보</h1>
+<c:choose>
+	<c:when test="${fn:length(list) > 0}">
+	<c:forEach var="row" items="${list }" varStatus="var">
+    <input type="hidden" id="IDX" name="IDX_${var.index }" value="${row.IDX }">
+    <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
+     <tr>
+     <th>연도</th>
+     <td>
+     <select name="year_${var.index }">
+      <option value="">선택</option>     
+      <option value="2010" <c:if test="${row.years eq '2010'}">selected</c:if>>2010</option>
+      <option value="2011" <c:if test="${row.years eq '2011'}">selected</c:if>>2011</option>
+      <option value="2012" <c:if test="${row.years eq '2012'}">selected</c:if>>2012</option>
+      <option value="2013" <c:if test="${row.years eq '2013'}">selected</c:if>>2013</option>
+      <option value="2014" <c:if test="${row.years eq '2014'}">selected</c:if>>2014</option>
+      <option value="2015" <c:if test="${row.years eq '2015'}">selected</c:if>>2015</option>
+      <option value="2016" <c:if test="${row.years eq '2016'}">selected</c:if>>2016</option>
+      <option value="2017" <c:if test="${row.years eq '2017'}">selected</c:if>>2017</option>
+      <option value="2018" <c:if test="${row.years eq '2018'}">selected</c:if>>2018</option>
+      <option value="2019" <c:if test="${row.years eq '2019'}">selected</c:if>>2019</option>
+      <option value="2020" <c:if test="${row.years eq '2020'}">selected</c:if>>2020</option>
+      <option value="2021" <c:if test="${row.years eq '2021'}">selected</c:if>>2021</option>
+      <option value="2022" <c:if test="${row.years eq '2022'}">selected</c:if>>2022</option>      
+     </select>
+     </td>
+     <th>자본금</th>
+     <td><input type="text" id="" name="ja_mony_${var.index }" value="${row.ja_mony }"></td>
+     <th>매출액</th>
+     <td><input type="text" id="" name="me_mony_${var.index }" value="${row.me_mony }"></td>
+    </tr>
+    <tr>
+     <th>지원항목</th>
+     <td><input type="text" id="" name="ji_list_${var.index }" value="${row.ji_list }"></td>
+     <th>지원금액</th>
+     <td><input type="text" id="" name="ji_mony_${var.index }" value="${row.ji_mony }"></td>
+     <th></th>
+     <td></td>
+    </tr>               
+   </table>   	
+</c:forEach>
+    </c:when>
+	</c:choose>
+	<div id="Yeardiv" style="padding-top:10px;">
+ <div id="money_info">		
+ </div>
+</div>
 	</form>
 	
 	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">저장하기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
+	<a href="#this" class="btn" id="update">저장하기</a>	
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
@@ -167,7 +206,7 @@
                 fn_addFile();
             });
              
-            $("a[name^='delete']").on("click", function(e){ //삭제 버튼
+            $("a[name='delete']").on("click", function(e){ //삭제 버튼
                 e.preventDefault();
                 fn_deleteFile($(this));
             });
@@ -176,13 +215,13 @@
 		
 		function fn_openCooperList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/cooper/openCooperList.do' />");
+			comSubmit.setUrl("<c:url value='/prev_enterprise/openPreVenterpriseList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_updateCooper(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/cooper/updateCooper.do' />");
+			comSubmit.setUrl("<c:url value='/prev_enterprise/updatePre_Venterprise.do' />");
 			comSubmit.submit();
 		}
 		

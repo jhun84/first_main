@@ -75,6 +75,22 @@ public class VenterpriseController {
 	    ModelAndView mv = new ModelAndView("/v_enterprise/venter_moneyWrite");
 	     
 	    return mv;
-	}	
+	}
+	@RequestMapping(value="/v_enterprise/addYear_insert.do")
+	public ModelAndView addYear_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/v_enterprise/openVenterpriseDetail.do");	    
+	    venterpriseService.addYear_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/v_enterprise/updateVenterprise.do")
+	public ModelAndView updateSenterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/v_enterprise/openVenterpriseDetail.do");	    
+	    venterpriseService.updateVenterprise(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
 		
 }
