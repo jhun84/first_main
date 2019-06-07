@@ -55,6 +55,24 @@ public class Pre_CertiDAO extends AbstractDAO{
 	public void insertPre_VulInfo(Map<String, String> map) throws Exception{
 	    insert("pre_certi.insertPre_VulInfo", map);
 	}
+	public void addYear_insert(Map<String, String> map) throws Exception{
+	    insert("pre_certi.addYear_insert", map);
+	}
+	public void addPeople_insert(Map<String, String> map) throws Exception{
+	    insert("pre_certi.addPeople_insert", map);
+	}
+	public void updatePreCerti(Map<String, Object> map) throws Exception{
+	    update("pre_certi.updatePreCerti", map);
+	}
+	public void updatePreCerti_Mony(Map<String, String> map) throws Exception{
+	    update("pre_certi.updatePreCerti_Mony", map);
+	}
+	public void updatePreCerti_People(Map<String, String> map) throws Exception{
+	    update("pre_certi.updatePreCerti_People", map);
+	}
+	public void updatePreCerti_VulInfo(Map<String, String> map) throws Exception{
+	    update("pre_certi.updatePreCerti_VulInfo", map);
+	}
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception{
 	    return (List<Map<String, Object>>)selectList("product.selectFileList", map);

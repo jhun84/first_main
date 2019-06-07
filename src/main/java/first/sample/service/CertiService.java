@@ -24,5 +24,7 @@ public interface CertiService {
 	void updatePeople(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectCertiDetail(Map<String, Object> map) throws Exception;
-	
+	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void addPeople_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void updateCerti(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 }

@@ -411,5 +411,169 @@
                  IDX = #{IDX}
          ]]>
      </update>
+     
+     <insert id="addYear_insert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_Mony
+        (
+            board_seq,
+            years,
+            total_sales,
+            oper_profit,
+            income_term,
+            total_labor,            
+            total_devel_sales,
+            basic_consalting,
+            pro_consalting,
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${years}",
+             "${total_sales}",
+             "${oper_profit}",
+             "${income_term}",
+             "${total_labor}",
+             "${total_devel_sales}",
+             "${basic_consalting}",
+             "${pro_consalting}",             
+             NOW())    
+      </insert>
+      <insert id="addPeople_insert" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Certified_People
+        (
+            board_seq,
+            people_years,
+            social_people,
+            prof_people,
+            salary_people,
+            vul_people,                        
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${people_years}",
+             "${social_people}",
+             "${prof_people}",
+             "${salary_people}",
+             "${vul_people}",                        
+             NOW())    
+      </insert>
+      
+      <update id="updateCerti_Mony" parameterType="hashmap">
+      <![CDATA[
+          UPDATE Certified_Mony SET
+              years = #{years},
+              total_sales = #{total_sales},
+              oper_profit = #{oper_profit},
+              income_term = #{income_term},
+              total_labor = #{total_labor},
+              total_devel_sales = #{total_devel_sales},
+              basic_consalting = #{basic_consalting},
+              pro_consalting = #{pro_consalting}
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{IDX}
+              AND
+              years = #{years}
+              AND
+              DEL_GB = 'N'  
+      ]]>
+      </update>
+      
+      <update id="updateCerti_People" parameterType="hashmap">
+      <![CDATA[
+          UPDATE Certified_People SET
+              people_years = #{people_years},
+              social_people = #{social_people},
+              prof_people = #{prof_people},
+              salary_people = #{salary_people},
+              vul_people = #{vul_people},
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{IDX}
+              AND
+              people_years = #{people_years}
+              AND
+              DEL_GB = 'N'  
+      ]]>
+      </update>
+      
+      <update id="updateCerti_VulInfo" parameterType="hashmap">
+      <![CDATA[
+          UPDATE Certified_VulInfo SET
+              jsd = #{jsd},
+              krj = #{krj},
+              jai = #{jai},
+              spj = #{spj},
+              ckd = #{ckd},
+              bej = #{bej},
+              kpp = #{kpp},
+              hwb = #{hwb},
+              kej = #{kej},
+              kbd = #{kbd},
+              jsj = #{jsj},
+              bkp = #{bkp},
+              cka = #{cka},
+              ska = #{ska},
+              nsj = #{nsj},
+              yad = #{yad},
+              ykj = #{ykj},
+              jsk = #{jsk},
+              oik = #{oik},
+              jsy = #{jsy},
+              hpp = #{hpp},
+              hbc = #{hbc},
+              DEL_GB = 'N'
+          WHERE
+              board_seq = #{board_seq}
+              AND
+              DEL_GB = 'N'  
+      ]]>
+      </update>
+      
+       <update id="updateCerti" parameterType="hashmap">
+      <![CDATA[
+          UPDATE Certified_Company SET
+              company_name = #{company_name},
+              company_address = #{company_address},
+              company_zip = #{company_zip},
+              cc_area = #{cc_area},
+              ca_area = #{ca_area},
+              cert_num = #{cert_num},
+              spt = #{spt},
+              ji_date = #{ji_date},
+              m_cert = #{m_cert},
+              company_type = #{company_type},
+              se_area_type = #{se_area_type},
+              se_bu_type = #{se_bu_type},
+              jojik_type = #{jojik_type},
+              es_date = #{es_date},
+              bm_number = #{bm_number},
+              company_bnum = #{company_bnum},
+              company_jnum = #{company_jnum},
+              uniq_num = #{uniq_num},
+              cr_num = #{cr_num},
+              sud_nm = #{sud_nm},
+              sud_num = #{sud_num},
+              biz_detail = #{biz_detail},
+              item_gubun = #{item_gubun},
+              item_dru = #{item_dru},
+              item_jru = #{item_jru},
+              industry_bunryu = #{industry_bunryu},
+              ceo_nm = #{ceo_nm},
+              ceo_birth = #{ceo_birth},
+              pic = #{pic},
+              c_pos = #{c_pos},
+              hp_number = #{hp_number},
+              areap_number = #{areap_number},
+              fax_number = #{fax_number},
+              email = #{email},
+              homepage = #{homepage}              
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>
 
 </mapper>

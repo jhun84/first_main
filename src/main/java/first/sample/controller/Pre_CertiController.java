@@ -86,6 +86,30 @@ public class Pre_CertiController {
 	     
 	    return mv;
 	}
+	@RequestMapping(value="/pre_certi/addYear_insert.do")
+	public ModelAndView addYear_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/pre_certi/openPre_CertiDetail.do");	    
+	    pre_certiService.addYear_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/pre_certi/addPeople_insert.do")
+	public ModelAndView addPeople_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/pre_certi/openPre_CertiDetail.do");	    
+	    pre_certiService.addPeople_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/pre_certi/updatePreCerti.do")
+	public ModelAndView updatePreCerti(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/pre_certi/openPre_CertiDetail.do");	    
+	    pre_certiService.updatePreCerti(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
 	
 		
 }

@@ -107,7 +107,8 @@
     <td></td>
   </tr>
   </table>
-  
+  <form id="frm" name="frm" enctype="multipart/form-data">
+   <input type="hidden" id="IDX" name="IDX" value="${map.IDX }">  
   <h1>재무정보</h1>
   <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
   <c:choose>
@@ -130,7 +131,10 @@
 			</c:otherwise>
 			</c:choose>
 </table>
-
+<div id="Yeardiv" style="padding-top:10px;padding-left:10px;">
+ <div id="money_info">
+ </div>
+</div>
 <h1>인원정보</h1>
   <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
   <c:choose>
@@ -152,7 +156,11 @@
 			</c:otherwise>
 			</c:choose>
 </table>
-
+<div id="Peoplediv" style="padding-top:10px;padding-left:10px;">
+ <div id="people_info">
+ </div>
+</div>
+</form>
 <h1>취약계층정보</h1>
   <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
   <c:choose>
@@ -228,10 +236,28 @@
 </table>
      
     <a href="#this" class="btn" id="list">목록으로</a>
-    <!-- <a href="#this" class="btn" id="update">수정하기</a> -->
+    <a href="#this" class="btn" id="addyear" >재무정보연도추가하기</a>
+    <a href="#this" class="btn" id="addpeople" >인원정보연도추가하기</a>
+    <a href="#this" class="btn" id="add_insert" >추가완료</a>
+    <a href="#this" class="btn" id="update">수정하기</a>
     
     <%@ include file="/WEB-INF/include/include-body.jsp" %>
     <script type="text/javascript">
+    var gfv_count = 1;
+    var year_count = 1;
+    var total_sales_count = 1;
+    var oper_profit_count = 1;
+    var income_term_count = 1;
+    var total_labor_count = 1;
+    var total_devel_sales_count = 1;
+    var basic_consalting_count = 1;
+    var pro_consalting_count = 1;
+    
+    var people_years_count = 1;
+    var social_people_count = 1;
+    var prof_people_count = 1;
+    var salary_people_count = 1;
+    var vul_people_count = 1;
         $(document).ready(function(){
             $("#list").on("click", function(e){ //목록으로 버튼
                 e.preventDefault();
@@ -246,6 +272,18 @@
                 e.preventDefault();
                 fn_downloadFile($(this));
             })
+            $("#addyear").on("click", function(e){ //재무정보 연도 추가 버튼
+                e.preventDefault();
+                fn_addYear();
+            });
+			$("#addpeople").on("click", function(e){ //인원정보 연도 추가 버튼
+                e.preventDefault();
+                fn_addPeople();
+            });
+			$("#add_insert").on("click", function(e){ //재무정보 연도 추가완료
+                e.preventDefault();
+                fn_add_insert();
+            });
                        
         });
          
@@ -270,6 +308,106 @@
             comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }
+        function fn_addYear(){
+            var str = "";
+            str += "<div>";
+            str += "<table width='100%' class='board_view' cellpadding='0' cellspacing='0'>";
+            str += "<tr>";
+            str += "<th>연도</th>";
+            str += "<td><select name='year_"+(year_count++)+"'>";
+            str += "<option value=''>선택</option>";
+            str += "<option value='2010'>2010</option>";
+            str += "<option value='2011'>2011</option>";
+            str += "<option value='2012'>2012</option>";
+            str += "<option value='2013'>2013</option>";
+            str += "<option value='2014'>2014</option>";
+            str += "<option value='2015'>2015</option>";
+            str += "<option value='2016'>2016</option>";
+            str += "<option value='2017'>2017</option>";
+            str += "<option value='2018'>2018</option>";
+            str += "<option value='2019'>2019</option>";
+            str += "<option value='2020'>2020</option>";
+            str += "<option value='2021'>2021</option>";
+            str += "<option value='2022'>2022</option>";
+            str += "</select>";
+            str += "</td>";
+            str += "<th>매출액</th>";
+            str += "<td><input type='text' name='total_sales_"+(total_sales_count++)+"'></td>";
+            str += "<th>영업이익</th>";
+            str += "<td><input type='text' name='oper_profit_"+(oper_profit_count++)+"'></td>";
+            str += "</tr><tr>";
+            str += "<th>당기순이익</th>";
+            str += "<td><input type='text' name='income_term_"+(income_term_count++)+"'></td>";
+            str += "<th>총노무비</th>";
+            str += "<td><input type='text' name='total_labor_"+(total_labor_count++)+"'></td>";
+            str += "<th>사업개발비</th>";
+            str += "<td><input type='text' name='total_devel_sales_"+(total_devel_sales_count++)+"'></td>";
+            str += "</tr><tr>";
+            str += "<th>기초컨설팅</th>";
+            str += "<td><input type='text' name='basic_consalting_"+(basic_consalting_count++)+"'></td>";
+            str += "<th>전문컨설팅</th>";
+            str += "<td><input type='text' name='pro_consalting_"+(pro_consalting_count++)+"'></td>";
+            str += "<th></th><td></td>";
+            str += "</tr></table><a href='#this' class='btn' name='delete'>삭제</a>";
+            str += "</div>";
+            
+            $("#Yeardiv").append(str);
+            $("a[name='delete']").on("click", function(e){ //삭제 버튼
+                e.preventDefault();
+                fn_deleteFile($(this));
+            });
+        }
+		function fn_addPeople(){
+            var str = "";
+            str += "<div>";
+            str += "<table width='100%' class='board_view' cellpadding='0' cellspacing='0'>";
+            str += "<tr>";
+            str += "<th>연도</th>";
+            str += "<td><select name='people_years_"+(people_years_count++)+"'>";
+            str += "<option value=''>선택</option>";
+            str += "<option value='2010'>2010</option>";
+            str += "<option value='2011'>2011</option>";
+            str += "<option value='2012'>2012</option>";
+            str += "<option value='2013'>2013</option>";
+            str += "<option value='2014'>2014</option>";
+            str += "<option value='2015'>2015</option>";
+            str += "<option value='2016'>2016</option>";
+            str += "<option value='2017'>2017</option>";
+            str += "<option value='2018'>2018</option>";
+            str += "<option value='2019'>2019</option>";
+            str += "<option value='2020'>2020</option>";
+            str += "<option value='2021'>2021</option>";
+            str += "<option value='2022'>2022</option>";
+            str += "</select>";
+            str += "</td>";
+            str += "<th>사회적일자리배정인원</th>";
+            str += "<td><input type='text' name='social_people_"+(social_people_count++)+"'></td>";
+            str += "<th>전문인력배정인원</th>";
+            str += "<td><input type='text' name='prof_people_"+(prof_people_count++)+"'></td>";
+            str += "</tr><tr>";
+            str += "<th>유급근로자수</th>";
+            str += "<td><input type='text' name='salary_people_"+(salary_people_count++)+"'></td>";
+            str += "<th>취약계층근로자수</th>";
+            str += "<td><input type='text' name='vul_people_"+(vul_people_count++)+"'></td>";
+            str += "<th></th>";
+            str += "<td></td>";
+            str += "</tr></table><a href='#this' class='btn' name='delete'>삭제</a>";
+            str += "</div>";
+            
+            $("#Peoplediv").append(str);
+            $("a[name='delete']").on("click", function(e){ //삭제 버튼
+                e.preventDefault();
+                fn_deleteFile($(this));
+            });
+        }
+        function fn_deleteFile(obj){
+            obj.parent().remove();
+        }
+        function fn_add_insert(){
+			var comSubmit = new ComSubmit("frm");
+			comSubmit.setUrl("<c:url value='/pre_certi/addYear_insert.do' />");
+			comSubmit.submit();
+		}
         
     </script>
 </body>

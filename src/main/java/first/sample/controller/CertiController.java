@@ -89,13 +89,28 @@ public class CertiController {
 	    return mv;
 	}
 	
-	@RequestMapping(value="/sample/updateMony.do")
-	public ModelAndView updateMony(CommandMap commandMap, HttpServletRequest request) throws Exception{
-	    ModelAndView mv = new ModelAndView("redirect:/sample/openBoardDetail.do");
-	     
-	    certiService.updateMony(commandMap.getMap(), request);
-	     
-	    mv.addObject("IDX", commandMap.get("IDX"));
+	@RequestMapping(value="/certi/addYear_insert.do")
+	public ModelAndView addYear_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/certi/openCertiDetail.do");	    
+	    certiService.addYear_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/certi/addPeople_insert.do")
+	public ModelAndView addPeople_insert(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/certi/openCertiDetail.do");	    
+	    certiService.addPeople_insert(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/certi/updateCerti.do")
+	public ModelAndView updateCerti(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/certi/openCertiDetail.do");	    
+	    certiService.updateCerti(commandMap.getMap(), request);
+	    
+	    mv.addObject("IDX", commandMap.get("IDX"));	    
 	    return mv;
 	}
 	

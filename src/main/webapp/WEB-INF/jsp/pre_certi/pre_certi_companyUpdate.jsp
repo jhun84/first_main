@@ -49,6 +49,7 @@ function itemChange(){
 		var munhwa = ["문화예술공연","여행,관광"];
 		var kan_byung = ["간병가사","산모도우미"];
 		var etc = ["지역개발","물류유통","출판인쇄","컨설팅","IT","기타"];
+		var bokji = ["기타생활용품","문화예술공연","물류유통","보육","의료","재활용","전문교육","집수리","청소"];
 		 
 		var selectItem = $("#item_dru").val();
 		 
@@ -83,6 +84,9 @@ function itemChange(){
 		}
 		else if(selectItem == "기타"){
 			  changeItem = etc;
+		}
+		else if(selectItem == "사회복지"){
+			  changeItem = bokji;
 		}
 		
 		 
@@ -287,7 +291,8 @@ $(function(){
     <td>
         <select name="industry_bunryu">
         <option value="" <c:if test="${map.industry_bunryu eq ''}">selected</c:if>>선택</option>
-		<option value="교육" <c:if test="${map.industry_bunryu eq '교육'}">selected</c:if>>교육</option>				
+		<option value="교육" <c:if test="${map.industry_bunryu eq '교육'}">selected</c:if>>교육</option>
+		<option value="의료" <c:if test="${map.industry_bunryu eq '의료'}">selected</c:if>>의료</option>				
 		<option value="보건" <c:if test="${map.industry_bunryu eq '보건'}">selected</c:if>>보건</option>
 		<option value="사회복지" <c:if test="${map.industry_bunryu eq '사회복지'}">selected</c:if>>사회복지</option>
 		<option value="환경" <c:if test="${map.industry_bunryu eq '환경'}">selected</c:if>>환경</option>
@@ -334,7 +339,7 @@ $(function(){
     <td></td>
   </tr>
 </table>
-<form id="mony_frm" name="mony_frm" enctype="multipart/form-data">
+
 <h1>재무정보</h1>
 <div id="Yeardiv" style="padding-top:10px;padding-left:10px;">
  <div id="money_info">
@@ -342,49 +347,31 @@ $(function(){
   <c:choose>
         <c:when test="${fn:length(list) > 0}">
   		<c:forEach var="row" items="${list }" varStatus="var">
-  		<input type="hidden" name="mony_idx" id="mony_idx" value="${row.IDX }">
   		    <tr>
              <th>연도</th>
-             <td>
-             <select name="year_${var.index }">
-              <option value="" <c:if test="${row.years eq ''}">selected</c:if>>선택</option>
-              <option value="2010" <c:if test="${row.years eq '2010'}">selected</c:if>>2010</option>
-              <option value="2011" <c:if test="${row.years eq '2011'}">selected</c:if>>2011</option>
-              <option value="2012" <c:if test="${row.years eq '2012'}">selected</c:if>>2012</option>
-              <option value="2013" <c:if test="${row.years eq '2013'}">selected</c:if>>2013</option>
-              <option value="2014" <c:if test="${row.years eq '2014'}">selected</c:if>>2014</option>
-              <option value="2015" <c:if test="${row.years eq '2015'}">selected</c:if>>2015</option>
-              <option value="2016" <c:if test="${row.years eq '2016'}">selected</c:if>>2016</option>
-              <option value="2017" <c:if test="${row.years eq '2017'}">selected</c:if>>2017</option>
-              <option value="2018" <c:if test="${row.years eq '2018'}">selected</c:if>>2018</option>
-              <option value="2019" <c:if test="${row.years eq '2019'}">selected</c:if>>2019</option>
-              <option value="2020" <c:if test="${row.years eq '2020'}">selected</c:if>>2020</option>
-              <option value="2021" <c:if test="${row.years eq '2021'}">selected</c:if>>2021</option>
-              <option value="2022" <c:if test="${row.years eq '2022'}">selected</c:if>>2022</option>
-             </select>
-             </td>
+             <td>${row.years}</td>
              <th>매출액</th>
-             <td><input type="text" id="" name="total_sales_${var.index }" value="${row.total_sales}"></td>
+             <td>${row.total_sales}</td>
              <th>영업이익</th>
-             <td><input type="text" id="" name="oper_profit_${var.index }" value="${row.oper_profit}"></td>
+             <td>${row.oper_profit}</td>
             </tr>
             <tr>
              <th>당기순이익</th>
-             <td><input type="text" id="" name="income_term_${var.index }" value="${row.income_term }"></td>
+             <td>${row.income_term}</td>
              <th>총노무비</th>
-             <td><input type="text" id="" name="total_labor_${var.index }" value="${row.total_labor }"></td>
+             <td>${row.total_labor}</td>
              <th>사업개발비</th>
-             <td><input type="text" id="" name="total_devel_sales_${var.index }" value="${row.total_devel_sales }"></td>
+             <td>${row.total_devel_sales}</td>
             </tr>
             <tr>
              <th>기초컨설팅금액</th>
-             <td><input type="text" id="" name="basic_consalting_${var.index }" value="${row.basic_consalting }"></td>
+             <td>${row.basic_consalting}</td>
              <th>전문컨설팅금액</th>
-             <td><input type="text" id="" name="pro_consalting_${var.index }" value="${row.pro_consalting }"></td>
+             <td>${row.pro_consalting}</td>
              <th></th>
              <td></td>
             </tr>
-            <tr><td colspan="6"><a href="#this" class="btn" id="updateMony" >재무정보수정</a></td></tr>
+            <tr><td colspan="4"></td></tr>            
             </c:forEach>
             </c:when>
             <c:otherwise>
@@ -396,7 +383,7 @@ $(function(){
         </table>       
      </div>
   </div>
-</form>
+
 <h1>인원정보</h1>
 <div id="Peoplediv" style="padding-top:10px;padding-left:10px;">
  <div id="people_info">
@@ -406,37 +393,21 @@ $(function(){
 			<c:forEach var="row" items="${people_list}" varStatus="var">
             <tr>
               <th>연도</th>
-              <td>
-              <select name="people_years_${var.index }">
-               <option value="2010" <c:if test="${row.people_years eq '2010'}">selected</c:if>>2010</option>
-               <option value="2011" <c:if test="${row.people_years eq '2011'}">selected</c:if>>2011</option>
-               <option value="2012" <c:if test="${row.people_years eq '2012'}">selected</c:if>>2012</option>
-               <option value="2013" <c:if test="${row.people_years eq '2013'}">selected</c:if>>2013</option>
-               <option value="2014" <c:if test="${row.people_years eq '2014'}">selected</c:if>>2014</option>
-               <option value="2015" <c:if test="${row.people_years eq '2015'}">selected</c:if>>2015</option>
-               <option value="2016" <c:if test="${row.people_years eq '2016'}">selected</c:if>>2016</option>
-               <option value="2017" <c:if test="${row.people_years eq '2017'}">selected</c:if>>2017</option>
-               <option value="2018" <c:if test="${row.people_years eq '2018'}">selected</c:if>>2018</option>
-               <option value="2019" <c:if test="${row.people_years eq '2019'}">selected</c:if>>2019</option>
-               <option value="2020" <c:if test="${row.people_years eq '2020'}">selected</c:if>>2020</option>
-               <option value="2021" <c:if test="${row.people_years eq '2021'}">selected</c:if>>2021</option>
-               <option value="2022" <c:if test="${row.people_years eq '2022'}">selected</c:if>>2022</option>
-              </select>
-              </td>
+              <td>${row.people_years}</td>
               <th>사회적일자리배정인원</th>
-              <td><input type="text" name="social_people_${var.index}" value="${row.social_people}"></td>
+              <td>${row.social_people}</td>
               <th>전문인력배정인원</th>
-              <td><input type="text" name="prof_people__${var.index}" value="${row.prof_people}"></td>
+              <td>${row.prof_people}</td>
              </tr>
              <tr>
               <th>유급근로자수</th>
-              <td><input type="text" name="salary_people__${var.index}" value="${row.salary_people}"></td>
+              <td>${row.salary_people}</td>
               <th>취약계층근로자수</th>
-              <td><input type="text" name="vul_people__${var.index}" value="${row.vul_people}"></td>
+              <td>${row.vul_people}</td>
               <th></th>
               <td></td>
              </tr>
-             <tr><td colspan="4"><a href="#this" class="btn" id="updatePeople" >인원정보수정</a></td></tr>
+             <tr><td colspan="4"></td></tr>
             </c:forEach>
             </c:when>
             <c:otherwise>
@@ -523,9 +494,7 @@ $(function(){
 			</c:choose>
 </table>
 <div style="padding-top:20px;">&nbsp;</div>
-<a href="#this" class="btn" id="addyear" >재무정보연도추가하기</a>
-<a href="#this" class="btn" id="addpeople" >인원정보연도추가하기</a>
-<a href="#this" class="btn" id="write" >작성하기</a>
+<a href="#this" class="btn" id="update" >수정하기</a>
 <a href="#this" class="btn" id="list" >목록으로</a>
 </form>
 <%@ include file="/WEB-INF/include/include-body.jsp" %>
@@ -549,13 +518,13 @@ $(function(){
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
-				fn_openCertiList();
+				fn_openPre_CertiList();
 			});
 			
-			$("#write").on("click", function(e){ //작성하기 버튼
+			$("#update").on("click", function(e){ //수정하기 버튼
 				
 				   e.preventDefault();
-				   fn_insertCertified_Company();
+				   fn_updatePre_Certified_Company();
 				
 			});
 			$("#updateMony").on("click", function(e){ //저장하기 버튼
@@ -598,14 +567,14 @@ $(function(){
 			comSubmit.submit();
 		}
 		
-		function fn_openCertiList(){
+		function fn_openPre_CertiList(){
 	            var comSubmit = new ComSubmit();
-	            comSubmit.setUrl("<c:url value='/certi/openCertifiedList.do' />");
+	            comSubmit.setUrl("<c:url value='/pre_certi/openPre_CertifiedList.do' />");
 	            comSubmit.submit();
 	    }
-		function fn_insertCertified_Company(){
+		function fn_updatePre_Certified_Company(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/certi/insertCertified_Company.do' />");
+			comSubmit.setUrl("<c:url value='/pre_certi/updatePreCerti.do' />");
 			comSubmit.submit();
 		}
 		function fn_addYear(){
