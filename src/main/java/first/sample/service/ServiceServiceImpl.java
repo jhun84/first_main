@@ -48,7 +48,7 @@ public class ServiceServiceImpl implements ServiceService{
          
         List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
         for(int i=0, size=list.size(); i<size; i++){
-            sampleDAO.insertFile(list.get(i));
+        	serviceDAO.insertServiceFile(list.get(i));
         }
     }
 	@Override
@@ -57,6 +57,9 @@ public class ServiceServiceImpl implements ServiceService{
 	    Map<String, Object> resultMap = new HashMap<String,Object>();
 	    Map<String, Object> tempMap = serviceDAO.selectServiceDetail(map);
 	    resultMap.put("map", tempMap);
+	    
+	    List<Map<String,Object>> list = serviceDAO.selectFileList(map);
+	    resultMap.put("list", list);
 	      
 	    return resultMap;
 	}
@@ -64,6 +67,20 @@ public class ServiceServiceImpl implements ServiceService{
 	@Override
 	public void updateService(Map<String, Object> map, HttpServletRequest request) throws Exception{
 		serviceDAO.updateService(map);
+		serviceDAO.deleteFileList(map);
+	    
+	    List<Map<String,Object>> list = fileUtils.parseUpdateFileInfo(map, request);
+	    
+	    Map<String,Object> tempMap = null;
+	    for(int i=0, size=list.size(); i<size; i++){
+	        tempMap = list.get(i);
+	        if(tempMap.get("IS_NEW").equals("Y")){
+	        	serviceDAO.insertServiceFile(tempMap);
+	        }
+	        else{
+	        	serviceDAO.updateServiceFile(tempMap);
+	        }
+	    }
 	}
 	
 	@Override
@@ -89,17 +106,19 @@ public class ServiceServiceImpl implements ServiceService{
 		System.out.println("callback:"+callback);
 		printWriter = response.getWriter();
 
-		String fileUrl = SAVE_URL + fileName; //url 경로
-		System.out.println("fileurl="+fileUrl);
+		String fileUrl = SAVE_URL + fileName; //url		
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','이미지를 업로드 하였습니다.'"
+	               + "','이미지업로드 성공.'"
 	               + ")</script>");
 		printWriter.flush();
 	    
 	}
-	
+	@Override
+    public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
+        return serviceDAO.selectFileInfo(map);
+    }
 	
 }

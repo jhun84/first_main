@@ -86,5 +86,12 @@ public class SenterpriseController {
 	    mv.addObject("IDX", commandMap.get("IDX"));	    
 	    return mv;
 	}
+	@RequestMapping(value="/s_enterprise/deleteSenterprise.do")
+	public ModelAndView deleteSenterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/s_enterprise/openSenterpriseList.do");
+	    
+	    senterpriseService.deleteSenterprise(commandMap.getMap(), request);	     
+	    return mv;
+	}
 	
 }

@@ -32,6 +32,9 @@ public class VenterDAO extends AbstractDAO{
 	public void updateVenterprise(Map<String, Object> map) throws Exception{
 	    update("v_enter.updateVenterprise", map);
 	}
+	public void deleteVenterprise(Map<String, Object> map) throws Exception{
+	    update("v_enter.deleteVenterprise", map);
+	}
 	public void updateVenterprise_Mony(Map<String, String> years_list) throws Exception{
 	    update("v_enter.updateVenterprise_Mony", years_list);
 	}

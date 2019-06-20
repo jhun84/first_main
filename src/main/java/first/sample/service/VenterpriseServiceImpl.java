@@ -163,6 +163,8 @@ public class VenterpriseServiceImpl implements VenterpriseService{
 			}  
 		}	
     }
-	
-	
+	@Override
+    public void deleteVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		venterDAO.deleteVenterprise(map);		
+    }	
 }

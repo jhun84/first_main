@@ -15,6 +15,10 @@ public class CertiDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("certi.certiBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public Map<String, Object> search_certiBoardList(Map<String, Object> map) throws Exception{
+	    return (Map<String, Object>)selectPagingList("certi.search_certiBoardList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> certiBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("certi.certiBoardSearch", map);
 	}
@@ -54,6 +58,9 @@ public class CertiDAO extends AbstractDAO{
 	}
 	public void insertVulInfo(Map<String, String> map) throws Exception{
 	    insert("certi.insertVulInfo", map);
+	}
+	public void deleteCertified_Company(Map<String, Object> map) throws Exception{
+	    update("certi.deleteCertified_Company", map);
 	}
 	public void addYear_insert(Map<String, String> map) throws Exception{
 	    insert("certi.addYear_insert", map);

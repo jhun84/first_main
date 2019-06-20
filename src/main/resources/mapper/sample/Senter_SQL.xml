@@ -97,6 +97,7 @@
             c_number,
             e_mail,
             homepage,
+            bigo,
             req_date,
             CONTENTS
         )
@@ -121,6 +122,7 @@
              "${c_number}",
              "${e_mail}",
              "${homepage}",
+             "${bigo}",
              NOW(),
              "${CONTENTS}")    
       </insert>
@@ -169,6 +171,7 @@
              c_number,
              e_mail,
              homepage,
+             bigo,
              req_date,
              CONTENTS			 
              FROM s_enterprise
@@ -272,6 +275,7 @@
               c_number = #{c_number},
               e_mail = #{e_mail},
               homepage = #{homepage},
+              bigo = #{bigo},
               DEL_GB = 'N'
           WHERE
               IDX = #{IDX}  
@@ -298,6 +302,15 @@
              "${ji_list}",
              "${ji_mony}",             
              NOW())    
-      </insert>           
+      </insert>
+      
+      <update id="deleteSenterprise" parameterType="hashmap">
+      <![CDATA[
+          UPDATE s_enterprise SET              
+              DEL_GB = 'Y'
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>           
 
 </mapper>

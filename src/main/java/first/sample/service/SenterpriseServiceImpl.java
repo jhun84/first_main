@@ -165,4 +165,8 @@ public class SenterpriseServiceImpl implements SenterpriseService{
 			}  
 		}	
     }
+	@Override
+    public void deleteSenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		senterDAO.deleteSenterprise(map);		
+    }
 }

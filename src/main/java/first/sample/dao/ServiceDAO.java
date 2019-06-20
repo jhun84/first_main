@@ -31,23 +31,27 @@ public class ServiceDAO extends AbstractDAO{
 	public void deleteService(Map<String, Object> map) throws Exception{
 	    update("service.deleteService", map);
 	}
-	public void insertFile(Map<String, Object> map) throws Exception{
-	    insert("product.insertFile", map);
+	public void insertServiceFile(Map<String, Object> map) throws Exception{
+	    insert("service.insertFile", map);
 	}
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception{
-	    return (List<Map<String, Object>>)selectList("product.selectFileList", map);
+	    return (List<Map<String, Object>>)selectList("service.selectFileList", map);
 	}
 	public void deleteFileList(Map<String, Object> map) throws Exception{
-	    update("product.deleteFileList", map);
+	    update("service.deleteFileList", map);
 	}
 	 
-	public void updateFile(Map<String, Object> map) throws Exception{
-	    update("product.updateFile", map);
+	public void updateServiceFile(Map<String, Object> map) throws Exception{
+	    update("service.updateFile", map);
 	}
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectServiceList(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("service.selectServiceList", map);
+	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception{
+	    return (Map<String, Object>)selectOne("service.selectFileInfo", map);
 	}
 
 }

@@ -9,13 +9,12 @@
     <table class="board_view">
         <colgroup>
             <col width="10%">
-                <col width="20%"/>
-                <col width="10%">
-                <col width="20%"/>
-                <col width="10%">
-                <col width="20%"/>
-        </colgroup>
-        <caption>게시글 상세</caption>
+            <col width="20%"/>
+            <col width="10%">
+            <col width="20%"/>
+            <col width="10%">
+            <col width="20%"/>
+        </colgroup>       
         <tbody>
             <tr>
                 <th scope="row">지역</th>
@@ -112,8 +111,8 @@
                 <td>${map.e_mail}</td>
                 <th>홈페이지</th>
                 <td>${map.homepage}</td>
-                <th></th>
-                <td></td>
+                <th>비고</th>
+                <td>${map.bigo}</td>
             </tr>                                 
         </tbody>
     </table>

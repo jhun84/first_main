@@ -18,11 +18,10 @@ document.frm.zipNo.value = zipNo;
 </script>
 </head>
 <body>
-
-	<form id="frm" name="frm" enctype="multipart/form-data">
-	<input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
-	<h1>기업정보</h1>
-		<table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
+<h1>업체정보</h1>
+    <form id="frm" name="frm" enctype="multipart/form-data">
+    <input type="hidden" id="IDX" name="IDX" value="${map.IDX }">   
+        <table class="board_view" width="100%" border="0" cellpadding="0" cellspacing="0">
             <colgroup>
                 <col width="10%">
                 <col width="20%"/>
@@ -30,13 +29,13 @@ document.frm.zipNo.value = zipNo;
                 <col width="20%"/>
                 <col width="10%">
                 <col width="20%"/>
-            </colgroup>      
+            </colgroup>            
             <tbody>
                 <tr>
                     <th scope="row">지역</th>
                     <td>
-                     <select id="area" name="area">
-	                 <option value="CA01" <c:if test="${map.area eq 'CA01'}">selected</c:if>>강릉</option>
+                     <select name="area">
+                     <option value="CA01" <c:if test="${map.area eq 'CA01'}">selected</c:if>>강릉</option>
                      <option value="CA02" <c:if test="${map.area eq 'CA02'}">selected</c:if>>태백</option>
                      <option value="CA03" <c:if test="${map.area eq 'CA03'}">selected</c:if>>춘천</option>
                      <option value="CA04" <c:if test="${map.area eq 'CA04'}">selected</c:if>>화천</option>
@@ -54,42 +53,42 @@ document.frm.zipNo.value = zipNo;
                      <option value="CA16" <c:if test="${map.area eq 'CA16'}">selected</c:if>>동해</option>
                      <option value="CA17" <c:if test="${map.area eq 'CA17'}">selected</c:if>>홍천</option>		   
                      <option value="CA18" <c:if test="${map.area eq 'CA18'}">selected</c:if>>속초</option>
-	                </select>
+                     </select>
                     </td>
                     <th>신규지정연도</th>
                     <td>
                     <select name="n_year">
                       <option value="">선택</option>
-	                	<option value="2010" <c:if test="${map.n_year eq '2010'}">selected</c:if>>2010</option>
-	                	<option value="2011" <c:if test="${map.n_year eq '2011'}">selected</c:if>>2011</option>
-	                	<option value="2012" <c:if test="${map.n_year eq '2012'}">selected</c:if>>2012</option>
-	                	<option value="2013" <c:if test="${map.n_year eq '2013'}">selected</c:if>>2013</option>
-	                	<option value="2014" <c:if test="${map.n_year eq '2014'}">selected</c:if>>2014</option>
-	                	<option value="2015" <c:if test="${map.n_year eq '2015'}">selected</c:if>>2015</option>
-	                	<option value="2016" <c:if test="${map.n_year eq '2016'}">selected</c:if>>2016</option>
-	                	<option value="2017" <c:if test="${map.n_year eq '2017'}">selected</c:if>>2017</option>
-	                	<option value="2018" <c:if test="${map.n_year eq '2018'}">selected</c:if>>2018</option>
-	                	<option value="2019" <c:if test="${map.n_year eq '2019'}">selected</c:if>>2019</option>
-	                	<option value="2020" <c:if test="${map.n_year eq '2020'}">selected</c:if>>2020</option> 
-	                	<option value="2021" <c:if test="${map.n_year eq '2021'}">selected</c:if>>2021</option> 	                	
+                      <option value="2010" <c:if test="${map.n_year eq '2010'}">selected</c:if>>2010</option>
+                      <option value="2011" <c:if test="${map.n_year eq '2011'}">selected</c:if>>2011</option>
+                      <option value="2012" <c:if test="${map.n_year eq '2012'}">selected</c:if>>2012</option>
+                      <option value="2013" <c:if test="${map.n_year eq '2013'}">selected</c:if>>2013</option>
+                      <option value="2014" <c:if test="${map.n_year eq '2014'}">selected</c:if>>2014</option>
+                      <option value="2015" <c:if test="${map.n_year eq '2015'}">selected</c:if>>2015</option>
+                      <option value="2016" <c:if test="${map.n_year eq '2016'}">selected</c:if>>2016</option>
+                      <option value="2017" <c:if test="${map.n_year eq '2017'}">selected</c:if>>2017</option>
+                      <option value="2018" <c:if test="${map.n_year eq '2018'}">selected</c:if>>2018</option>
+                      <option value="2019" <c:if test="${map.n_year eq '2019'}">selected</c:if>>2019</option>
+                      <option value="2020" <c:if test="${map.n_year eq '2020'}">selected</c:if>>2020</option>
+                      <option value="2021" <c:if test="${map.n_year eq '2021'}">selected</c:if>>2021</option>                                      
                      </select>
                     </td>
                     <th>2차지정연도</th>
                     <td>
                     <select name="t_year">
                       <option value="">선택</option>
-	                	<option value="2010" <c:if test="${map.t_year eq '2010'}">selected</c:if>>2010</option>
-	                	<option value="2011" <c:if test="${map.t_year eq '2011'}">selected</c:if>>2011</option>
-	                	<option value="2012" <c:if test="${map.t_year eq '2012'}">selected</c:if>>2012</option>
-	                	<option value="2013" <c:if test="${map.t_year eq '2013'}">selected</c:if>>2013</option>
-	                	<option value="2014" <c:if test="${map.t_year eq '2014'}">selected</c:if>>2014</option>
-	                	<option value="2015" <c:if test="${map.t_year eq '2015'}">selected</c:if>>2015</option>
-	                	<option value="2016" <c:if test="${map.t_year eq '2016'}">selected</c:if>>2016</option>
-	                	<option value="2017" <c:if test="${map.t_year eq '2017'}">selected</c:if>>2017</option>
-	                	<option value="2018" <c:if test="${map.t_year eq '2018'}">selected</c:if>>2018</option>
-	                	<option value="2019" <c:if test="${map.t_year eq '2019'}">selected</c:if>>2019</option>
-	                	<option value="2020" <c:if test="${map.t_year eq '2020'}">selected</c:if>>2020</option> 
-	                	<option value="2021" <c:if test="${map.t_year eq '2021'}">selected</c:if>>2021</option> 	                	
+	                  <option value="2010" <c:if test="${map.t_year eq '2010'}">selected</c:if>>2010</option>
+                      <option value="2011" <c:if test="${map.t_year eq '2011'}">selected</c:if>>2011</option>
+                      <option value="2012" <c:if test="${map.t_year eq '2012'}">selected</c:if>>2012</option>
+                      <option value="2013" <c:if test="${map.t_year eq '2013'}">selected</c:if>>2013</option>
+                      <option value="2014" <c:if test="${map.t_year eq '2014'}">selected</c:if>>2014</option>
+                      <option value="2015" <c:if test="${map.t_year eq '2015'}">selected</c:if>>2015</option>
+                      <option value="2016" <c:if test="${map.t_year eq '2016'}">selected</c:if>>2016</option>
+                      <option value="2017" <c:if test="${map.t_year eq '2017'}">selected</c:if>>2017</option>
+                      <option value="2018" <c:if test="${map.t_year eq '2018'}">selected</c:if>>2018</option>
+                      <option value="2019" <c:if test="${map.t_year eq '2019'}">selected</c:if>>2019</option>
+                      <option value="2020" <c:if test="${map.t_year eq '2020'}">selected</c:if>>2020</option>
+                      <option value="2021" <c:if test="${map.t_year eq '2021'}">selected</c:if>>2021</option>	                	
                      </select>
                     </td>
                 </tr>
@@ -97,7 +96,7 @@ document.frm.zipNo.value = zipNo;
                     <th>기업명</th>
                     <td><input type="text" id="company_name" name="company_name" value="${map.company_name}"></td>
                     <th>주요사업내용</th>
-                    <td><input type="text" id="biz_detail" name="biz_detail" value="${map.biz_detail}" size="70"></td>
+                    <td><input type="text" id="biz_detail" name="biz_detail" value="${map.biz_detail}" size="50"></td>
                     <th>사업자번호</th>
                     <td><input type="text" id="sa_number" name="sa_number" value="${map.sa_number}"></td>
                 </tr>
@@ -105,14 +104,14 @@ document.frm.zipNo.value = zipNo;
                     <th>설립일</th>
                     <td>
                     <div class="input-group date" style="width:200px">
-                    <input type="text" id="su_date" name="su_date" class="form-control" value="${map.su_date}">
+                    <input type="text" id="su_date" name="su_date" value="${map.su_date}" class="form-control">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
                     </td>
                     <th scope="row">우편번호&nbsp;&nbsp;<input type="button" onClick="goPopup();" value="주소검색"></th>
                     <td><input type="text" id="zipNo" name="company_zip" value="${map.company_zip}"></td>
                     <th scope="row">주소</th>
-                    <td><input type="text" id="roadFullAddr" name="company_address" value="${map.company_address}" size="70"></td>
+                    <td><input type="text" id="roadFullAddr" name="company_address" value="${map.company_address}" size="50"></td>
                 </tr>
                 <tr>
                     <th>대표자</th>
@@ -127,10 +126,11 @@ document.frm.zipNo.value = zipNo;
                     <td><input type="text" id="e_mail" name="e_mail" value="${map.e_mail}"></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="${map.homepage}" size="50"></td>
-                    <th></th>
-                    <td></td>
-                </tr>               
-        </table>
+                    <th>비고</th>
+                    <td><input type="text" id="bigo" name="bigo" value="${map.bigo}"></td>
+                </tr>
+                </tbody>
+             </table>
 		<h1>재무정보</h1>
 <c:choose>
 	<c:when test="${fn:length(list) > 0}">
@@ -181,7 +181,8 @@ document.frm.zipNo.value = zipNo;
 	</form>
 	
 	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">저장하기</a>	
+	<a href="#this" class="btn" id="update">저장하기</a>
+	<a href="#this" class="btn" id="delete">삭제하기</a>	
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
@@ -189,17 +190,23 @@ document.frm.zipNo.value = zipNo;
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
-				fn_openCooperList();
+				fn_openPreVenterpriseList();
 			});
 			
 			$("#update").on("click", function(e){ //저장하기 버튼
 					e.preventDefault();
-					fn_updateCooper();
+					fn_updatePre_Venterprise();
 			});
 			
 			$("#delete").on("click", function(e){ //삭제하기 버튼
-				e.preventDefault();
-				fn_deleteCooper();
+                var result = confirm('삭제를 하시겠습니까?');
+			    
+			    if(result){
+			    	e.preventDefault();
+			    	fn_deletePre_Venterprise();
+			    }else{
+			    	return false;
+			    }
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();
@@ -213,21 +220,21 @@ document.frm.zipNo.value = zipNo;
 
 		});
 		
-		function fn_openCooperList(){
+		function fn_openPreVenterpriseList(){
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/prev_enterprise/openPreVenterpriseList.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_updateCooper(){
+		function fn_updatePre_Venterprise(){
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/prev_enterprise/updatePre_Venterprise.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_deleteCooper(){
+		function fn_deletePre_Venterprise(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/cooper/deleteCooper.do' />");
+			comSubmit.setUrl("<c:url value='/prev_enterprise/deletePre_Venterprise.do' />");
 			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			

@@ -3,7 +3,6 @@
 <html lang="ko">
 <head>
 <%@ include file="/WEB-INF/include/include-header.jsp" %>
-
 </head>
 <body>
     <form id="frm" name="frm" enctype="multipart/form-data">
@@ -14,7 +13,6 @@
                 <col width="15%">
                 <col width="*"/>
             </colgroup>
-            <caption>service write page</caption>
             <tbody>
                 <tr>
                     <th>분류</th>
@@ -77,17 +75,17 @@
                 <tr>
                     <th>인증/지정</th>
                     <td>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT01">인증사회적기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT02">예비사회적기업<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT03">자활기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT04">마을기업<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT05">예비마을기업
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT06">농어촌공동체회사<br>
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT07">사회적협동조합
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT08">협동조합
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT09">창업팀(진흥원)
-                    <input type="checkbox" id="CERTI" name="CERTI" value="CT10">해당없음
-                    <input type="hidden" id="CERTI" name="CERTI" value=" ">
+                    <input type="checkbox" id="CERTI" name="CERTI" value="인증사회적기업">인증사회적기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="예비사회적기업">예비사회적기업<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="자활기업">자활기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="마을기업">마을기업<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="예비마을기업">예비마을기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="농어촌공동체회사">농어촌공동체회사<br>
+                    <input type="checkbox" id="CERTI" name="CERTI" value="사회적협동조합">사회적협동조합
+                    <input type="checkbox" id="CERTI" name="CERTI" value="협동조합">협동조합
+                    <input type="checkbox" id="CERTI" name="CERTI" value="창업팀(진흥원)">창업팀(진흥원)
+                    <input type="checkbox" id="CERTI" name="CERTI" value="해당없음">해당없음
+                    <input type="hidden" id="CERTI" name="CERTI" value=" ">                    
                     </td>
                     <th>비고</th>
                     <td><input type="text" id="BIGO" name="BIGO"></td>
@@ -113,7 +111,13 @@
 	       });
 
         </script>
-        
+        <div id="fileDiv">
+        <h1>상품사진</h1>
+                <p>                 
+                    <input type="file" id="file" name="file_0">
+                    <a href="#this" class="btn" id="delete" name="delete">삭제</a>
+                </p>
+        </div>
         <br/><br/>
         <a href="#this" class="btn" id="write" >작성하기</a>
         <a href="#this" class="btn" id="list" >목록으로</a>

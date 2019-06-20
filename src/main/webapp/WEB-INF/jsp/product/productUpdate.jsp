@@ -13,8 +13,7 @@
                 <col width="30%"/>
                 <col width="15%">
                 <col width="*"/>
-            </colgroup>
-            <caption>product write page</caption>
+            </colgroup>            
             <tbody>
                 <tr>
                     <th>상품명</th>
@@ -83,6 +82,8 @@
                       <input type="checkbox" id="CERTI" name="CERTI" value="사회적협동조합">사회적협동조합
                       <input type="checkbox" id="CERTI" name="CERTI" value="협동조합">협동조합
                       <input type="checkbox" id="CERTI" name="CERTI" value="창업팀(진흥원)">창업팀(진흥원)
+                      <input type="checkbox" id="CERTI" name="CERTI" value="탄광지역주민창업기업">탄광지역주민창업기업
+                      <input type="checkbox" id="CERTI" name="CERTI" value="기타사회적경제">기타사회적경제
                       <input type="checkbox" id="CERTI" name="CERTI" value="해당없음">해당없음
                       <input type="hidden" id="CERTI" name="CERTI" value=" ">
                     </td>
@@ -110,6 +111,19 @@
 	       });
 
         </script>
+        <div id="fileDiv">
+        <h1>상품사진</h1>               
+          <c:forEach var="row" items="${list }" varStatus="var">
+              <p>
+                  <input type="hidden" id="IDX" name="IDX_${var.index }" value="${row.IDX }">
+                  <a href="#this" id="name_${var.index }" name="name_${var.index }">${row.ORIGINAL_FILE_NAME }</a>
+                  <input type="file" id="file_${var.index }" name="file_${var.index }">
+                  (${row.FILE_SIZE }kb)
+                  <a href="#this" class="btn" id="delete_${var.index }" name="delete_${var.index }">삭제</a>
+              </p>
+          </c:forEach>
+        </div>
+        <br/><br/>
 	</form>
 	
 	<a href="#this" class="btn" id="list">목록으로</a>
@@ -147,7 +161,7 @@
                 fn_addFile();
             });
              
-            $("a[name^='delete']").on("click", function(e){ //삭제 버튼
+			$("a[name^='delete']").on("click", function(e){ //삭제 버튼
                 e.preventDefault();
                 fn_deleteFile($(this));
             });

@@ -126,8 +126,8 @@ document.frm.zipNo.value = zipNo;
                     <td><input type="text" id="e_mail" name="e_mail" value="${map.e_mail}"></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="${map.homepage}" size="50"></td>
-                    <th></th>
-                    <td></td>
+                    <th>비고</th>
+                    <td><input type="text" id="bigo" name="bigo" value="${map.bigo}"></td>
                 </tr>               
         </table>
 		<h1>재무정보</h1>
@@ -180,7 +180,8 @@ document.frm.zipNo.value = zipNo;
 	</form>
 	
 	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">저장하기</a>	
+	<a href="#this" class="btn" id="update">저장하기</a>
+	<a href="#this" class="btn" id="delete">삭제하기</a>	
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
@@ -188,17 +189,24 @@ document.frm.zipNo.value = zipNo;
 		$(document).ready(function(){
 			$("#list").on("click", function(e){ //목록으로 버튼
 				e.preventDefault();
-				fn_openCooperList();
+				fn_openVenterpriseList();
 			});
 			
 			$("#update").on("click", function(e){ //저장하기 버튼
-					e.preventDefault();
-					fn_updateCooper();
+			     e.preventDefault();
+			     fn_updateVenterprise();
 			});
 			
 			$("#delete").on("click", function(e){ //삭제하기 버튼
-				e.preventDefault();
-				fn_deleteCooper();
+                var result = confirm('삭제를 하시겠습니까?');
+			    
+			    if(result){
+			    	e.preventDefault();
+			    	fn_deleteVenterprise();
+			    }else{
+			    	return false;
+			    }
+				
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();
@@ -212,21 +220,21 @@ document.frm.zipNo.value = zipNo;
 
 		});
 		
-		function fn_openCooperList(){
+		function fn_openVenterpriseList(){
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/v_enterprise/openVenterpriseList.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_updateCooper(){
+		function fn_updateVenterprise(){
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/v_enterprise/updateVenterprise.do' />");
 			comSubmit.submit();
 		}
 		
-		function fn_deleteCooper(){
+		function fn_deleteVenterprise(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/cooper/deleteCooper.do' />");
+			comSubmit.setUrl("<c:url value='/v_enterprise/deleteVenterprise.do' />");
 			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			

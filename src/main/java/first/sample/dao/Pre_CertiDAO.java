@@ -15,8 +15,8 @@ public class Pre_CertiDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("pre_certi.pre_certiBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> pre_certiBoardSearch(Map<String, Object> map) throws Exception{
-	    return (Map<String, Object>)selectPagingList("pre_certi.pre_certiBoardSearch", map);
+	public Map<String, Object> search_pre_certiBoardSearch(Map<String, Object> map) throws Exception{
+	    return (Map<String, Object>)selectPagingList("pre_certi.search_pre_certiBoardSearch", map);
 	}
 	public void insertPre_Certi_company(Map<String, Object> map) throws Exception{
 	    insert("pre_certi.insertPre_Certi_company", map);
@@ -72,6 +72,12 @@ public class Pre_CertiDAO extends AbstractDAO{
 	}
 	public void updatePreCerti_VulInfo(Map<String, String> map) throws Exception{
 	    update("pre_certi.updatePreCerti_VulInfo", map);
+	}
+	public void insertPreCerti_VulInfo(Map<String, String> map) throws Exception{
+	    update("pre_certi.insertPreCerti_VulInfo", map);
+	}
+	public void deletePre_Certified_Company(Map<String, Object> map) throws Exception{
+	    update("pre_certi.deletePre_Certified_Company", map);
 	}
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception{

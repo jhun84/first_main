@@ -497,6 +497,7 @@ $(function(){
 
 <a href="#this" class="btn" id="update" >수정하기</a>
 <a href="#this" class="btn" id="list" >목록으로</a>
+<a href="#this" class="btn" id="delete">삭제하기</a>
 </form>
 <%@ include file="/WEB-INF/include/include-body.jsp" %>
 <script type="text/javascript">
@@ -528,6 +529,16 @@ $(function(){
 				   fn_updateCertified_Company();
 				
 			});
+			$("#delete").on("click", function(e){ //삭제하기 버튼
+                var result = confirm('삭제를 하시겠습니까?');
+			    
+			    if(result){
+			    	e.preventDefault();
+			    	fn_deleteCertified_Company();
+			    }else{
+			    	return false;
+			    }
+			});
 			$("#updateMony").on("click", function(e){ //저장하기 버튼
 				e.preventDefault();
 				fn_updateMony();
@@ -536,6 +547,12 @@ $(function(){
 				e.preventDefault();
 				fn_updatePeople();
 			});
+			function fn_deleteCertified_Company(){			
+				var comSubmit = new ComSubmit();
+				comSubmit.setUrl("<c:url value='/certi/deleteCertified_Company.do' />");
+				comSubmit.addParam("IDX", $("#IDX").val());
+				comSubmit.submit();
+			}
 			$("#addyear").on("click", function(e){ //재무정보 연도 추가 버튼
                 e.preventDefault();
                 fn_addYear();

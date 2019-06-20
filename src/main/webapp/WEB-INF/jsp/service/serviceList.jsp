@@ -29,7 +29,7 @@
 				<c:forEach items="${list }" var="row">
 					<tr>
 						<td>${row.IDX }</td>
-						<td>${row.CERTI }</td>
+						<td>${row.CERTI}</td>
 						<td class="title">
 						<a href="#this" name="title">${row.SERVICE_NAME }</a>
                         <input type="hidden" id="IDX" value="${row.IDX }">

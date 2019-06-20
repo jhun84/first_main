@@ -17,4 +17,5 @@ public interface VenterpriseService {
 	Map<String, Object> selectVenterpriseDetail(Map<String, Object> map) throws Exception;
 	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updateVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void deleteVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
 }

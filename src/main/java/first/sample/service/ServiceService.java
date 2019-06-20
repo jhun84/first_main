@@ -17,5 +17,5 @@ public interface ServiceService {
 	void deleteService(Map<String, Object> map) throws Exception;
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;
 	Map<String, Object> selectServiceDetail(Map<String, Object> map) throws Exception;
-	
+	Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 }

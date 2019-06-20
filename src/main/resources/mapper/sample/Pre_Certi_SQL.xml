@@ -3,35 +3,54 @@
 
 <mapper namespace="pre_certi">
 	   
-    <select id="pre_certiBoardSearch" parameterType="hashmap" resultType="hashmap">
-    <include refid="common.certi_pagingPre"/>
+    <select id="search_pre_certiBoardSearch" parameterType="hashmap" resultType="hashmap">
+    <include refid="common.pre_certi_pagingPre"/>
     <![CDATA[
              SELECT
 	         IDX,
-             cooperative_name,
+             company_name,
+             company_address,
+             company_zip,
+             cc_area,
+             ca_area,
+             cert_num,
+             spt,
+             ji_date,
+             m_cert,
+             company_type,
+             se_area_type,
+             se_bu_type,
+             jojik_type,
+             es_date,
+             bm_number,
+             company_bnum,
+             company_jnum,
+             uniq_num,
+             cr_num,
+             sud_nm,
+             sud_num,
              biz_detail,
-             s_agree,
-             ch_money,
-             su_date,
-             area,
-             upjong,
-             c_type,
-             zip_num,
-             cooperative_addr,
-             ceo_name,
-             p_number,
-             c_number,
-             e_mail,
+             item_gubun,
+             item_dru,
+             item_jru,
+             industry_bunryu,
+             ceo_nm,
+             ceo_birth,
+             pic,
+             c_pos,
+             hp_number,
+             areap_number,
+             fax_number,
+             email,
              homepage,
-             req_date,
-             CONTENTS			 
-             FROM CooperBoard
+             req_date			 
+             FROM Pre_Certified_Company
              WHERE
-              cooperative_name like '%${cooperative_name}%'
+              company_name like '%${company_name}%'
               AND DEL_GB = 'N'
              ORDER BY req_date DESC
 			 ]]>
-    <include refid="common.certi_SearchpagingPost"/>
+    <include refid="common.pre_certi_SearchpagingPost"/>
     </select>
     
     <select id="pre_certiBoardList" parameterType="hashmap" resultType="hashmap">
@@ -571,6 +590,71 @@
               fax_number = #{fax_number},
               email = #{email},
               homepage = #{homepage}              
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>
+      
+      <insert id="insertPreCerti_VulInfo" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
+        INSERT INTO Pre_Certified_VulInfo
+        (
+            board_seq,
+            jsd,
+            krj,
+            jai,
+            spj,
+            ckd,
+            bej,
+            kpp,
+            hwb,
+            kej,
+            kbd,
+            jsj,
+            bkp,
+            cka,
+            ska,
+            nsj,
+            yad,
+            ykj,
+            jsk,
+            oik,
+            jsy,
+            hpp,
+            hbc,
+            req_date
+        )
+        VALUES
+            ("${idx}",
+             "${jsd}",
+             "${krj}",
+             "${jai}",
+             "${spj}",
+             "${ckd}",
+             "${bej}",
+             "${kpp}",
+             "${hwb}",
+             "${kej}",
+             "${kbd}",
+             "${jsj}",
+             "${bkp}",
+             "${cka}",
+             "${ska}",
+             "${nsj}",
+             "${yad}",
+             "${ykj}",
+             "${jsk}",
+             "${oik}",
+             "${jsy}",
+             "${hpp}",
+             "${hbc}",
+             NOW())    
+      </insert>
+      
+      <update id="deletePre_Certified_Company" parameterType="hashmap">
+      <![CDATA[
+          UPDATE Pre_Certified_Company SET
+              DEL_GB = 'Y'              
           WHERE
               IDX = #{IDX}  
       ]]>

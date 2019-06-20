@@ -211,7 +211,7 @@
       ]]>
       </update>
       
-       <update id="updateVenterprise" parameterType="hashmap">
+      <update id="updateVenterprise" parameterType="hashmap">
       <![CDATA[
           UPDATE v_enterprise SET
               company_name = #{company_name},
@@ -228,6 +228,15 @@
               c_number = #{c_number},
               e_mail = #{e_mail},
               homepage = #{homepage}              
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>
+      
+      <update id="deleteVenterprise" parameterType="hashmap">
+      <![CDATA[
+          UPDATE v_enterprise SET
+              DEL_GB = 'Y'              
           WHERE
               IDX = #{IDX}  
       ]]>

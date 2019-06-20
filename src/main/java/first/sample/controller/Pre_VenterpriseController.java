@@ -79,11 +79,18 @@ public class Pre_VenterpriseController {
 	    return mv;
 	}
 	@RequestMapping(value="/prev_enterprise/updatePre_Venterprise.do")
-	public ModelAndView updateSenterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public ModelAndView updatePrev_enterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
 	    ModelAndView mv = new ModelAndView("redirect:/prev_enterprise/openPreVenterpriseDetail.do");	    
 	    pre_venterpriseService.updatePre_Venterprise(commandMap.getMap(), request);
 	    
 	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/prev_enterprise/deletePre_Venterprise.do")
+	public ModelAndView deletePre_Venterprise(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/prev_enterprise/openPreVenterpriseList.do");
+	    
+	    pre_venterpriseService.deletePreVenterprise(commandMap.getMap(), request);	     
 	    return mv;
 	}
 		

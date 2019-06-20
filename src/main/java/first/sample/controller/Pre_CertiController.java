@@ -37,6 +37,17 @@ public class Pre_CertiController {
 	     
 	    return mv;
 	}
+	@RequestMapping(value="/pre_certi/openPre_Certified_CompanySearch.do")
+	public ModelAndView openPre_Certified_CompanySearch(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/pre_certi/pre_certified_List");
+	     
+	    Map<String,Object> resultMap = pre_certiService.search_pre_certiBoardSearch(commandMap.getMap());
+	     
+	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+	    mv.addObject("list", resultMap.get("result"));
+	     
+	    return mv;
+	}
 	@RequestMapping(value="/pre_certi/openPre_CertiDetail.do")
 	public ModelAndView openPre_CertiDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/pre_certi/pre_certiDetail");
@@ -108,6 +119,13 @@ public class Pre_CertiController {
 	    pre_certiService.updatePreCerti(commandMap.getMap(), request);
 	    
 	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/pre_certi/deletePre_Certified_Company.do")
+	public ModelAndView deletePre_Certified_Company(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/pre_certi/openPre_CertifiedList.do");	    
+	    pre_certiService.deletePre_Certified_Company(commandMap.getMap(), request);
+	        
 	    return mv;
 	}
 	

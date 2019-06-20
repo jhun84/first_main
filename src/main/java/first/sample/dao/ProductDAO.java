@@ -28,26 +28,29 @@ public class ProductDAO extends AbstractDAO{
 	public void updateProduct(Map<String, Object> map) throws Exception{
 	    update("product.updateProduct", map);
 	}
+	public void deleteFileList(Map<String, Object> map) throws Exception{
+	    update("product.deleteFileList", map);
+	}
 	public void deleteProduct(Map<String, Object> map) throws Exception{
 	    update("product.deleteProduct", map);
 	}
-	public void insertFile(Map<String, Object> map) throws Exception{
+	public void insertProductFile(Map<String, Object> map) throws Exception{
 	    insert("product.insertFile", map);
 	}
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception{
 	    return (List<Map<String, Object>>)selectList("product.selectFileList", map);
-	}
-	public void deleteFileList(Map<String, Object> map) throws Exception{
-	    update("product.deleteFileList", map);
-	}
-	 
-	public void updateFile(Map<String, Object> map) throws Exception{
+	}		
+	public void updateProductFile(Map<String, Object> map) throws Exception{
 	    update("product.updateFile", map);
 	}
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectProductList(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("product.selectProductList", map);
+	}
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception{
+	    return (Map<String, Object>)selectOne("product.selectFileInfo", map);
 	}
 
 }

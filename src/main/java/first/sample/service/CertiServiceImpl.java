@@ -40,6 +40,10 @@ public class CertiServiceImpl implements CertiService{
 	    return certiDAO.certiBoardList(map);
 	}
 	@Override
+	public Map<String, Object> search_certiBoardList(Map<String, Object> map) throws Exception {
+	    return certiDAO.search_certiBoardList(map);
+	}
+	@Override
 	public Map<String, Object> certiBoardSearch(Map<String, Object> map) throws Exception {
 	    return certiDAO.certiBoardSearch(map);
 	}
@@ -59,43 +63,46 @@ public class CertiServiceImpl implements CertiService{
 		    String total_devel_sales_i = String.valueOf(map.get("total_devel_sales_"+i));
 		    String basic_consalting_i = String.valueOf(map.get("basic_consalting_"+i));
 		    String pro_consalting_i = String.valueOf(map.get("pro_consalting_"+i));
+		    int year_length = year_i.length();
 		    
-		    if(!year_i.equals("null")){	
-		    	years_list.put("idx", boardSeq_no);
-			    years_list.put("years", year_i);
-			    years_list.put("total_sales", total_sales_i);
-			    years_list.put("oper_profit", oper_profit_i);
-			    years_list.put("income_term", income_term_i);
-			    years_list.put("total_labor", total_labor_i);
-			    years_list.put("total_devel_sales", total_devel_sales_i);
-			    years_list.put("basic_consalting", basic_consalting_i);
-			    years_list.put("pro_consalting", pro_consalting_i);
-			    
+		    years_list.put("idx", boardSeq_no);
+			years_list.put("years", year_i);
+			years_list.put("total_sales", total_sales_i);
+			years_list.put("oper_profit", oper_profit_i);
+			years_list.put("income_term", income_term_i);
+			years_list.put("total_labor", total_labor_i);
+			years_list.put("total_devel_sales", total_devel_sales_i);
+			years_list.put("basic_consalting", basic_consalting_i);
+			years_list.put("pro_consalting", pro_consalting_i);
+			
+			if( !year_i.equals("null") && year_length > 0 ){	    
 			    certiDAO.insertYears(years_list);
 			}  
 		}
 		
-				for(int i=0; i<10; i++){
-					Map<String, String> peoples_list = new HashMap<String, String>();
-					String boardSeq_no = String.valueOf(map.get("IDX"));
-					
-					String people_years_i = String.valueOf(map.get("people_years_"+i));
-				    String social_people_i = String.valueOf(map.get("social_people_"+i));
-				    String prof_people_i = String.valueOf(map.get("prof_people_"+i));
-				    String salary_people_i = String.valueOf(map.get("salary_people_"+i));
-				    String vul_people_i = String.valueOf(map.get("vul_people_"+i));
-				    
-				    if(!people_years_i.equals("null")){	
-				    	peoples_list.put("idx", boardSeq_no);
-				    	peoples_list.put("people_years", people_years_i);
-				    	peoples_list.put("social_people", social_people_i);
-				    	peoples_list.put("prof_people", prof_people_i);
-				    	peoples_list.put("salary_people", salary_people_i);
-				    	peoples_list.put("vul_people", vul_people_i);
-					    
-					    certiDAO.insertPeoples(peoples_list);
-					}  
-				}
+		for(int i=0; i<10; i++){
+			Map<String, String> peoples_list = new HashMap<String, String>();
+			String boardSeq_no = String.valueOf(map.get("IDX"));
+			
+			String people_years_i = String.valueOf(map.get("people_years_"+i));
+		    String social_people_i = String.valueOf(map.get("social_people_"+i));
+		    String prof_people_i = String.valueOf(map.get("prof_people_"+i));
+		    String salary_people_i = String.valueOf(map.get("salary_people_"+i));
+		    String vul_people_i = String.valueOf(map.get("vul_people_"+i));
+		    int people_year_length = people_years_i.length();
+		    	
+		    peoples_list.put("idx", boardSeq_no);
+		    peoples_list.put("people_years", people_years_i);
+		    peoples_list.put("social_people", social_people_i);
+		    peoples_list.put("prof_people", prof_people_i);
+		    peoples_list.put("salary_people", salary_people_i);
+		    peoples_list.put("vul_people", vul_people_i);
+		    
+		    if( !people_years_i.equals("null") && people_year_length > 0 ){    
+			    certiDAO.insertPeoples(peoples_list);
+			}  
+		}
+		
 		Map<String, String> vulinfo_list = new HashMap<String, String>();
 		String boardSeq_no = String.valueOf(map.get("IDX"));
 		String jsd = String.valueOf(map.get("jsd"));
@@ -484,6 +491,11 @@ public class CertiServiceImpl implements CertiService{
 		
 		certiDAO.updateCerti_VulInfo(vulinfo_list);
     }
+	
+	@Override
+    public void deleteCertified_Company(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		certiDAO.deleteCertified_Company(map);
+	}
 		
 	
 }

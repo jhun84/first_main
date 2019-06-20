@@ -1,12 +1,15 @@
 package first.sample.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,7 +92,7 @@ public class ProductController {
 	    ModelAndView mv = new ModelAndView("redirect:/product/openProductDetail.do");
 	     
 	    productService.updateProduct(commandMap.getMap(), request);
-	    mv.addObject("SEQ_NO", commandMap.get("SEQ_NO")); 
+	    mv.addObject("IDX", commandMap.get("IDX")); 
 	    return mv;
 	}
 	@RequestMapping(value="/product/deleteProduct.do")
@@ -112,7 +115,27 @@ public class ProductController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}	
+	@RequestMapping(value="/product/downloadFile.do")
+    public void downloadFile(CommandMap commandMap, HttpServletResponse response) throws Exception{
+        Map<String,Object> map = productService.selectFileInfo(commandMap.getMap());
+        String storedFileName = (String)map.get("STORED_FILE_NAME");
+        String originalFileName = (String)map.get("ORIGINAL_FILE_NAME");
+         
+        byte fileByte[] = FileUtils.readFileToByteArray(new File("/home/hosting_users/hunchori/tomcat/webapps/upload/"+storedFileName));
+        //byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/hoonyhun/Documents/Upload/"+storedFileName));
+        //byte fileByte[] = FileUtils.readFileToByteArray(new File("C:\\Users\\JeongHun\\workspace\\first\\upload\\"+storedFileName));
+        
+         
+        response.setContentType("application/octet-stream");
+        response.setContentLength(fileByte.length);
+        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(originalFileName,"UTF-8")+"\";");
+        response.setHeader("Content-Transfer-Encoding", "binary");
+        response.getOutputStream().write(fileByte);
+         
+        response.getOutputStream().flush();
+        response.getOutputStream().close();
+    }
 
 	
 }

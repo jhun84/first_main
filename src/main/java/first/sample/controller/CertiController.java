@@ -39,6 +39,17 @@ public class CertiController {
 	     
 	    return mv;
 	}
+	@RequestMapping(value="/certi/openCertified_CompanySearch.do")
+	public ModelAndView openCertified_CompanySearch(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/certi/certified_List");
+	     
+	    Map<String,Object> resultMap = certiService.search_certiBoardList(commandMap.getMap());
+	     
+	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+	    mv.addObject("list", resultMap.get("result"));
+	     
+	    return mv;
+	}
 	@RequestMapping(value="/certi/openCertiDetail.do")
 	public ModelAndView openCertiDetail(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/certi/certiDetail");
@@ -111,6 +122,13 @@ public class CertiController {
 	    certiService.updateCerti(commandMap.getMap(), request);
 	    
 	    mv.addObject("IDX", commandMap.get("IDX"));	    
+	    return mv;
+	}
+	@RequestMapping(value="/certi/deleteCertified_Company.do")
+	public ModelAndView deleteCertified_Company(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	    ModelAndView mv = new ModelAndView("redirect:/certi/openCertifiedList.do");	    
+	    certiService.deleteCertified_Company(commandMap.getMap(), request);
+	        
 	    return mv;
 	}
 	

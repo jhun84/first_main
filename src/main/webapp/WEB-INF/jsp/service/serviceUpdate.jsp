@@ -13,8 +13,7 @@
                 <col width="30%"/>
                 <col width="15%">
                 <col width="*"/>
-            </colgroup>
-            <caption>service write page</caption>
+            </colgroup>            
             <tbody>
                 <tr>
                     <th>분류</th>
@@ -76,10 +75,10 @@
                 <tr>
                     <th>인증/지정</th>
                     <td>
-                    이전 값 : ${map.CERTI}
+                    	이전 값 : ${map.CERTI}
                       <br>
                       <br>
-                      수정할 값 :<br>
+                     	 수정할 값 :<br>
                       <input type="checkbox" id="CERTI" name="CERTI" value="인증사회적기업">인증사회적기업
                       <input type="checkbox" id="CERTI" name="CERTI" value="예비사회적기업">예비사회적기업<br>
                       <input type="checkbox" id="CERTI" name="CERTI" value="자활기업">자활기업
@@ -116,6 +115,19 @@
 	       });
 
         </script>
+        <div id="fileDiv">
+        <h1>서비스사진</h1>               
+          <c:forEach var="row" items="${list }" varStatus="var">
+              <p>
+                  <input type="hidden" id="IDX" name="IDX_${var.index }" value="${row.IDX }">
+                  <a href="#this" id="name_${var.index }" name="name_${var.index }">${row.ORIGINAL_FILE_NAME }</a>
+                  <input type="file" id="file_${var.index }" name="file_${var.index }">
+                  (${row.FILE_SIZE }kb)
+                  <a href="#this" class="btn" id="delete_${var.index }" name="delete_${var.index }">삭제</a>
+              </p>
+          </c:forEach>
+        </div>
+        <br/><br/>
 	</form>
 	
 	<a href="#this" class="btn" id="list">목록으로</a>

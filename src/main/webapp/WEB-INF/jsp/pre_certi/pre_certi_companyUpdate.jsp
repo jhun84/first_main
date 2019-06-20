@@ -421,10 +421,10 @@ $(function(){
 </div>
 
 <h1>취약계층정보</h1>
-  <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
+  <table width="100%" class="board_view" cellpadding="0" cellspacing="0">  
   <c:choose>
 			<c:when test="${fn:length(vul_info) > 0}">
-			<c:forEach var="vul" items="${vul_info}">
+			<c:forEach var="vul" items="${vul_info}">			
               <tr>
                   <th>저속득</th>
                   <td><input type="text" name="jsd" value="${vul.jsd }">명</td>
@@ -484,18 +484,78 @@ $(function(){
                   <th></th>
                   <td></td>
                  </tr>
+                 <input type="hidden" id="board_seq" name="board_seq" value="${vul.board_seq}">
             </c:forEach>
             </c:when>
             <c:otherwise>
 				<tr>
-					<td colspan="4">취약계측정보가 없습니다.</td>
-				</tr>
+                  <th>저속득</th>
+                  <td><input type="text" name="jsd" value="">명</td>
+                  <th>고령자</th>
+                  <td><input type="text" name="krj" value="">명</td>
+                  <th>장애인</th>
+                  <td><input type="text" name="jai" value="">명</td>
+                  <th>성매매피해자</th>
+                  <td><input type="text" name="spj" value="">명</td>
+                 <tr>
+                  <th>청년,경력단절</th>
+                  <td><input type="text" name="ckd" value="">명</td>
+                  <th>북한이탈주민</th>
+                  <td><input type="text" name="bej" value="">명</td>
+                  <th>가정폭력피해자</th>
+                  <td><input type="text" name="kpp" value="">명</td>
+                  <th>한부모가족지원법</th>
+                  <td><input type="text" name="hwb" value="">명</td>
+                 </tr>
+                 <tr>
+                  <th>결혼이민자</th>
+                  <td><input type="text" name="kej" value="">명</td>
+                  <th>갱생보호대상자</th>
+                  <td><input type="text" name="kbd" value="">명</td>
+                  <th>장기실직자</th>
+                  <td><input type="text" name="jsj" value="">명</td>
+                  <th>범죄구조피해자</th>
+                  <td><input type="text" name="bkp" value="">명</td>
+                 </tr>
+                 <tr>
+                  <th>출소6개월미만</th>
+                  <td><input type="text" name="cka" value="">명</td>
+                  <th>소년원퇴원6개월</th>
+                  <td><input type="text" name="ska" value="">명</td>
+                  <th>노숙자</th>
+                  <td><input type="text" name="nsj" value="">명</td>
+                  <th>약.알.도박중독자</th>
+                  <td><input type="text" name="yad" value="">명</td>
+                 </tr>
+                 <tr>
+                  <th>여성가장</th>
+                  <td><input type="text" name="ykj" value="">명</td>
+                  <th>조손가정</th>
+                  <td><input type="text" name="jsk" value="">명</td>
+                  <th>외국인근로자</th>
+                  <td><input type="text" name="oik" value="">명</td>
+                  <th>저신용자</th>
+                  <td><input type="text" name="jsy" value="">명</td>
+                 </tr>
+                 <tr>
+                  <th>학교폭력피해자</th>
+                  <td><input type="text" name="hpp" value="">명</td>
+                  <th>학교밖청소년</th>
+                  <td><input type="text" name="hbc" value="">명</td>
+                  <th></th>
+                  <td></td>
+                  <th></th>
+                  <td></td>
+                 </tr>
+                 <input type="hidden" id="board_seq" name="board_seq" value="${vul.board_seq}">
 			</c:otherwise>
 			</c:choose>
 </table>
 <div style="padding-top:20px;">&nbsp;</div>
 <a href="#this" class="btn" id="update" >수정하기</a>
 <a href="#this" class="btn" id="list" >목록으로</a>
+<a href="#this" class="btn" id="delete">삭제하기</a>
+
 </form>
 <%@ include file="/WEB-INF/include/include-body.jsp" %>
 <script type="text/javascript">
@@ -526,6 +586,16 @@ $(function(){
 				   e.preventDefault();
 				   fn_updatePre_Certified_Company();
 				
+			});
+			$("#delete").on("click", function(e){ //삭제하기 버튼
+                var result = confirm('삭제를 하시겠습니까?');
+			    
+			    if(result){
+			    	e.preventDefault();
+			    	fn_deletePre_Certified_Company();
+			    }else{
+			    	return false;
+			    }
 			});
 			$("#updateMony").on("click", function(e){ //저장하기 버튼
 				e.preventDefault();
@@ -575,6 +645,12 @@ $(function(){
 		function fn_updatePre_Certified_Company(){
 			var comSubmit = new ComSubmit("frm");
 			comSubmit.setUrl("<c:url value='/pre_certi/updatePreCerti.do' />");
+			comSubmit.submit();
+		}
+		function fn_deletePre_Certified_Company(){			
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/pre_certi/deletePre_Certified_Company.do' />");
+			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 		}
 		function fn_addYear(){

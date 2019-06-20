@@ -23,8 +23,8 @@ import first.sample.dao.SampleDAO;
 @Service("productService")
 public class ProductServiceImpl implements ProductService{
 	Logger log = Logger.getLogger(this.getClass());
-	//private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
-	private String FILE_URL = "C:\\Users\\JeongHun\\Documents\\Upload";
+	private String FILE_URL = "/home/hosting_users/hunchori/tomcat/webapps/upload/";
+	//private String FILE_URL = "C:\\Users\\JeongHun\\Documents\\Upload";
 	private String SAVE_URL = "/upload/";
 	
 	@Resource(name="productDAO")
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService{
 		
         List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
         for(int i=0, size=list.size(); i<size; i++){	
-        	productDAO.insertFile(list.get(i));
+        	productDAO.insertProductFile(list.get(i));
         }
     }
 	@Override
@@ -69,6 +69,20 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void updateProduct(Map<String, Object> map, HttpServletRequest request) throws Exception{
 		productDAO.updateProduct(map);
+		productDAO.deleteFileList(map);
+	    
+	    List<Map<String,Object>> list = fileUtils.parseUpdateFileInfo(map, request);
+	    
+	    Map<String,Object> tempMap = null;
+	    for(int i=0, size=list.size(); i<size; i++){
+	        tempMap = list.get(i);
+	        if(tempMap.get("IS_NEW").equals("Y")){
+	        	productDAO.insertProductFile(tempMap);
+	        }
+	        else{
+	        	productDAO.updateProductFile(tempMap);
+	        }
+	    }
 	}
 	
 	@Override
@@ -88,20 +102,22 @@ public class ProductServiceImpl implements ProductService{
 		out = new FileOutputStream(new File(uploadPath));
 		out.write(bytes);
 
-		//String callback = "1";
 		String callback = request.getParameter("CKEditorFuncNum");
 		printWriter = response.getWriter();
 
-		String fileUrl = SAVE_URL + fileName; //url 寃쎈�
+		String fileUrl = SAVE_URL + fileName; //url
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','�대�몄�瑜� ��濡��� �����듬����.'"
+	               + "','이미지업로드 성공.'"
 	               + ")</script>");
 		printWriter.flush();
 	    
 	}
-	
+	@Override
+    public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
+        return productDAO.selectFileInfo(map);
+    }
 	
 }

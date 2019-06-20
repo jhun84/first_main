@@ -227,7 +227,7 @@ WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 )T1,
 (SELECT @RNUM :=0)R
 )T2,
-(SELECT COUNT(*) AS TOTAL_COUNT FROM Certified_Company WHERE club_name like '%${club_name}%' AND DEL_GB = 'N')T3
+(SELECT COUNT(*) AS TOTAL_COUNT FROM Certified_Company WHERE company_name like '%${company_name}%' AND DEL_GB = 'N')T3
 )T4
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>
@@ -256,7 +256,7 @@ WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 )T1,
 (SELECT @RNUM :=0)R
 )T2,
-(SELECT COUNT(*) AS TOTAL_COUNT FROM Pre_Certified_Company WHERE club_name like '%${company_name}%' AND DEL_GB = 'N')T3
+(SELECT COUNT(*) AS TOTAL_COUNT FROM Pre_Certified_Company WHERE company_name like '%${company_name}%' AND DEL_GB = 'N')T3
 )T4
 WHERE T4.ROWNUM BETWEEN #{START} AND #{END}
 </sql>

@@ -9,17 +9,74 @@
     <table class="board_view">
         <colgroup>
             <col width="10%">
-                <col width="10%"/>
-                <col width="20%">
-                <col width="10%"/>
-                <col width="20%">
-                <col width="10%"/>
-                <col width="20%"/>
+            <col width="20%"/>
+            <col width="10%">
+            <col width="20%"/>
+            <col width="10%">
+            <col width="20%"/>            
         </colgroup>        
         <tbody>
             <tr>
                 <th scope="row">지역</th>
-                <td>${map.area}</td>
+                <td><c:choose>
+                        <c:when test="${map.area eq 'CA01'}">
+                                                                     강릉    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA02'}">
+                                                                     태백 
+                          </c:when>
+                          <c:when test="${map.area eq 'CA03'}">
+                                                                     춘천    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA04'}">
+                                                                     화천    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA05'}">
+                                                                     평창    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA06'}">
+                                                                     횡성    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA07'}">
+                                                                     원주    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA08'}">
+                                                                     영월    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA09'}">
+                                                                     삼척    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA10'}">
+                                                                     정선    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA11'}">
+                                                                     철원    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA12'}">
+                                                                     양구    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA13'}">
+                                                                     인제    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA14'}">
+                                                                     고성    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA15'}">
+                                                                     양양 
+                          </c:when>
+                          <c:when test="${map.area eq 'CA16'}">
+                                                                     동해    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA17'}">
+                                                                     홍천    
+                          </c:when>
+                          <c:when test="${map.area eq 'CA18'}">
+                                                                     속초    
+                          </c:when>
+                          <c:otherwise>
+                                                                     지역없음.
+                        </c:otherwise>
+                        </c:choose></td>
                 <th>규모</th>
                 <td>${map.gyumo}</td>
                 <th>분야</th>
@@ -70,8 +127,8 @@
                 <td>${map.e_mail}</td>
                 <th>홈페이지</th>
                 <td>${map.homepage}</td>
-                <th></th>
-                <td></td>
+                <th>비고</th>
+                <td>${map.bigo}</td>
             </tr>                                 
         </tbody>
     </table>

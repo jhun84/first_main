@@ -97,39 +97,12 @@
         
        
       </insert>
-      <insert id="insertFile" parameterType="hashmap">
-    <![CDATA[
-        INSERT INTO PRODUCT_FILE
-        (
-            IDX,
-            BOARD_IDX,
-            ORIGINAL_FILE_NAME,
-            STORED_FILE_NAME,
-            FILE_SIZE,
-            CREA_DTM,
-            CREA_ID,
-            SUBJECT
-        )
-        VALUES
-        (
-            #{IDX},
-            #{BOARD_IDX},
-            #{ORIGINAL_FILE_NAME},
-            #{STORED_FILE_NAME},
-            #{FILE_SIZE},
-            NOW(),
-            'Admin',
-            #{SUBJECT}
-        )
-    ]]>
-</insert>
    <select id="selectFileList" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
             IDX,
             ORIGINAL_FILE_NAME,
-            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
-            SUBJECT
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
         FROM
             PRODUCT_FILE
         WHERE
@@ -194,5 +167,62 @@
                  IDX = #{IDX}
          ]]>
      </update>
+     <select id="selectFileInfo" parameterType="hashmap" resultType="hashmap">
+       <![CDATA[
+           SELECT
+               STORED_FILE_NAME,
+               ORIGINAL_FILE_NAME,
+               THUMB_FILE_NAME
+           FROM
+               product_file
+           WHERE
+               IDX = #{IDX}
+       ]]>
+      </select>
+      
+      <update id="deleteFileList" parameterType="hashmap">
+      <![CDATA[
+          UPDATE product_file SET
+              DEL_GB = 'Y'
+          WHERE
+              BOARD_IDX = #{IDX} 
+      ]]>
+      </update>
+      
+      <update id="updateFile" parameterType="hashmap">
+      <![CDATA[
+          UPDATE product_file SET
+              DEL_GB = 'N'
+          WHERE
+              IDX = #{FILE_IDX}  
+      ]]>
+      </update>
+      
+      <insert id="insertFile" parameterType="hashmap">
+       <![CDATA[
+           INSERT INTO product_file
+           (
+               IDX,
+               BOARD_IDX,
+               ORIGINAL_FILE_NAME,
+               STORED_FILE_NAME,
+               THUMB_FILE_NAME,
+               FILE_SIZE,
+               CREA_DTM,
+               CREA_ID
+           )
+           VALUES
+           (
+               #{IDX},
+               #{BOARD_IDX},
+               #{ORIGINAL_FILE_NAME},
+               #{STORED_FILE_NAME},
+               #{THUMB_FILE_NAME},
+               #{FILE_SIZE},
+               NOW(),
+               'Admin'
+           )
+       ]]>
+       </insert>
 
 </mapper>

@@ -17,7 +17,7 @@
 	<thead>
 		<tr>
 			<th scope="col">글번호</th>
-			<th scope="col">지정연도</th>
+			<th scope="col">인증연도</th>
 			<th scope="col">지역</th>
 			<th scope="col">기업명</th>
 			<th scope="col">대표자</th>
@@ -29,7 +29,7 @@
 				<c:forEach items="${list }" var="row">
 					<tr>
 						<td>${row.IDX }</td>
-						<td>${row.t_year }</td>						
+						<td>${row.certi_year}</td>						
 						<td>
 						<c:choose>
                         <c:when test="${row.area eq 'CA01'}">

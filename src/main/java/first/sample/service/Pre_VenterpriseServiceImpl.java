@@ -163,6 +163,8 @@ public class Pre_VenterpriseServiceImpl implements Pre_VenterpriseService{
 			}  
 		}	
     }
-	
-	
+	@Override
+    public void deletePreVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		pre_venterDAO.deletePreVenterprise(map);			
+    }	
 }

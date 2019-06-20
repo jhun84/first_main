@@ -12,7 +12,6 @@
             <col width="15%"/>
             <col width="35%"/>
         </colgroup>
-        <caption>게시글 상세</caption>
         <tbody>
             <tr>
                 <th scope="row">분류</th>
@@ -141,7 +140,25 @@
             <tr>
                 <td colspan="4">${map.CONTENTS }</td>
             </tr>
-            
+            <c:choose>
+			<c:when test="${fn:length(list) > 0}">
+            <tr>
+                <th scope="row">서비스사진</th>
+                <td colspan="3">
+                    <c:forEach var="row" items="${list }">
+                        <input type="hidden" id="IDX" value="${row.IDX }">                        
+                        <a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
+                        (${row.FILE_SIZE }kb)
+                    </c:forEach>
+                </td>
+            </tr>
+            </c:when>
+            <c:otherwise>
+				<tr>
+					<td colspan="4">관련정보가 없습니다.</td>
+				</tr>
+			</c:otherwise>
+			</c:choose>
         </tbody>
     </table>
      

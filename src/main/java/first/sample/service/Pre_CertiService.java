@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface Pre_CertiService {
 	
 	Map<String, Object> pre_certiBoardList(Map<String, Object> map) throws Exception;
-	Map<String, Object> pre_certiBoardSearch(Map<String, Object> map) throws Exception;
+	Map<String, Object> search_pre_certiBoardSearch(Map<String, Object> map) throws Exception;
 	void insertPre_Certi_company(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updatePre_Certi_company(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void deletePre_Certi_company(Map<String, Object> map) throws Exception;
@@ -24,6 +24,7 @@ public interface Pre_CertiService {
 	Map<String, Object> selectPre_CertiDetail(Map<String, Object> map) throws Exception;
 	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void addPeople_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
-	void updatePreCerti(Map<String, Object> map, HttpServletRequest request) throws Exception;	
+	void updatePreCerti(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void deletePre_Certified_Company(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
 }

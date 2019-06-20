@@ -22,6 +22,7 @@
              c_number,
              e_mail,
              homepage,
+             bigo,
              req_date,
              CONTENTS			 
              FROM prev_enterprise
@@ -52,6 +53,7 @@
              c_number,
              e_mail,
              homepage,
+             bigo,
              req_date,
              CONTENTS			 
              FROM prev_enterprise
@@ -79,6 +81,7 @@
             c_number,
             e_mail,
             homepage,
+            bigo,
             req_date,
             CONTENTS
         )
@@ -97,6 +100,7 @@
              "${c_number}",
              "${e_mail}",
              "${homepage}",
+             "${bigo}",
              NOW(),
              "${CONTENTS}")    
       </insert>
@@ -139,6 +143,7 @@
              c_number,
              e_mail,
              homepage,
+             bigo,
              req_date,
              CONTENTS			 
              FROM prev_enterprise
@@ -222,7 +227,17 @@
               p_number = #{p_number},
               c_number = #{c_number},
               e_mail = #{e_mail},
-              homepage = #{homepage}              
+              homepage = #{homepage},
+              bigo = #{bigo}              
+          WHERE
+              IDX = #{IDX}  
+      ]]>
+      </update>
+      
+      <update id="deletePreVenterprise" parameterType="hashmap">
+      <![CDATA[
+          UPDATE prev_enterprise SET
+              DEL_GB = 'Y'              
           WHERE
               IDX = #{IDX}  
       ]]>

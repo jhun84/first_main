@@ -17,5 +17,6 @@ public interface Pre_VenterpriseService {
 	Map<String, Object> selectPreVenterpriseDetail(Map<String, Object> map) throws Exception;
 	void addYear_insert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updatePre_Venterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void deletePreVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
 }

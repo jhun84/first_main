@@ -27,6 +27,9 @@ public class SenterDAO extends AbstractDAO{
 	public void updateSenter_Mony(Map<String, String> years_list) throws Exception{
 	    update("s_enter.updateSenter_Mony", years_list);
 	}
+	public void deleteSenterprise(Map<String, Object> map) throws Exception{
+	    update("s_enter.deleteSenterprise", map);
+	}
 	public void addYear_insert(Map<String, String> years_list) throws Exception{
 	    update("s_enter.addYear_insert", years_list);
 	}

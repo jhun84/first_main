@@ -131,7 +131,7 @@ $(function(){
     <th scope="row">우편번호&nbsp;&nbsp;<input type="button" onClick="goPopup();" value="주소검색"></th>
     <td><input type="text" id="zipNo" name="company_zip" value=""></td>
     <th scope="row">주소</th>
-    <td><input type="text" id="roadFullAddr" name="company_address" value="" size="70"></td>
+    <td><input type="text" id="roadFullAddr" name="company_address" value="" size="50"></td>
   </tr>
   <tr>
     <th scope="row">광역자치단체</th>
@@ -333,8 +333,8 @@ $(function(){
     <td><input type="text" id="email" name="email" size="30"></td>
     <th scope="row">홈페이지</th>
     <td><input type="text" id="homepage" name="homepage"></td>
-    <th scope="row"></th>
-    <td></td>
+    <th scope="row">비고</th>
+    <td><input type="text" id="bigo" name="bigo"></td>
   </tr>
 </table>
 

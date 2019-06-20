@@ -142,8 +142,8 @@ $(function(){
                     <td><input type="text" id="e_mail" name="e_mail" value=""></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="" size="50"></td>
-                    <th></th>
-                    <td></td>
+                    <th>비고</th>
+                    <td><input type="text" id="bigo" name="bigo" value=""></td>
                 </tr>
                 </tbody>
              </table> 

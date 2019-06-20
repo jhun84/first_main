@@ -144,6 +144,12 @@
                 e.preventDefault();
                 fn_openCertifiedSearch();
             });
+            
+            $('input[type="text"]').keydown(function() { //input태그 엔터막기
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                }
+            });
              
             $("a[name='title']").on("click", function(e){ //제목
                 e.preventDefault();

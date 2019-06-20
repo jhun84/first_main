@@ -6,10 +6,7 @@
 </head>
 <body>
 <h1>기업정보</h1>
-    <table width="100%" class="board_view" cellpadding="0" cellspacing="0">
-  <tr>
-    <th colspan="6">1. 기업정보</th>
-  </tr>
+    <table width="100%" class="board_view" cellpadding="0" cellspacing="0">  
   <tr>
     <th scope="row">기관명</th>
     <td>${map.company_name }</td>
@@ -103,8 +100,8 @@
     <td>${map.email }</td>
     <th scope="row">홈페이지</th>
     <td>${map.homepage }</td>
-    <th scope="row"></th>
-    <td></td>
+    <th scope="row">비고</th>
+    <td>${map.bigo }</td>
   </tr>
   </table>
   <form id="frm" name="frm" enctype="multipart/form-data">
@@ -117,7 +114,7 @@
             <tr>
                 <th>${row.years}년</th>
                 <td>
-                  먜출액:${row.total_sales},영업이익:${row.oper_profit},당기순이익:${row.income_term},
+                  매출액:${row.total_sales},영업이익:${row.oper_profit},당기순이익:${row.income_term},
                   총노무비:${row.total_labor},사업개발비:${row.total_devel_sales},기초컨선팅:${row.basic_consalting},
                   전문컨설팅:${row.pro_consalting}
                 </td>
@@ -167,7 +164,7 @@
 			<c:when test="${fn:length(vul_info) > 0}">
 			<c:forEach var="vul" items="${vul_info}">
               <tr>
-                  <th>저속득</th>
+                  <th>저소득</th>
                   <td>${vul.jsd }명</td>
                   <th>고령자</th>
                   <td>${vul.krj }명</td>

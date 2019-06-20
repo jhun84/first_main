@@ -120,12 +120,11 @@
             <c:choose>
 			<c:when test="${fn:length(list) > 0}">
             <tr>
-                <th scope="row">관련정보</th>
+                <th scope="row">상품사진</th>
                 <td colspan="3">
                     <c:forEach var="row" items="${list }">
-                        <input type="hidden" id="IDX" value="${row.IDX }">
-                        - 제목: ${row.SUBJECT}
-                        - 첨부파일: <a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
+                        <input type="hidden" id="IDX" value="${row.IDX }">                        
+                        <a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
                         (${row.FILE_SIZE }kb)
                     </c:forEach>
                 </td>
@@ -179,7 +178,7 @@
         function fn_downloadFile(obj){
             var idx = obj.parent().find("#IDX").val();
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/common/downloadFile.do' />");
+            comSubmit.setUrl("<c:url value='/product/downloadFile.do' />");
             comSubmit.addParam("IDX", idx);
             comSubmit.submit();
         }

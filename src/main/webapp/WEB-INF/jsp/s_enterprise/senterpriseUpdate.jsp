@@ -20,27 +20,135 @@
             <tbody>
                 <tr>
                     <th scope="row">지역</th>
-                    <td><input type="text" id="area" name="area" value="${map.area}"></td>
+                    <td>
+                    <select name="area">
+                      <option value="" <c:if test="${map.area eq ''}">selected</c:if>>선택</option>
+	                  <option value="CA01" <c:if test="${map.area eq 'CA01'}">selected</c:if>>강릉</option>
+                      <option value="CA02" <c:if test="${map.area eq 'CA02'}">selected</c:if>>태백</option>
+                      <option value="CA03" <c:if test="${map.area eq 'CA03'}">selected</c:if>>춘천</option>
+                      <option value="CA04" <c:if test="${map.area eq 'CA04'}">selected</c:if>>화천</option>
+                      <option value="CA05" <c:if test="${map.area eq 'CA05'}">selected</c:if>>평창</option>
+                      <option value="CA06" <c:if test="${map.area eq 'CA06'}">selected</c:if>>횡성</option>
+                      <option value="CA07" <c:if test="${map.area eq 'CA07'}">selected</c:if>>원주</option>
+                      <option value="CA08" <c:if test="${map.area eq 'CA08'}">selected</c:if>>영월</option>
+                      <option value="CA09" <c:if test="${map.area eq 'CA09'}">selected</c:if>>삼척</option>
+                      <option value="CA10" <c:if test="${map.area eq 'CA10'}">selected</c:if>>정선</option>
+                      <option value="CA11" <c:if test="${map.area eq 'CA11'}">selected</c:if>>철원</option> 
+                      <option value="CA12" <c:if test="${map.area eq 'CA12'}">selected</c:if>>양구</option> 
+                      <option value="CA13" <c:if test="${map.area eq 'CA13'}">selected</c:if>>인제</option>
+                      <option value="CA14" <c:if test="${map.area eq 'CA14'}">selected</c:if>>고성</option>
+                      <option value="CA15" <c:if test="${map.area eq 'CA15'}">selected</c:if>>양양</option>
+                      <option value="CA16" <c:if test="${map.area eq 'CA16'}">selected</c:if>>동해</option>
+                      <option value="CA17" <c:if test="${map.area eq 'CA17'}">selected</c:if>>홍천</option>		   
+                      <option value="CA18" <c:if test="${map.area eq 'CA18'}">selected</c:if>>속초</option>
+                     </select>
+                    </td>
                     <th>규모</th>
-                    <td><input type="text" id="gyumo" name="gyumo" value="${map.gyumo}"></td>
+                    <td>
+                    <select name="gyumo">
+                      <option value="" <c:if test="${map.gyumo eq ''}">selected</c:if>>선택</option>
+                      <option value="지역형" <c:if test="${map.gyumo eq '지역형'}">selected</c:if>>지역형</option>
+                      <option value="광역형" <c:if test="${map.gyumo eq '광역형'}">selected</c:if>>광역형</option>
+                      <option value="전국형" <c:if test="${map.gyumo eq '전국형'}">selected</c:if>>지역형</option>
+                     </select>
+                    </td>
                     <th>분야</th>
-                    <td><input type="text" id="bunya" name="bunya" value="${map.bunya}"></td>
+                    <td>
+                    <select name="bunya">
+                      <option value="" <c:if test="${map.bunya eq ''}">selected</c:if>>선택</option>
+                      <option value="농업" <c:if test="${map.bunya eq '농업'}">selected</c:if>>농업</option>
+                      <option value="도소매업" <c:if test="${map.bunya eq '도소매업'}">selected</c:if>>도소매업</option>
+                      <option value="서비스" <c:if test="${map.bunya eq '서비스'}">selected</c:if>>서비스</option>
+                      <option value="운수업" <c:if test="${map.bunya eq '운수업'}">selected</c:if>>운수업</option>
+                      <option value="음식점업" <c:if test="${map.bunya eq '음식점업'}">selected</c:if>>음식점업</option>
+                      <option value="제조업" <c:if test="${map.bunya eq '제조업'}">selected</c:if>>제조업</option>
+                      <option value="주거환경" <c:if test="${map.bunya eq '주거환경'}">selected</c:if>>주거환경</option>
+                      <option value="폐기물처리업" <c:if test="${map.bunya eq '폐기물처리업'}">selected</c:if>>폐기물처리업</option>                      	                	               
+                     </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>업종</th>
-                    <td><input type="text" id="upjong" name="upjong" value="${map.upjong}"></td>
+                    <td>
+                    <select name="upjong">
+                      <option value="" <c:if test="${map.upjong eq ''}">selected</c:if>>선택</option>
+                      <option value="가정청소대행" <c:if test="${map.upjong eq '가정청소대행'}">selected</c:if>>가정청소대행</option>
+                      <option value="농수축산가공" <c:if test="${map.upjong eq '농수축산가공'}">selected</c:if>>농수축산가공</option>
+                      <option value="도배.장판" <c:if test="${map.upjong eq '도배.장판'}">selected</c:if>>도배.장판</option>
+                      <option value="돌봄.간병" <c:if test="${map.upjong eq '돌봄.간병'}">selected</c:if>>돌봄.간병</option>
+                      <option value="배송" <c:if test="${map.upjong eq '배송'}">selected</c:if>>배송</option>
+                      <option value="비금속광물" <c:if test="${map.upjong eq '비금속광물'}">selected</c:if>>비금속광물</option>
+                      <option value="세탁.수선" <c:if test="${map.upjong eq '세탁.수선'}">selected</c:if>>세탁.수선</option>
+                      <option value="식음료" <c:if test="${map.upjong eq '식음료'}">selected</c:if>>식음료</option>
+                      <option value="식품가공" <c:if test="${map.upjong eq '식품가공'}">selected</c:if>>식품가공</option>
+                      <option value="영농" <c:if test="${map.upjong eq '영농'}">selected</c:if>>영농</option>
+                      <option value="유통" <c:if test="${map.upjong eq '유통'}">selected</c:if>>유통</option>
+                      <option value="유통.영농" <c:if test="${map.upjong eq '유통.영농'}">selected</c:if>>유통.영농</option>
+                      <option value="음식점" <c:if test="${map.upjong eq '음식점'}">selected</c:if>>음식점</option>
+                      <option value="의류.악세사리" <c:if test="${map.upjong eq '의류.악세사리'}">selected</c:if>>의류.악세사리</option>
+                      <option value="재활용" <c:if test="${map.upjong eq '재활용'}">selected</c:if>>재활용</option>
+                      <option value="종합집수리" <c:if test="${map.upjong eq '종합집수리'}">selected</c:if>>종합집수리</option>
+                      <option value="차량세차" <c:if test="${map.upjong eq '차량세차'}">selected</c:if>>차량세차</option>
+                      <option value="청소환경" <c:if test="${map.upjong eq '청소환경'}">selected</c:if>>청소환경</option>
+                      <option value="체험.공예품" <c:if test="${map.upjong eq '체험.공예품'}">selected</c:if>>체험.공예품</option>	                	                
+                     </select>
+                    </td>
                     <th>사업자유형</th>
-                    <td><input type="text" id="sa_type" name="sa_type" value="${map.sa_type}"></td>
+                    <td>
+                    <select name="sa_type">
+                      <option value="" <c:if test="${map.sa_type eq ''}">selected</c:if>>선택</option>
+                      <option value="개인사업자" <c:if test="${map.sa_type eq '개인사업자'}">selected</c:if>>개인사업자</option>
+                      <option value="공동사업자" <c:if test="${map.sa_type eq '공동사업자'}">selected</c:if>>공동사업자</option>
+                      <option value="유한회사" <c:if test="${map.sa_type eq '유한회사'}">selected</c:if>>유한회사</option>
+                      <option value="주식회사" <c:if test="${map.sa_type eq '주식회사'}">selected</c:if>>주식회사</option>
+                      <option value="협동조합" <c:if test="${map.sa_type eq '협동조합'}">selected</c:if>>협동조합</option>	                	                
+                     </select>
+                    </td>
                     <th>폐업여부</th>
-                    <td><input type="text" id="pe_sts" name="pe_sts" value="${map.pe_sts}"></td>
+                    <td>
+                    <select name="pe_sts">
+                      <option value="" <c:if test="${map.pe_sts eq ''}">selected</c:if>>선택</option>
+                      <option value="폐업진행" <c:if test="${map.pe_sts eq '폐업진행'}">selected</c:if>>폐업진행</option>
+                      <option value="폐업" <c:if test="${map.pe_sts eq '폐업'}">selected</c:if>>폐업</option>	                	                
+                     </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>사회적기업 인증현황</th>
-                    <td><input type="text" id="certi_situ" name="certi_situ" value="${map.certi_situ}"></td>
+                    <td>
+                    <select name="certi_situ">
+                      <option value="" <c:if test="${map.certi_situ eq ''}">selected</c:if>>선택</option>
+                      <option value="사회적기업" <c:if test="${map.certi_situ eq '사회적기업'}">selected</c:if>>사회적기업</option>
+                      <option value="예비사회적기업" <c:if test="${map.certi_situ eq '예비사회적기업'}">selected</c:if>>예비사회적기업</option>		                	                
+                     </select>
+                    </td>
                     <th>인증연도</th>
-                    <td><input type="text" id="certi_year" name="certi_year" value="${map.certi_year}"></td>
+                    <td>
+                    <select name="certi_year">
+                      <option value="" <c:if test="${map.certi_year eq ''}">selected</c:if>>선택</option>
+                      <option value="2008" <c:if test="${map.certi_year eq '2008'}">selected</c:if>>2008</option>
+                      <option value="2009" <c:if test="${map.certi_year eq '2009'}">selected</c:if>>2009</option>
+                      <option value="2010" <c:if test="${map.certi_year eq '2010'}">selected</c:if>>2010</option>
+                      <option value="2011" <c:if test="${map.certi_year eq '2011'}">selected</c:if>>2011</option>
+                      <option value="2012" <c:if test="${map.certi_year eq '2012'}">selected</c:if>>2012</option>
+                      <option value="2013" <c:if test="${map.certi_year eq '2013'}">selected</c:if>>2013</option>
+                      <option value="2014" <c:if test="${map.certi_year eq '2014'}">selected</c:if>>2014</option>
+                      <option value="2015" <c:if test="${map.certi_year eq '2015'}">selected</c:if>>2015</option>
+                      <option value="2016" <c:if test="${map.certi_year eq '2016'}">selected</c:if>>2016</option>
+                      <option value="2017" <c:if test="${map.certi_year eq '2017'}">selected</c:if>>2017</option>
+                      <option value="2018" <c:if test="${map.certi_year eq '2018'}">selected</c:if>>2018</option>
+                      <option value="2019" <c:if test="${map.certi_year eq '2019'}">selected</c:if>>2019</option>	                	                
+                     </select>
+                    </td>
                     <th>유형</th>
-                    <td><input type="text" id="certi_type" name="certi_type" value="${map.certi_type}"></td>
+                    <td>
+                    <select name="certi_type">
+                      <option value="" <c:if test="${map.certi_type eq ''}">selected</c:if>>선택</option>
+                      <option value="사회서비스" <c:if test="${map.certi_type eq '사회서비스'}">selected</c:if>>사회서비스</option>
+                      <option value="일자리" <c:if test="${map.certi_type eq '일자리'}">selected</c:if>>일자리</option>
+                      <option value="혼합형" <c:if test="${map.certi_type eq '혼합형'}">selected</c:if>>혼합형</option>	                	                
+                     </select>
+                    </td>
                 </tr>
                 <tr>
                     <th>기업명</th>
@@ -52,11 +160,16 @@
                 </tr>
                 <tr>
                 <th>설립일</th>
-                <td><input type="text" id="su_date" name="su_date" value="${map.su_date}"></td>
-                <th scope="row">우편번호</th>
-                <td><input type="text" id="company_zip" name="company_zip" value="${map.company_zip}"></td>
+                <td>
+                <div class="input-group date" style="width:200px">
+                    <input type="text" id="su_date" name="su_date" value="${map.su_date}" class="form-control">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+                </td>
+                <th scope="row">우편번호&nbsp;&nbsp;<input type="button" onClick="goPopup();" value="주소검색"></th>
+                <td><input type="text" id="zipNo" name="company_zip" value="${map.company_zip}"></td>
                 <th scope="row">주소</th>
-                <td><input type="text" id="company_address" name="company_address" value="${map.company_address}" size="60"></td>
+                <td><input type="text" id="roadFullAddr" name="company_address" value="${map.company_address}" size="50"></td>
             </tr>
             <tr>
                 <th>대표자</th>
@@ -71,8 +184,8 @@
                 <td><input type="text" id="e_mail" name="e_mail" value="${map.e_mail}"></td>
                 <th>홈페이지</th>
                 <td><input type="text" id="homepage" name="homepage" value="${map.homepage}"></td>
-                <th></th>
-                <td></td>
+                <th>비고</th>
+                <td><input type="text" id="bigo" name="bigo" value="${map.bigo}"></td>
             </tr>
                 
             </tbody>
@@ -128,10 +241,9 @@
 
 	</form>
 	
-	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="addyear" >재무정보연도추가하기</a>	
+	<a href="#this" class="btn" id="list">목록으로</a>	
 	<a href="#this" class="btn" id="update">저장하기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
+	<a href="#this" class="btn" id="delete">삭제하기</a>	
 	
 	<%@ include file="/WEB-INF/include/include-body.jsp" %>
 	<script type="text/javascript">
@@ -156,8 +268,15 @@
 			});
 						
 			$("#delete").on("click", function(e){ //삭제하기 버튼
-				e.preventDefault();
-				fn_deleteSenterprise();
+				var result = confirm('삭제를 하시겠습니까?');
+			    
+			    if(result){
+			    	e.preventDefault();
+					fn_deleteSenterprise();
+			    }else{
+			    	return false;
+			    }
+				
 			});
 			$("#addFile").on("click", function(e){ //파일 추가 버튼
                 e.preventDefault();

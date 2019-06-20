@@ -118,7 +118,7 @@
 </table>
 <div align="center" style="padding-top:20px;">
 <form id="frm" name="frm" enctype="multipart/form-data">
-<input type="text" id="company_name" name="company_name" /> 
+<input type="text" id="company_name" name="company_name"/> 
 <a href="#search" class="btn" id="search" >검색</a>
 </form>
 </div>
@@ -144,27 +144,27 @@
                 e.preventDefault();
                 fn_openCertifiedSearch();
             });
-             
+            $('input[type="text"]').keydown(function() { //input태그 엔터막기
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                }
+            });                       
             $("a[name='title']").on("click", function(e){ //제목
                 e.preventDefault();
                 fn_openCertifiedDetail($(this));
             });
-        });
-         
-         
+        });                 
         function fn_openCerti_CompanyWrite(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/certi/openCerti_CompanyWrite.do' />");
             comSubmit.submit();
-        }
-        
+        }        
         function fn_openCertifiedSearch(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/certo/openCertified_CompanySearch.do' />");
+            comSubmit.setUrl("<c:url value='/certi/openCertified_CompanySearch.do' />");
             comSubmit.addParam("company_name", $('#company_name').val());
             comSubmit.submit();
-        }
-         
+        }         
         function fn_openCertifiedDetail(obj){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/certi/openCertiDetail.do' />");
@@ -176,8 +176,7 @@
             comSubmit.setUrl("<c:url value='/certi/openCertifiedList.do' />");
             comSubmit.addParam("currentPageNo", pageNo);
             comSubmit.submit();
-        }
-       
+        }       
     </script>
 </body>
 </html>

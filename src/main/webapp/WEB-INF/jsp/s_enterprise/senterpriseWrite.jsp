@@ -51,36 +51,47 @@ $(function(){
                     <td>
                      <select name="area">
                       <option value="">선택</option>
-	                	<option value="CA01">강릉</option>
-	                	<option value="CA02">태백</option>
-	                	<option value="CA03">춘천</option>
-	                	<option value="CA04">화천</option>
-	                	<option value="CA05">평창</option>
-	                	<option value="CA06">횡성</option>
-	                	<option value="CA07">원주</option>
-	                	<option value="CA08">영월</option>
-	                	<option value="CA09">삼척</option>
-	                	<option value="CA10">정선</option>
-	                	<option value="CA11">철원</option> 
-	                	<option value="CA12">양구</option> 
-	                	<option value="CA13">인제</option>
-	                	<option value="CA14">고성</option>
-	                	<option value="CA15">양양</option>
-	                	<option value="CA16">동해</option>
-	                	<option value="CA17">홍천</option>		   
-	                	<option value="CA18">속초</option>
+	                  <option value="CA01">강릉</option>
+	                  <option value="CA02">태백</option>
+	                  <option value="CA03">춘천</option>
+	                  <option value="CA04">화천</option>
+	                  <option value="CA05">평창</option>
+	                  <option value="CA06">횡성</option>
+	                  <option value="CA07">원주</option>
+	                  <option value="CA08">영월</option>
+	                  <option value="CA09">삼척</option>
+	                  <option value="CA10">정선</option>
+	                  <option value="CA11">철원</option> 
+	                  <option value="CA12">양구</option> 
+	                  <option value="CA13">인제</option>
+	                  <option value="CA14">고성</option>
+	                  <option value="CA15">양양</option>
+	                  <option value="CA16">동해</option>
+	                  <option value="CA17">홍천</option>		   
+	                  <option value="CA18">속초</option>
                      </select>
                     </td>
                     <th>규모</th>
                     <td>
                     <select name="gyumo">
-                      <option value="">선택</option>	                		                	 
+                      <option value="">선택</option>
+                      <option value="지역형">지역형</option>
+                      <option value="광역형">광역형</option>
+                      <option value="전국형">전국형</option>	                		                	 
                      </select>
                     </td>
                     <th>분야</th>
                     <td>
                     <select name="bunya">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="농업">농업</option>
+                      <option value="도소매업">도소매업</option>
+                      <option value="서비스">서비스</option>
+                      <option value="운수업">운수업</option>
+                      <option value="음식점업">음식점업</option>
+                      <option value="제조업">제조업</option>
+                      <option value="주거환경">주거환경</option>
+                      <option value="폐기물처리업">폐기물처리업</option>	                	                
                      </select>
                     </td>
                 </tr>
@@ -88,19 +99,45 @@ $(function(){
                     <th>업종</th>
                     <td>
                     <select name="upjong">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="가정청소대행">가정청소대행</option>
+                      <option value="농수축산가공">농수축산가공</option>
+                      <option value="도배.장판">도배.장판</option>
+                      <option value="돌봄.간병">돌봄.간병</option>
+                      <option value="배송">배송</option>
+                      <option value="비금속광물">비금속광물</option>
+                      <option value="세탁.수선">세탁.수선</option>
+                      <option value="식음료">식음료</option>
+                      <option value="식품가공">식품가공</option>
+                      <option value="영농">영농</option>
+                      <option value="유통">유통</option>
+                      <option value="유통.영농">유통.영농</option>
+                      <option value="음식점">음식점</option>
+                      <option value="의류.악세사리">의류.악세사리</option>
+                      <option value="재활용">재활용</option>
+                      <option value="종합집수리">종합집수리</option>
+                      <option value="차량세차">차량세차</option>
+                      <option value="청소환경">청소환경</option>
+                      <option value="체험.공예품">체험.공예품</option>	                	                
                      </select>
                     </td>
                     <th>사업자유형</th>
                     <td>
                      <select name="sa_type">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="개인사업자">개인사업자</option>
+                      <option value="공동사업자">공동사업자</option>
+                      <option value="유한회사">유한회사</option>
+                      <option value="주식회사">주식회사</option>
+                      <option value="협동조합">협동조합</option>	                	                
                      </select>
                     </td>
                     <th>폐업여부</th>
                     <td>
                      <select name="pe_sts">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="폐업진행">폐업진행</option>
+                      <option value="폐업">폐업</option>	                	                
                      </select>
                     </td>
                 </tr>
@@ -108,19 +145,36 @@ $(function(){
                     <th>사회적기업 인증현황</th>
                     <td>
                     <select name="certi_situ">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="사회적기업">사회적기업</option>
+                      <option value="예비사회적기업">예비사회적기업</option>		                	                
                      </select>
                     </td>
                     <th>인증연도</th>
                     <td>
                      <select name="certi_year">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="2008">2008</option>
+                      <option value="2009">2009</option>
+                      <option value="2010">2010</option>
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>	                	                
                      </select>
                     </td>
                     <th>유형</th>
                     <td>
                      <select name="certi_type">
-                      <option value="">선택</option>	                	                
+                      <option value="">선택</option>
+                      <option value="사회서비스">사회서비스</option>
+                      <option value="일자리">일자리</option>
+                      <option value="혼합형">혼합형</option>	                	                
                      </select>
                     </td>
                 </tr>
@@ -158,8 +212,8 @@ $(function(){
                     <td><input type="text" id="e_mail" name="e_mail" value=""></td>
                     <th>홈페이지</th>
                     <td><input type="text" id="homepage" name="homepage" value="" size="50"></td>
-                    <th></th>
-                    <td></td>
+                    <th>비고</th>
+                    <td><input type="text" id="bigo" name="bigo" value=""></td>
                 </tr>
                 </tbody>
              </table> 

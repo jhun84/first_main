@@ -78,6 +78,8 @@
                     <input type="checkbox" id="CERTI" name="CERTI" value="사회적협동조합">사회적협동조합
                     <input type="checkbox" id="CERTI" name="CERTI" value="협동조합">협동조합
                     <input type="checkbox" id="CERTI" name="CERTI" value="창업팀(진흥원)">창업팀(진흥원)
+                    <input type="checkbox" id="CERTI" name="CERTI" value="탄광지역주민창업기업">탄광지역주민창업기업
+                    <input type="checkbox" id="CERTI" name="CERTI" value="기타사회적경제">기타사회적경제
                     <input type="checkbox" id="CERTI" name="CERTI" value="해당없음">해당없음
                     <input type="hidden" id="CERTI" name="CERTI" value=" ">
                     </td>
@@ -106,15 +108,14 @@
 
         </script>
         <div id="fileDiv">
-        <h1>관련정보</h1>
-                <p>
-                    1.제목:&nbsp;&nbsp;<input type="text" id="subject" name="subject_0">&nbsp;&nbsp;
-                    2.파일:&nbsp;&nbsp;<input type="file" id="file" name="file_0">
+        <h1>상품사진</h1>
+                <p>                 
+                    <input type="file" id="file" name="file_0">
                     <a href="#this" class="btn" id="delete" name="delete">삭제</a>
                 </p>
         </div>
         <br/><br/>
-        <a href="#this" class="btn" id="addFile">파일 추가</a> 
+        <!-- <a href="#this" class="btn" id="addFile">파일 추가</a> --> 
         <a href="#this" class="btn" id="write" >작성하기</a>
         <a href="#this" class="btn" id="list" >목록으로</a>
     </form>

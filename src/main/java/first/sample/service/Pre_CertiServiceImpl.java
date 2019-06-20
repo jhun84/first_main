@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -40,8 +41,8 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 	    return pre_certiDAO.pre_certiBoardList(map);
 	}
 	@Override
-	public Map<String, Object> pre_certiBoardSearch(Map<String, Object> map) throws Exception {
-	    return pre_certiDAO.pre_certiBoardSearch(map);
+	public Map<String, Object> search_pre_certiBoardSearch(Map<String, Object> map) throws Exception {
+	    return pre_certiDAO.search_pre_certiBoardSearch(map);
 	}
 	@Override
     public void insertPre_Certi_company(Map<String, Object> map, HttpServletRequest request) throws Exception {
@@ -50,8 +51,8 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 		for(int i=0; i<10; i++){
 			Map<String, String> years_list = new HashMap<String, String>();
 			String boardSeq_no = String.valueOf(map.get("IDX"));
-			
-			String year_i = String.valueOf(map.get("year_"+i));
+					
+			String year_i = String.valueOf(map.get("year_"+i));			
 		    String total_sales_i = String.valueOf(map.get("total_sales_"+i));
 		    String oper_profit_i = String.valueOf(map.get("oper_profit_"+i));
 		    String income_term_i = String.valueOf(map.get("income_term_"+i));
@@ -59,43 +60,45 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 		    String total_devel_sales_i = String.valueOf(map.get("total_devel_sales_"+i));
 		    String basic_consalting_i = String.valueOf(map.get("basic_consalting_"+i));
 		    String pro_consalting_i = String.valueOf(map.get("pro_consalting_"+i));
-		    
-		    if(!year_i.equals("null")){	
-		    	years_list.put("idx", boardSeq_no);
-			    years_list.put("years", year_i);
-			    years_list.put("total_sales", total_sales_i);
-			    years_list.put("oper_profit", oper_profit_i);
-			    years_list.put("income_term", income_term_i);
-			    years_list.put("total_labor", total_labor_i);
-			    years_list.put("total_devel_sales", total_devel_sales_i);
-			    years_list.put("basic_consalting", basic_consalting_i);
-			    years_list.put("pro_consalting", pro_consalting_i);
-			    
-			    pre_certiDAO.insertPre_Years(years_list);
-			}  
+		    int year_length = year_i.length();
+		   
+		    years_list.put("idx", boardSeq_no);
+			years_list.put("years", year_i);
+			years_list.put("total_sales", total_sales_i);
+			years_list.put("oper_profit", oper_profit_i);
+			years_list.put("income_term", income_term_i);
+			years_list.put("total_labor", total_labor_i);
+			years_list.put("total_devel_sales", total_devel_sales_i);
+			years_list.put("basic_consalting", basic_consalting_i);
+			years_list.put("pro_consalting", pro_consalting_i);
+			
+			if( !year_i.equals("null") && year_length > 0 ){    
+			    pre_certiDAO.insertPre_Years(years_list);			    
+			}
 		}
 		
-				for(int i=0; i<10; i++){
-					Map<String, String> peoples_list = new HashMap<String, String>();
-					String boardSeq_no = String.valueOf(map.get("IDX"));
-					
-					String people_years_i = String.valueOf(map.get("people_years_"+i));
-				    String social_people_i = String.valueOf(map.get("social_people_"+i));
-				    String prof_people_i = String.valueOf(map.get("prof_people_"+i));
-				    String salary_people_i = String.valueOf(map.get("salary_people_"+i));
-				    String vul_people_i = String.valueOf(map.get("vul_people_"+i));
-				    
-				    if(!people_years_i.equals("null")){	
-				    	peoples_list.put("idx", boardSeq_no);
-				    	peoples_list.put("people_years", people_years_i);
-				    	peoples_list.put("social_people", social_people_i);
-				    	peoples_list.put("prof_people", prof_people_i);
-				    	peoples_list.put("salary_people", salary_people_i);
-				    	peoples_list.put("vul_people", vul_people_i);
-					    
-					    pre_certiDAO.insertPre_Peoples(peoples_list);
-					}  
-				}
+		for(int i=0; i<10; i++){
+			Map<String, String> peoples_list = new HashMap<String, String>();
+			String boardSeq_no = String.valueOf(map.get("IDX"));
+			
+			String people_years_i = String.valueOf(map.get("people_years_"+i));
+		    String social_people_i = String.valueOf(map.get("social_people_"+i));
+		    String prof_people_i = String.valueOf(map.get("prof_people_"+i));
+		    String salary_people_i = String.valueOf(map.get("salary_people_"+i));
+		    String vul_people_i = String.valueOf(map.get("vul_people_"+i));
+		    int people_year_length = people_years_i.length();
+		    
+		    peoples_list.put("idx", boardSeq_no);
+		    peoples_list.put("people_years", people_years_i);
+		    peoples_list.put("social_people", social_people_i);
+		    peoples_list.put("prof_people", prof_people_i);
+		    peoples_list.put("salary_people", salary_people_i);
+		    peoples_list.put("vul_people", vul_people_i);
+		    if( !people_years_i.equals("null") && people_year_length > 0 ){	    
+			    pre_certiDAO.insertPre_Peoples(peoples_list);					    
+			}
+		}
+		
 		Map<String, String> vulinfo_list = new HashMap<String, String>();
 		String boardSeq_no = String.valueOf(map.get("IDX"));
 		String jsd = String.valueOf(map.get("jsd"));
@@ -420,10 +423,13 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 	@Override
     public void updatePreCerti(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		pre_certiDAO.updatePreCerti(map);
-				
+						
 		/*최근 상세인원정보업데이트 부분*/
 		Map<String, String> vulinfo_list = new HashMap<String, String>();
-		String boardSeq_no = String.valueOf(map.get("IDX"));
+		String boardSeq_no = String.valueOf(map.get("board_seq"));
+		String idx = String.valueOf(map.get("IDX"));
+		System.out.println("vulinfo board_seq="+boardSeq_no);
+		System.out.println("vulinfo IDX="+idx);
 		
 		String jsd = String.valueOf(map.get("jsd"));
 		String krj = String.valueOf(map.get("krj"));
@@ -447,8 +453,13 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 		String jsy = String.valueOf(map.get("jsy"));
 		String hpp = String.valueOf(map.get("hpp"));
 		String hbc = String.valueOf(map.get("hbc"));
-
-		vulinfo_list.put("board_seq",boardSeq_no);
+        
+		if(boardSeq_no.length()>0){
+        	vulinfo_list.put("board_seq",boardSeq_no);
+        }else{
+        	vulinfo_list.put("idx",idx);
+        }
+		
 		vulinfo_list.put("jsd",jsd);
 		vulinfo_list.put("krj",krj);
 		vulinfo_list.put("jai",jai);
@@ -472,8 +483,19 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 		vulinfo_list.put("hpp",hpp);
 		vulinfo_list.put("hbc",hbc);
 		
-		pre_certiDAO.updatePreCerti_VulInfo(vulinfo_list);
+		/*최근 상세인원정보Update 부분*/
+		if(boardSeq_no.length() > 0){
+			pre_certiDAO.updatePreCerti_VulInfo(vulinfo_list);
+		/*최근 상세인원정보Insert 부분*/
+		}else{
+			pre_certiDAO.insertPreCerti_VulInfo(vulinfo_list);
+		}
+		
     }
+	@Override
+    public void deletePre_Certified_Company(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		pre_certiDAO.deletePre_Certified_Company(map);
+	}
 	
 	
 }

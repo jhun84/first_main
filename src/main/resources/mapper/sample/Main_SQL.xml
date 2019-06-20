@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">	
+	<select id="selectNotice_Latest" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+	         SELECT
+             IDX,
+             TITLE,
+             HIT_CNT,
+             CREA_DTM			 
+             FROM TB_BOARD 
+             WHERE 
+             DEL_GB = 'N'
+             ORDER BY CREA_DTM DESC
+             LIMIT 5
+			 ]]>    
+    </select>
+    <select id="selectProductFileList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT 
+        productboard.IDX,
+        productboard.PRODUCT_NAME,
+        product_file.THUMB_FILE_NAME,
+        productboard.REQ_DATE
+        FROM productboard
+        INNER JOIN product_file 
+        ON productboard.IDX = product_file.BOARD_IDX
+        ORDER BY REQ_DATE DESC
+        LIMIT 3
+    ]]>
+    </select>
+    <select id="selectServiceFileList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT 
+        serviceboard.IDX,
+        serviceboard.SERVICE_NAME,
+        service_file.THUMB_FILE_NAME,
+        serviceboard.REQ_DATE
+        FROM serviceboard
+        INNER JOIN service_file 
+        ON serviceboard.IDX = service_file.BOARD_IDX
+        ORDER BY REQ_DATE DESC
+        LIMIT 3
+    ]]>
+    </select>
+  
+</mapper>
