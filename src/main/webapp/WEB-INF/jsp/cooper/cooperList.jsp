@@ -177,7 +177,7 @@
         }
         function fn_ExcelDown(){
             var comSubmit = new ComSubmit();
-            comSubmit.setUrl("<c:url value='/cooper/ExcelDown.do' />");
+            comSubmit.setUrl("<c:url value='/cooper/cooper_excelDown.do' />");
             comSubmit.submit();
         }
         

@@ -39,6 +39,17 @@ public class CertiController {
 	     
 	    return mv;
 	}
+	@RequestMapping(value="/certi/cooper_excelDown.do")
+	public ModelAndView cooper_excelDown(CommandMap commandMap) throws Exception{
+	    ModelAndView mv = new ModelAndView("/certi/certified_List");
+	     
+	    Map<String,Object> resultMap = certiService.certiBoardList(commandMap.getMap());
+	     
+	    mv.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+	    mv.addObject("list", resultMap.get("result"));
+	     
+	    return mv;
+	}	
 	@RequestMapping(value="/certi/openCertified_CompanySearch.do")
 	public ModelAndView openCertified_CompanySearch(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("/certi/certified_List");

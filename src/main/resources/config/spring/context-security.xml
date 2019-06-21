@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/login/loginForm.do" access="permitAll" />
+        <!-- <intercept-url pattern="/login/loginForm.do" access="permitAll" />
         <intercept-url pattern="/home.do" access="permitAll" />
         <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
@@ -19,14 +19,14 @@
 				 username-parameter="id" 
 				 password-parameter="password" /> 
 	     <logout logout-url="/logout" logout-success-url="/home.do" /> 
-	     <access-denied-handler error-page="/login/accessDenied.do" />
+	     <access-denied-handler error-page="/login/accessDenied.do" /> -->
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="user" password="user" authorities="ROLE_USER" />
-                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
+                <user name="user" password="pasword" authorities="ROLE_USER" />
+                <user name="admin" password="pasword" authorities="ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
