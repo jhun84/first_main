@@ -63,6 +63,35 @@
 			 ]]>
     <include refid="common.pre_venter_pagingPost"/>
     </select>
+    
+    <select id="pre_venterExcelList" parameterType="hashmap" resultType="hashmap">    
+    <![CDATA[
+             SELECT
+	         IDX,
+             company_name,
+             area,
+             n_year,
+             t_year,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             bigo,
+             req_date,
+             CONTENTS			 
+             FROM prev_enterprise
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>    
+    </select>
+    
     <insert id="insertPreVenterprise" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO prev_enterprise

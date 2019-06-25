@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface CooperService {
 	
 	Map<String, Object> cooperBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> cooperExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> cooperBoardSearch(Map<String, Object> map) throws Exception;
 	void insertCooper(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updateCooper(Map<String, Object> map, HttpServletRequest request) throws Exception;

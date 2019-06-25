@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface SenterpriseService {
 	
 	Map<String, Object> senterBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> senterExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> senterBoardSearch(Map<String, Object> map) throws Exception;
 	void insertSenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;

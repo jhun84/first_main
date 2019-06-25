@@ -40,6 +40,15 @@ public class VenterpriseServiceImpl implements VenterpriseService{
 	    return venterDAO.venterBoardList(map);
 	}
 	@Override
+	public Map<String, Object> venterExcelList(Map<String, Object> map) throws Exception {	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	   
+	    List<Map<String, Object>> list = venterDAO.venterExcelList(map);
+	    resultMap.put("list", list);
+	    	  
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> venterBoardSearch(Map<String, Object> map) throws Exception {
 	    return venterDAO.venterBoardSearch(map);
 	}

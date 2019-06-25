@@ -62,6 +62,35 @@
 			 ]]>
     <include refid="common.startupTeam_pagingPost"/>
     </select>
+    
+    <select id="startupTeamExcelList" parameterType="hashmap" resultType="hashmap">    
+    <![CDATA[
+             SELECT
+	         IDX,
+             c_year,
+             team_name,
+             area,
+             jisok_sts,
+             company_name,
+             company_type,
+             company_sa_number,
+             company_item,
+             jijung_sts,
+             jijung_jijache,
+             jijung_ym,
+             ceo_name,
+             hp_number,
+             e_mail,
+             DEL_GB,
+             req_date,
+             CONTENTS			 
+             FROM StartupTeamBoard
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>    
+    </select>
+    
     <insert id="insertStartupTeam" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO StartupTeamBoard

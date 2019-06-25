@@ -40,6 +40,15 @@ public class Pre_VenterpriseServiceImpl implements Pre_VenterpriseService{
 	    return pre_venterDAO.pre_venterBoardList(map);
 	}
 	@Override
+	public Map<String, Object> pre_venterExcelList(Map<String, Object> map) throws Exception {	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	    
+	    List<Map<String, Object>> list = pre_venterDAO.pre_venterExcelList(map);
+	    resultMap.put("list", list);
+	    	  
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> pre_venterBoardSearch(Map<String, Object> map) throws Exception {
 	    return pre_venterDAO.pre_venterBoardSearch(map);
 	}

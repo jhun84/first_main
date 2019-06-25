@@ -73,6 +73,40 @@
 			 ]]>
     <include refid="common.senter_pagingPost"/>
     </select>
+    
+    <select id="senterExcelList" parameterType="hashmap" resultType="hashmap">    
+    <![CDATA[
+             SELECT
+	         IDX,
+	         gyumo,
+             bunya,
+             upjong,
+             pe_sts,
+             sa_type,
+             company_name,
+             area,
+             certi_situ,
+             certi_year,
+             certi_type,
+             biz_detail,
+             sa_number,
+             su_date,
+             company_zip,
+             company_address,
+             ceo_name,
+             p_number,
+             c_number,
+             e_mail,
+             homepage,
+             req_date,
+             CONTENTS			 
+             FROM s_enterprise
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>    
+    </select>
+    
     <insert id="insertSenterprise" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO s_enterprise

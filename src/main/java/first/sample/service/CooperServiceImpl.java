@@ -42,6 +42,16 @@ public class CooperServiceImpl implements CooperService{
 	    return cooperDAO.cooperBoardList(map);
 	}
 	@Override
+	public Map<String, Object> cooperExcelList(Map<String, Object> map) throws Exception {
+	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	     
+	    List<Map<String,Object>> list = cooperDAO.cooperExcelList(map);
+	    resultMap.put("list", list);
+	     
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> cooperBoardSearch(Map<String, Object> map) throws Exception {
 	    return cooperDAO.cooperBoardSearch(map);
 	}

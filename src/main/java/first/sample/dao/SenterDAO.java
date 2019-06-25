@@ -15,6 +15,10 @@ public class SenterDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("s_enter.senterBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> senterExcelList(Map<String, Object> map) throws Exception{
+	    return (List<Map<String, Object>>)selectList("s_enter.senterExcelList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> senterBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("s_enter.senterBoardSearch", map);
 	}

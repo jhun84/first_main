@@ -65,7 +65,7 @@
     <include refid="common.cooper_pagingPost"/>
     </select>
     
-    <select id="cooperExcelList" parameterType="hashmap" resultType="hashmap">
+    <select id="cooperExcelList" parameterType="hashmap" resultType="hashmap">    
     <![CDATA[
              SELECT
 	         IDX,
@@ -91,9 +91,9 @@
              WHERE
              DEL_GB = 'N'
              ORDER BY req_date DESC
-			 ]]>
+			 ]]>    
     </select>
-    
+           
     <insert id="insertCooper" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO CooperBoard

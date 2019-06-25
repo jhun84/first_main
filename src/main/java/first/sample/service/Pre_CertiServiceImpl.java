@@ -41,6 +41,15 @@ public class Pre_CertiServiceImpl implements Pre_CertiService{
 	    return pre_certiDAO.pre_certiBoardList(map);
 	}
 	@Override
+	public Map<String, Object> pre_certiExcelList(Map<String, Object> map) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String,Object>();
+		
+		List<Map<String, Object>> list = pre_certiDAO.pre_certiExcelList(map);
+	    resultMap.put("list", list);		
+		
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> search_pre_certiBoardSearch(Map<String, Object> map) throws Exception {
 	    return pre_certiDAO.search_pre_certiBoardSearch(map);
 	}

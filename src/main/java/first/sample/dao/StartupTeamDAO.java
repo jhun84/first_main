@@ -15,6 +15,10 @@ public class StartupTeamDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("startupTeam.startupTeamBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> startupTeamExcelList(Map<String, Object> map) throws Exception{
+	    return (List<Map<String, Object>>)selectList("startupTeam.startupTeamExcelList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> startupTeamBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("startupTeam.startupTeamBoardSearch", map);
 	}

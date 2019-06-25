@@ -101,6 +101,54 @@
 			 ]]>
     <include refid="common.pre_certi_pagingPost"/>
     </select>
+    
+    <select id="pre_certiExcelList" parameterType="hashmap" resultType="hashmap">    
+    <![CDATA[
+             SELECT
+	         IDX,
+             company_name,
+             company_address,
+             company_zip,
+             cc_area,
+             ca_area,
+             cert_num,
+             spt,
+             ji_date,
+             m_cert,
+             company_type,
+             se_area_type,
+             se_bu_type,
+             jojik_type,
+             es_date,
+             bm_number,
+             company_bnum,
+             company_jnum,
+             uniq_num,
+             cr_num,
+             sud_nm,
+             sud_num,
+             biz_detail,
+             item_gubun,
+             item_dru,
+             item_jru,
+             industry_bunryu,
+             ceo_nm,
+             ceo_birth,
+             pic,
+             c_pos,
+             hp_number,
+             areap_number,
+             fax_number,
+             email,
+             homepage,
+             req_date			 
+             FROM Pre_Certified_Company
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>    
+    </select>
+    
     <insert id="insertPre_Certi_company" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO Pre_Certified_Company

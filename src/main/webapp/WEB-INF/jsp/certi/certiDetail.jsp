@@ -103,7 +103,7 @@
     <td>${map.email }</td>
     <th scope="row">홈페이지</th>
     <td>${map.homepage }</td>
-    <th scope="row"></th>
+    <th scope="row">비고</th>
     <td></td>
   </tr>
   </table>

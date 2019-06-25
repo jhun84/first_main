@@ -40,6 +40,15 @@ public class SenterpriseServiceImpl implements SenterpriseService{
 	    return senterDAO.senterBoardList(map);
 	}
 	@Override
+	public Map<String, Object> senterExcelList(Map<String, Object> map) throws Exception {	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	     
+	    List<Map<String, Object>> list = senterDAO.senterExcelList(map);
+	    resultMap.put("list", list);
+	    	  
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> senterBoardSearch(Map<String, Object> map) throws Exception {
 	    return senterDAO.senterBoardSearch(map);
 	}

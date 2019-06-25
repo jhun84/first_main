@@ -15,6 +15,10 @@ public class S_CooperDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("s_cooper.s_cooperBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> s_cooperExcelList(Map<String, Object> map) throws Exception{
+	    return (List<Map<String, Object>>)selectList("s_cooper.s_cooperExcelList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> s_cooperBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("s_cooper.s_cooperBoardSearch", map);
 	}

@@ -39,6 +39,16 @@ public class StartupClubServiceImpl implements StartupClubService{
 	    return startupClubDAO.startupClubBoardList(map);
 	}
 	@Override
+	public Map<String, Object> startupClubExcelList(Map<String, Object> map) throws Exception {
+	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	    	     
+	    List<Map<String,Object>> list = startupClubDAO.startupClubExcelList(map);
+	    resultMap.put("list", list);
+	     
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> startupClubBoardSearch(Map<String, Object> map) throws Exception {
 	    return startupClubDAO.startupClubBoardSearch(map);
 	}
@@ -89,12 +99,12 @@ public class StartupClubServiceImpl implements StartupClubService{
 		String callback = "1";
 		printWriter = response.getWriter();
 
-		String fileUrl = SAVE_URL + fileName; //url 경로
+		String fileUrl = SAVE_URL + fileName; //url 寃쎈�
 		printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("
 	               + callback
 	               + ",'"
 	               + fileUrl
-	               + "','이미지를 업로드 하였습니다.'"
+	               + "','�대�몄�瑜� ��濡��� �����듬����.'"
 	               + ")</script>");
 		printWriter.flush();
 	    

@@ -40,6 +40,15 @@ public class CertiServiceImpl implements CertiService{
 	    return certiDAO.certiBoardList(map);
 	}
 	@Override
+	public Map<String, Object> certiExcelList(Map<String, Object> map) throws Exception {	    
+	    Map<String, Object> resultMap = new HashMap<String,Object>();
+	    
+	    List<Map<String, Object>> list = certiDAO.certiExcelList(map);
+	    resultMap.put("list", list);
+	    
+	    return resultMap;
+	}
+	@Override
 	public Map<String, Object> search_certiBoardList(Map<String, Object> map) throws Exception {
 	    return certiDAO.search_certiBoardList(map);
 	}

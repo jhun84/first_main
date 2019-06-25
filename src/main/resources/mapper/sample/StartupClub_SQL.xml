@@ -53,6 +53,29 @@
 			 ]]>
     <include refid="common.startupClub_pagingPost"/>
     </select>
+    
+    <select id="startupClubExcelList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+             SELECT
+	         IDX,
+             club_name,
+             area,
+             club_type,
+             re_name,
+             hp_number,
+             e_mail,
+             club_item,
+             bigo,
+             homepage,
+             req_date,
+             DEL_GB,
+             CONTENTS			 
+             FROM StartupClubBoard
+             WHERE
+             DEL_GB = 'N'
+             ORDER BY req_date DESC
+			 ]]>    
+    </select>
     <insert id="insertStartupClub" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
         INSERT INTO StartupClubBoard

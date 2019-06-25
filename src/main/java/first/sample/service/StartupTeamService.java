@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface StartupTeamService {
 	
 	Map<String, Object> startupTeamBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> startupTeamExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> startupTeamBoardSearch(Map<String, Object> map) throws Exception;
 	void insertStartupTeam(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	void updateStartupTeam(Map<String, Object> map, HttpServletRequest request) throws Exception;

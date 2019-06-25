@@ -15,6 +15,10 @@ public class VenterDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("v_enter.venterBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> venterExcelList(Map<String, Object> map) throws Exception{
+	    return (List<Map<String, Object>>)selectList("v_enter.venterExcelList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> venterBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("v_enter.venterBoardSearch", map);
 	}

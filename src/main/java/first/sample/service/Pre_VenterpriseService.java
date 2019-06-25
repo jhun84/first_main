@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface Pre_VenterpriseService {
 	
 	Map<String, Object> pre_venterBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> pre_venterExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> pre_venterBoardSearch(Map<String, Object> map) throws Exception;
 	void insertPreVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;

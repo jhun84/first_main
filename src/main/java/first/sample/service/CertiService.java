@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface CertiService {
 	
 	Map<String, Object> certiBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> certiExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> search_certiBoardList(Map<String, Object> map) throws Exception;
 	Map<String, Object> certiBoardSearch(Map<String, Object> map) throws Exception;
 	void insertCerti_company(Map<String, Object> map, HttpServletRequest request) throws Exception;

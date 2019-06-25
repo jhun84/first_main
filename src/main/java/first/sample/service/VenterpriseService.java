@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface VenterpriseService {
 	
 	Map<String, Object> venterBoardList(Map<String, Object> map) throws Exception;
+	Map<String, Object> venterExcelList(Map<String, Object> map) throws Exception;
 	Map<String, Object> venterBoardSearch(Map<String, Object> map) throws Exception;
 	void insertVenterprise(Map<String, Object> map, HttpServletRequest request) throws Exception;	
 	void ckeditorImageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile file) throws Exception;

@@ -132,6 +132,7 @@
 </div>    
 <br/>
     <a href="#this" class="btn" id="write">글쓰기</a>
+    <a href="#this" class="btn" id="excel">엑셀다운로드</a>
      
     <%@ include file="/WEB-INF/include/include-body.jsp" %>
     <script type="text/javascript">
@@ -140,6 +141,11 @@
                 e.preventDefault();
                 fn_startup_teamWrite();
             });
+            
+            $("#excel").on("click", function(e){ //액셀다운로드 버튼
+                e.preventDefault();
+                fn_ExcelDown();
+            });          
             
             $("#search").on("click", function(e){ //검색하기 버튼
                 e.preventDefault();
@@ -156,6 +162,12 @@
         function fn_startup_teamWrite(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/team/open_startup_teamWrite.do' />");
+            comSubmit.submit();
+        }
+        
+        function fn_ExcelDown(){
+            var comSubmit = new ComSubmit();
+            comSubmit.setUrl("<c:url value='/team/ExcelDown.do' />");
             comSubmit.submit();
         }
         

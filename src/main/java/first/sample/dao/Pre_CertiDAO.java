@@ -15,6 +15,10 @@ public class Pre_CertiDAO extends AbstractDAO{
 	    return (Map<String, Object>)selectPagingList("pre_certi.pre_certiBoardList", map);
 	}
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> pre_certiExcelList(Map<String, Object> map) throws Exception{
+	    return (List<Map<String, Object>>) selectList("pre_certi.pre_certiExcelList", map);
+	}
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> search_pre_certiBoardSearch(Map<String, Object> map) throws Exception{
 	    return (Map<String, Object>)selectPagingList("pre_certi.search_pre_certiBoardSearch", map);
 	}
